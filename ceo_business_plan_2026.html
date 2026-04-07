@@ -1,0 +1,1685 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CEO Business Plan 2026–27</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0e1a;
+        --surface: #111827;
+        --border: rgba(255, 255, 255, 0.08);
+        --blue: #06b6d4;
+        --green: #10b981;
+        --red: #f87171;
+        --amber: #fbbf24;
+        --purple: #c084fc;
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+        --surface-glass: rgba(17, 24, 39, 0.7);
+        --glow-blue: rgba(6, 182, 212, 0.15);
+        --glow-green: rgba(16, 185, 129, 0.15);
+        --glow-red: rgba(248, 113, 113, 0.12);
+        --glow-amber: rgba(251, 191, 36, 0.12);
+        --glow-purple: rgba(192, 132, 252, 0.15);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        background-image: radial-gradient(
+          ellipse at 50% 0%,
+          rgba(6, 182, 212, 0.04) 0%,
+          transparent 60%
+        );
+        color: var(--text);
+        overflow: hidden;
+        height: 100vh;
+      }
+
+      .slide {
+        min-height: 100vh;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px 80px 100px;
+        border-bottom: none;
+        position: relative;
+        overflow: hidden;
+        animation: fadeSlideIn 0.45s ease both;
+      }
+
+      .slide.active {
+        display: flex;
+      }
+
+      @keyframes fadeSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Navigation bar */
+      .ppt-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: rgba(10, 14, 26, 0.92);
+        backdrop-filter: blur(16px);
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        z-index: 100;
+      }
+
+      .ppt-nav button {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border);
+        color: var(--text);
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        padding: 8px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .ppt-nav button:hover {
+        background: rgba(6, 182, 212, 0.12);
+        border-color: rgba(6, 182, 212, 0.3);
+      }
+
+      .ppt-nav button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      .ppt-nav button:disabled:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--border);
+      }
+
+      .nav-center {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .nav-counter {
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        letter-spacing: 2px;
+        color: var(--muted);
+        min-width: 80px;
+        text-align: center;
+      }
+
+      .nav-dots {
+        display: flex;
+        gap: 6px;
+      }
+
+      .nav-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .nav-dot.active {
+        background: var(--blue);
+        box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+        width: 24px;
+        border-radius: 4px;
+      }
+
+      .nav-dot:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      /* Progress bar */
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--blue), var(--purple));
+        transition: width 0.4s ease;
+        z-index: 101;
+        border-radius: 0 2px 2px 0;
+      }
+
+      .slide::before {
+        content: "";
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(6, 182, 212, 0.07) 0%,
+          rgba(192, 132, 252, 0.03) 40%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      /* Slide numbering */
+      .slide-num {
+        position: absolute;
+        top: 32px;
+        right: 48px;
+        font-family: "Syne", sans-serif;
+        font-size: 11px;
+        letter-spacing: 3px;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-family: "Syne", sans-serif;
+        font-size: 52px;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.1;
+        margin-bottom: 8px;
+      }
+
+      .accent {
+        color: var(--blue);
+      }
+      .green {
+        color: var(--green);
+      }
+      .red {
+        color: var(--red);
+      }
+      .amber {
+        color: var(--amber);
+      }
+      .purple {
+        color: var(--purple);
+      }
+
+      .subtitle {
+        font-size: 18px;
+        color: var(--muted);
+        margin-bottom: 40px;
+        font-weight: 300;
+        letter-spacing: 0.5px;
+      }
+
+      /* COVER */
+      .cover {
+        background: linear-gradient(
+          135deg,
+          #0a0e1a 0%,
+          #0f1d35 50%,
+          #151030 100%
+        );
+      }
+      .cover h1 {
+        font-size: 64px;
+      }
+      .cover .tagline {
+        font-size: 22px;
+        color: var(--blue);
+        margin: 12px 0 40px;
+        font-weight: 300;
+      }
+      .cover-stats {
+        display: flex;
+        gap: 40px;
+        margin-top: 40px;
+      }
+      .cover-stat {
+        background: rgba(6, 182, 212, 0.08);
+        border: 1px solid rgba(6, 182, 212, 0.2);
+        border-radius: 12px;
+        padding: 24px 32px;
+        backdrop-filter: blur(8px);
+      }
+      .cover-stat .val {
+        font-family: "Syne", sans-serif;
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--blue);
+      }
+      .cover-stat .lbl {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      .target-badge {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          rgba(16, 185, 129, 0.12),
+          rgba(16, 185, 129, 0.05)
+        );
+        border: 1px solid rgba(16, 185, 129, 0.4);
+        border-radius: 8px;
+        padding: 10px 24px;
+        font-family: "Syne", sans-serif;
+        font-size: 20px;
+        color: var(--green);
+        margin-top: 32px;
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.08);
+      }
+
+      /* KPI grid */
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 16px;
+      }
+      .kpi {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 28px 24px;
+        backdrop-filter: blur(8px);
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .kpi:hover {
+        border-color: rgba(6, 182, 212, 0.25);
+        box-shadow: 0 4px 24px rgba(6, 182, 212, 0.06);
+      }
+      .kpi .val {
+        font-family: "Syne", sans-serif;
+        font-size: 36px;
+        font-weight: 800;
+        margin-bottom: 6px;
+      }
+      .kpi .lbl {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .kpi .note {
+        font-size: 12px;
+        margin-top: 8px;
+        color: var(--muted);
+      }
+
+      /* Table */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th {
+        font-family: "Syne", sans-serif;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+      td {
+        padding: 14px 16px;
+        font-size: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+      tr:hover td {
+        background: rgba(6, 182, 212, 0.03);
+      }
+      .bar-cell {
+        width: 160px;
+      }
+      .bar-bg {
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 4px;
+        height: 8px;
+        overflow: hidden;
+      }
+      .bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        background: var(--blue);
+      }
+      .bar-fill.green {
+        background: var(--green);
+      }
+      .bar-fill.red {
+        background: var(--red);
+      }
+
+      /* Funnel visual */
+      .funnel-wrap {
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+        margin-top: 20px;
+      }
+      .funnel {
+        flex: 1;
+      }
+      .funnel-stage {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+      .funnel-bar-wrap {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+        height: 44px;
+        overflow: hidden;
+      }
+      .funnel-bar {
+        height: 100%;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        padding-left: 16px;
+        font-family: "Syne", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: #fff;
+        transition: width 1s ease;
+      }
+      .funnel-label {
+        width: 100px;
+        font-size: 14px;
+        color: var(--muted);
+        text-align: right;
+      }
+      .funnel-pct {
+        width: 50px;
+        font-family: "Syne", sans-serif;
+        font-size: 14px;
+        color: var(--blue);
+        text-align: right;
+      }
+
+      .insight-box {
+        background: rgba(248, 113, 113, 0.07);
+        border: 1px solid rgba(248, 113, 113, 0.2);
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-top: 20px;
+        backdrop-filter: blur(6px);
+      }
+      .insight-box.green-box {
+        background: rgba(16, 185, 129, 0.07);
+        border-color: rgba(16, 185, 129, 0.2);
+      }
+      .insight-box.blue-box {
+        background: rgba(6, 182, 212, 0.07);
+        border-color: rgba(6, 182, 212, 0.2);
+      }
+      .insight-box .icon {
+        font-size: 18px;
+        margin-bottom: 6px;
+      }
+      .insight-box p {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      /* 4 pillars */
+      .pillars {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .pillar {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 28px;
+        position: relative;
+        overflow: hidden;
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .pillar:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+      .pillar::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+      }
+      .pillar.p1::before {
+        background: linear-gradient(90deg, var(--blue), rgba(6, 182, 212, 0.4));
+      }
+      .pillar.p2::before {
+        background: linear-gradient(
+          90deg,
+          var(--green),
+          rgba(16, 185, 129, 0.4)
+        );
+      }
+      .pillar.p3::before {
+        background: linear-gradient(
+          90deg,
+          var(--amber),
+          rgba(251, 191, 36, 0.4)
+        );
+      }
+      .pillar.p4::before {
+        background: linear-gradient(
+          90deg,
+          var(--purple),
+          rgba(192, 132, 252, 0.4)
+        );
+      }
+      .pillar-num {
+        font-family: "Syne", sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+        opacity: 0.08;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+      }
+      .pillar h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
+      .pillar ul {
+        list-style: none;
+      }
+      .pillar ul li {
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 8px;
+        padding-left: 16px;
+        position: relative;
+      }
+      .pillar ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+      }
+      .pillar.p2 ul li::before {
+        color: var(--green);
+      }
+      .pillar.p3 ul li::before {
+        color: var(--amber);
+      }
+      .pillar.p4 ul li::before {
+        color: var(--purple);
+      }
+
+      /* Revenue projection */
+      .rev-bars {
+        margin-top: 28px;
+      }
+      .rev-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+      .rev-label {
+        width: 160px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .rev-bar-wrap {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+        height: 36px;
+        overflow: hidden;
+      }
+      .rev-bar {
+        height: 100%;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        padding-left: 14px;
+        font-family: "Syne", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      /* Roadmap */
+      .roadmap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-top: 24px;
+      }
+      .quarter {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 24px 20px;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.3s ease;
+      }
+      .quarter:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      }
+      .q-label {
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        letter-spacing: 3px;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .q-item {
+        font-size: 13px;
+        color: var(--text);
+        margin-bottom: 10px;
+        padding-left: 14px;
+        position: relative;
+        line-height: 1.5;
+      }
+      .q-item::before {
+        content: "·";
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+        font-size: 20px;
+        top: -4px;
+      }
+
+      /* Risks */
+      .risk-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 24px;
+      }
+      .risk-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 22px 24px;
+        transition: border-color 0.3s ease;
+      }
+      .risk-card:hover {
+        border-color: rgba(248, 113, 113, 0.2);
+      }
+      .risk-card .risk-label {
+        font-size: 12px;
+        letter-spacing: 2px;
+        color: var(--red);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+      .risk-card .risk-title {
+        font-family: "Syne", sans-serif;
+        font-size: 17px;
+        margin-bottom: 10px;
+      }
+      .risk-card .risk-sol {
+        font-size: 14px;
+        color: var(--green);
+      }
+
+      /* CSM table */
+      .csm-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .csm-bar-bg {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 4px;
+        height: 8px;
+        overflow: hidden;
+      }
+      .csm-bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        background: var(--red);
+      }
+
+      /* Closing */
+      .closing {
+        background: radial-gradient(
+          ellipse at 60% 50%,
+          #0f1d35 0%,
+          #120e28 40%,
+          var(--bg) 80%
+        );
+      }
+      .big-quote {
+        font-family: "Syne", sans-serif;
+        font-size: 38px;
+        font-weight: 800;
+        line-height: 1.25;
+        max-width: 800px;
+        margin-bottom: 32px;
+      }
+      .big-quote em {
+        font-style: normal;
+        color: var(--blue);
+      }
+      .metrics-strip {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 40px;
+      }
+      .metric-chip {
+        background: rgba(6, 182, 212, 0.06);
+        border: 1px solid rgba(6, 182, 212, 0.15);
+        border-radius: 100px;
+        padding: 8px 20px;
+        font-size: 13px;
+        color: var(--text);
+        transition: background 0.2s ease;
+      }
+      .metric-chip:hover {
+        background: rgba(6, 182, 212, 0.12);
+      }
+
+      /* AI slide */
+      .ai-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 24px;
+      }
+      .ai-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 24px;
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .ai-card:hover {
+        border-color: rgba(192, 132, 252, 0.2);
+        box-shadow: 0 4px 24px rgba(192, 132, 252, 0.06);
+      }
+      .ai-card h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 16px;
+        margin-bottom: 14px;
+      }
+      .ai-card ul {
+        list-style: none;
+      }
+      .ai-card ul li {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 8px;
+        padding-left: 14px;
+        position: relative;
+      }
+      .ai-card ul li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: var(--purple);
+        font-size: 10px;
+        top: 2px;
+      }
+
+      /* Subscription */
+      .plan-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 24px;
+      }
+      .plan {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 28px 24px;
+        text-align: center;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.3s ease;
+      }
+      .plan:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      }
+      .plan.featured {
+        border-color: var(--blue);
+        background: rgba(6, 182, 212, 0.06);
+        box-shadow: 0 0 30px rgba(6, 182, 212, 0.08);
+      }
+      .plan h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+      .plan .price {
+        font-family: "Syne", sans-serif;
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--blue);
+        margin: 12px 0;
+      }
+      .plan ul {
+        list-style: none;
+        text-align: left;
+        margin-top: 16px;
+      }
+      .plan ul li {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 8px;
+        padding-left: 18px;
+        position: relative;
+      }
+      .plan ul li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--green);
+        font-size: 11px;
+        top: 1px;
+      }
+
+      @media (max-width: 900px) {
+        .slide {
+          padding: 40px 32px 100px;
+        }
+        h1 {
+          font-size: 36px;
+        }
+        .kpi-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .pillars {
+          grid-template-columns: 1fr;
+        }
+        .roadmap {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ai-grid {
+          grid-template-columns: 1fr;
+        }
+        .cover-stats {
+          flex-wrap: wrap;
+        }
+        .ppt-nav {
+          padding: 0 16px;
+        }
+        .nav-dots {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SLIDE 1: Cover -->
+    <div class="slide cover">
+      <span class="slide-num">01 / 13</span>
+      <h1>CEO Business Plan<br /><span class="accent">2026–27</span></h1>
+      <p class="tagline">Transforming BAU into a Scalable Revenue Engine</p>
+      <div class="cover-stats">
+        <div class="cover-stat">
+          <div class="val">1,800</div>
+          <div class="lbl">Hotel Customers</div>
+        </div>
+        <div class="cover-stat">
+          <div class="val">₹2.4 Cr</div>
+          <div class="lbl">Current Revenue</div>
+        </div>
+        <div class="cover-stat">
+          <div class="val">₹1.1K</div>
+          <div class="lbl">ARPU / Month</div>
+        </div>
+        <div class="cover-stat">
+          <div class="val" style="color: var(--red)">30%</div>
+          <div class="lbl">Annual Churn</div>
+        </div>
+      </div>
+      <div class="target-badge">🎯 Target: $15M (~₹125 Cr) by FY 2026–27</div>
+    </div>
+
+    <!-- SLIDE 2: Current Reality -->
+    <div class="slide">
+      <span class="slide-num">02 / 13</span>
+      <p class="subtitle">CURRENT STATE</p>
+      <h1>Reality Check</h1>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="val" style="color: var(--amber)">₹2.4 Cr</div>
+          <div class="lbl">Actual Revenue</div>
+          <div class="note">
+            vs ₹2.97 Cr target → 81% achievement · ₹56L gap
+          </div>
+        </div>
+        <div class="kpi">
+          <div class="val" style="color: var(--red)">30%</div>
+          <div class="lbl">Annual Churn</div>
+          <div class="note">
+            535 of 1,800 customers lost · ₹70L revenue impact
+          </div>
+        </div>
+        <div class="kpi">
+          <div class="val" style="color: var(--amber)">8.15%</div>
+          <div class="lbl">Sales Conversion</div>
+          <div class="note">
+            368 sales from 4,513 leads · Industry benchmark 15–25%
+          </div>
+        </div>
+        <div class="kpi">
+          <div class="val" style="color: var(--red)">₹13K</div>
+          <div class="lbl">ARPU / Year</div>
+          <div class="note">
+            ₹1,100/month — extremely low for a multi-product system
+          </div>
+        </div>
+      </div>
+      <div class="insight-box" style="margin-top: 28px">
+        <p class="red">
+          🚨 We have strong distribution but weak monetization, high churn, and
+          inefficient sales execution.
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Funnel Analysis -->
+    <div class="slide">
+      <span class="slide-num">03 / 13</span>
+      <p class="subtitle">SALES FUNNEL ANALYSIS · 4,513 leads</p>
+      <h1>Where We Lose <span class="accent">Deals</span></h1>
+      <div class="funnel-wrap">
+        <div class="funnel">
+          <div class="funnel-stage">
+            <div class="funnel-label">Leads</div>
+            <div class="funnel-bar-wrap">
+              <div
+                class="funnel-bar"
+                style="
+                  width: 100%;
+                  background: linear-gradient(90deg, #0e3a5f, #06b6d4);
+                "
+              >
+                4,513
+              </div>
+            </div>
+            <div class="funnel-pct">100%</div>
+          </div>
+          <div class="funnel-stage">
+            <div class="funnel-label">Demo</div>
+            <div class="funnel-bar-wrap">
+              <div
+                class="funnel-bar"
+                style="
+                  width: 21%;
+                  background: linear-gradient(90deg, #134e6f, #0891b2);
+                "
+              >
+                969
+              </div>
+            </div>
+            <div class="funnel-pct" style="color: var(--amber)">21%</div>
+          </div>
+          <div class="funnel-stage">
+            <div class="funnel-label">Quotation</div>
+            <div class="funnel-bar-wrap">
+              <div
+                class="funnel-bar"
+                style="
+                  width: 10%;
+                  background: linear-gradient(90deg, #0e3050, #22d3ee);
+                "
+              >
+                457
+              </div>
+            </div>
+            <div class="funnel-pct" style="color: var(--amber)">10%</div>
+          </div>
+          <div class="funnel-stage">
+            <div class="funnel-label">Sales</div>
+            <div class="funnel-bar-wrap">
+              <div
+                class="funnel-bar"
+                style="
+                  width: 8.15%;
+                  background: linear-gradient(90deg, #064e3b, #10b981);
+                "
+              >
+                368
+              </div>
+            </div>
+            <div class="funnel-pct" style="color: var(--green)">8.15%</div>
+          </div>
+          <div class="funnel-stage">
+            <div class="funnel-label">Invoice</div>
+            <div class="funnel-bar-wrap">
+              <div
+                class="funnel-bar"
+                style="
+                  width: 8.02%;
+                  background: linear-gradient(90deg, #064e3b, #059669);
+                "
+              >
+                362
+              </div>
+            </div>
+            <div class="funnel-pct" style="color: var(--green)">8.02%</div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+          margin-top: 20px;
+        "
+      >
+        <div class="insight-box">
+          <p class="red">
+            ❌ Lead→Demo drop is brutal at 79% loss — poor qualification & weak
+            follow-up
+          </p>
+        </div>
+        <div class="insight-box green-box">
+          <p class="green">
+            ✅ Demo→Sale converts at ~38% — the product is strong, problem is
+            top-of-funnel
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Churn Analysis -->
+    <div class="slide">
+      <span class="slide-num">04 / 13</span>
+      <p class="subtitle">CHURN ANALYSIS</p>
+      <h1>The <span class="red">₹70L</span> Leak</h1>
+      <div
+        class="kpi-grid"
+        style="grid-template-columns: repeat(3, 1fr); margin-top: 24px"
+      >
+        <div class="kpi">
+          <div class="val" style="color: var(--red)">535</div>
+          <div class="lbl">Customers Lost</div>
+          <div class="note">Out of 1,800 total</div>
+        </div>
+        <div class="kpi">
+          <div class="val" style="color: var(--red)">29.7%</div>
+          <div class="lbl">Churn Rate</div>
+          <div class="note">~1 in 3 customers lost annually</div>
+        </div>
+        <div class="kpi">
+          <div class="val" style="color: var(--red)">₹70L</div>
+          <div class="lbl">Revenue Lost / Year</div>
+          <div class="note">Direct ARR impact from churn</div>
+        </div>
+      </div>
+      <p
+        style="
+          font-family: &quot;Syne&quot;, sans-serif;
+          font-size: 16px;
+          margin: 28px 0 16px;
+          letter-spacing: 1px;
+          color: var(--muted);
+          text-transform: uppercase;
+        "
+      >
+        Root Causes
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Cause</th>
+            <th>Fix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Low product usage post-onboarding</td>
+            <td style="color: var(--green)">Usage tracking + health score</td>
+          </tr>
+          <tr>
+            <td>Poor onboarding experience</td>
+            <td style="color: var(--green)">CSM playbook + automation</td>
+          </tr>
+          <tr>
+            <td>Weak engagement between renewals</td>
+            <td style="color: var(--green)">Automated touchpoints</td>
+          </tr>
+          <tr>
+            <td>Price vs value mismatch</td>
+            <td style="color: var(--green)">Repackaged tiers + bundling</td>
+          </tr>
+          <tr>
+            <td>Support gaps & slow SLA</td>
+            <td style="color: var(--green)">AI support bot + SLA tracking</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SLIDE 5: CSM Performance -->
+    <div class="slide">
+      <span class="slide-num">05 / 13</span>
+      <p class="subtitle">CSM PERFORMANCE · Top churn contributors</p>
+      <h1>Churn is <span class="red">Concentrated</span></h1>
+      <div class="insight-box blue-box" style="margin: 20px 0 28px">
+        <p>
+          Top 5 CSMs account for
+          <strong style="color: var(--blue)">~68% of all churn</strong> — this
+          is a process & system issue, not individual failure
+        </p>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>CSM</th>
+            <th>Churned Accounts</th>
+            <th>% of Total Churn</th>
+            <th class="bar-cell">Visual</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ishika Mukerjee</td>
+            <td class="red">87</td>
+            <td>16.3%</td>
+            <td>
+              <div class="csm-bar">
+                <div class="csm-bar-bg">
+                  <div class="csm-bar-fill" style="width: 100%"></div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Disha Padhi</td>
+            <td class="red">85</td>
+            <td>15.9%</td>
+            <td>
+              <div class="csm-bar">
+                <div class="csm-bar-bg">
+                  <div class="csm-bar-fill" style="width: 97%"></div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Anurag Mishra</td>
+            <td class="red">82</td>
+            <td>15.3%</td>
+            <td>
+              <div class="csm-bar">
+                <div class="csm-bar-bg">
+                  <div class="csm-bar-fill" style="width: 94%"></div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Anku Naik</td>
+            <td class="amber">60</td>
+            <td>11.2%</td>
+            <td>
+              <div class="csm-bar">
+                <div class="csm-bar-bg">
+                  <div class="csm-bar-fill" style="width: 69%"></div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Simran Banarjee</td>
+            <td class="amber">50</td>
+            <td>9.3%</td>
+            <td>
+              <div class="csm-bar">
+                <div class="csm-bar-bg">
+                  <div class="csm-bar-fill" style="width: 57%"></div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="insight-box" style="margin-top: 20px">
+        <p class="red">
+          Action: CSM dashboard (churn %, upsell %, renewal) · Weekly health
+          review · Risk-based account prioritization
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Strategy Overview -->
+    <div class="slide">
+      <span class="slide-num">06 / 13</span>
+      <p class="subtitle">STRATEGY · 4 PILLARS</p>
+      <h1>The <span class="accent">Growth</span> Framework</h1>
+      <div class="pillars">
+        <div class="pillar p1">
+          <div class="pillar-num">1</div>
+          <h3 class="accent">🛡 Revenue Protection</h3>
+          <ul>
+            <li>AI Account Health Score</li>
+            <li>Churn alerts 30–45 days early</li>
+            <li>Renewal automation dashboard</li>
+            <li>Support SLA tracking</li>
+            <li>Target: Churn 30% → 15%</li>
+          </ul>
+        </div>
+        <div class="pillar p2">
+          <div class="pillar-num">2</div>
+          <h3 class="green">💰 Revenue Expansion</h3>
+          <ul>
+            <li>ARPU: ₹1K → ₹5K / month</li>
+            <li>Simplify to 3 pricing tiers</li>
+            <li>Add-on marketplace launch</li>
+            <li>Feature monetization</li>
+            <li>Booking Engine commission 30–40%</li>
+          </ul>
+        </div>
+        <div class="pillar p3">
+          <div class="pillar-num">3</div>
+          <h3 class="amber">🔄 Upsell Engine</h3>
+          <ul>
+            <li>Monetize existing 1,800 hotels</li>
+            <li>Plan upgrade campaigns</li>
+            <li>BE & CRM/PMS upsell</li>
+            <li>AI-powered upsell triggers</li>
+            <li>Target: +₹1.6 Cr from upsell</li>
+          </ul>
+        </div>
+        <div class="pillar p4">
+          <div class="pillar-num">4</div>
+          <h3 class="purple">🌍 Market Expansion</h3>
+          <ul>
+            <li>Thailand: 50 clients in Q1</li>
+            <li>Localization + local payments</li>
+            <li>Hindi & regional languages</li>
+            <li>Tier 2/3 city penetration</li>
+            <li>Target: +₹3 Cr new customers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Subscription / Pricing -->
+    <div class="slide">
+      <span class="slide-num">07 / 13</span>
+      <p class="subtitle">PRICING REVAMP · From 30+ plans → 3 clear tiers</p>
+      <h1>Simplify to <span class="accent">Scale</span></h1>
+      <div class="plan-grid">
+        <div class="plan">
+          <h3>Basic</h3>
+          <div class="price">
+            ₹1K<span style="font-size: 14px; color: var(--muted)">/mo</span>
+          </div>
+          <ul>
+            <li>Channel Manager (core OTAs)</li>
+            <li>Basic PMS</li>
+            <li>Email support</li>
+            <li>Standard reporting</li>
+          </ul>
+        </div>
+        <div class="plan featured">
+          <h3>
+            Growth
+            <span
+              style="
+                font-size: 12px;
+                background: var(--blue);
+                color: #000;
+                border-radius: 4px;
+                padding: 2px 8px;
+                margin-left: 8px;
+              "
+              >POPULAR</span
+            >
+          </h3>
+          <div class="price">
+            ₹3K<span style="font-size: 14px; color: var(--muted)">/mo</span>
+          </div>
+          <ul>
+            <li>All Basic features</li>
+            <li>Booking Engine</li>
+            <li>CRM module</li>
+            <li>Priority support</li>
+            <li>AI health alerts</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Premium</h3>
+          <div class="price">
+            ₹5K<span style="font-size: 14px; color: var(--muted)">/mo</span>
+          </div>
+          <ul>
+            <li>All Growth features</li>
+            <li>Full PMS suite</li>
+            <li>Revenue Management</li>
+            <li>Dedicated CSM</li>
+            <li>API access + add-ons</li>
+          </ul>
+        </div>
+      </div>
+      <div class="insight-box" style="margin-top: 20px">
+        <p class="red">
+          🚨 Current: 30+ pricing variations causing confusion, weak upsell, no
+          clear upgrade path
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: AI Transformation -->
+    <div class="slide">
+      <span class="slide-num">08 / 13</span>
+      <p class="subtitle">
+        AI STRATEGY · 2–3x efficiency without additional hiring
+      </p>
+      <h1>AI-Led <span class="purple">Transformation</span></h1>
+      <div class="ai-grid">
+        <div class="ai-card">
+          <h3 class="purple">🤖 Sales AI</h3>
+          <ul>
+            <li>Lead scoring & prioritisation</li>
+            <li>Automated follow-up sequences</li>
+            <li>Demo assistant & scripting</li>
+            <li>Convert 8% → 15%+ target</li>
+          </ul>
+        </div>
+        <div class="ai-card">
+          <h3 class="purple">📊 CSM AI</h3>
+          <ul>
+            <li>Account health score (real-time)</li>
+            <li>30–45 day churn prediction</li>
+            <li>Automated renewal engine</li>
+            <li>Task prioritisation for CSMs</li>
+          </ul>
+        </div>
+        <div class="ai-card">
+          <h3 class="purple">💬 Support AI</h3>
+          <ul>
+            <li>AI chatbot (60% ticket automation)</li>
+            <li>SLA breach alerts</li>
+            <li>Self-serve knowledge base</li>
+            <li>Sub-15 sec OTA sync monitoring</li>
+          </ul>
+        </div>
+      </div>
+      <div class="insight-box blue-box" style="margin-top: 20px">
+        <p>
+          Fix Trust Issues: Zero overbooking goal · Sub-15 sec OTA sync ·
+          Real-time alerts · Sync health dashboard
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: Revenue Projection -->
+    <div class="slide">
+      <span class="slide-num">09 / 13</span>
+      <p class="subtitle">REVENUE PROJECTION · FY 2026–27</p>
+      <h1>Path to <span class="green">₹15–20 Cr</span></h1>
+      <div class="rev-bars">
+        <div class="rev-row">
+          <div class="rev-label">ARPU Increase</div>
+          <div class="rev-bar-wrap">
+            <div
+              class="rev-bar"
+              style="
+                width: 33%;
+                background: linear-gradient(90deg, #0e7490, #06b6d4);
+              "
+            >
+              ₹5 Cr
+            </div>
+          </div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">Upsell</div>
+          <div class="rev-bar-wrap">
+            <div
+              class="rev-bar"
+              style="
+                width: 11%;
+                background: linear-gradient(90deg, #065f46, #10b981);
+              "
+            >
+              ₹1.6 Cr
+            </div>
+          </div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">New Customers</div>
+          <div class="rev-bar-wrap">
+            <div
+              class="rev-bar"
+              style="
+                width: 20%;
+                background: linear-gradient(90deg, #92400e, #fbbf24);
+              "
+            >
+              ₹3 Cr
+            </div>
+          </div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-label">Commission</div>
+          <div class="rev-bar-wrap">
+            <div
+              class="rev-bar"
+              style="
+                width: 50%;
+                background: linear-gradient(90deg, #6b21a8, #c084fc);
+              "
+            >
+              ₹5–10 Cr
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 16px;
+          margin-top: 24px;
+        "
+      >
+        <div class="kpi" style="text-align: center">
+          <div class="val green">₹15–20 Cr</div>
+          <div class="lbl">Realistic Target</div>
+        </div>
+        <div class="kpi" style="text-align: center">
+          <div class="val amber">₹30–50 Cr</div>
+          <div class="lbl">Stretch Target</div>
+        </div>
+        <div class="kpi" style="text-align: center">
+          <div class="val purple">₹100 Cr+</div>
+          <div class="lbl">Transformational</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: Execution Roadmap -->
+    <div class="slide">
+      <span class="slide-num">10 / 13</span>
+      <p class="subtitle">EXECUTION ROADMAP</p>
+      <h1>Quarterly <span class="accent">Playbook</span></h1>
+      <div class="roadmap">
+        <div class="quarter">
+          <div class="q-label" style="color: var(--blue)">Q1</div>
+          <div class="q-item">AI churn system live</div>
+          <div class="q-item">Pricing revamp (3 tiers)</div>
+          <div class="q-item">Thailand setup · 50 clients</div>
+          <div class="q-item">CSM dashboard launch</div>
+          <div class="q-item">Renewal automation v1</div>
+        </div>
+        <div class="quarter">
+          <div class="q-label" style="color: var(--green)">Q2</div>
+          <div class="q-item">Upsell campaigns live</div>
+          <div class="q-item">AI lead scoring deploy</div>
+          <div class="q-item">Booking Engine push</div>
+          <div class="q-item">Hindi localisation</div>
+          <div class="q-item">Support AI bot beta</div>
+        </div>
+        <div class="quarter">
+          <div class="q-label" style="color: var(--amber)">Q3</div>
+          <div class="q-item">Add-on marketplace live</div>
+          <div class="q-item">Sales team scaling</div>
+          <div class="q-item">Regional language rollout</div>
+          <div class="q-item">Commission 30%+ target</div>
+          <div class="q-item">Tier 2/3 India push</div>
+        </div>
+        <div class="quarter">
+          <div class="q-label" style="color: var(--purple)">Q4</div>
+          <div class="q-item">Full AI optimisation</div>
+          <div class="q-item">Revenue push sprint</div>
+          <div class="q-item">Thailand scale to 200</div>
+          <div class="q-item">Annual review & reset</div>
+          <div class="q-item">FY 2027–28 planning</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: Key Metrics -->
+    <div class="slide">
+      <span class="slide-num">11 / 13</span>
+      <p class="subtitle">KEY METRICS · Weekly tracking dashboard</p>
+      <h1>What Gets <span class="accent">Measured</span></h1>
+      <table style="margin-top: 24px">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Current</th>
+            <th>Target</th>
+            <th>Owner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>MRR</td>
+            <td class="amber">₹20L</td>
+            <td class="green">₹1.25 Cr+</td>
+            <td style="color: var(--muted)">CEO / Finance</td>
+          </tr>
+          <tr>
+            <td>ARPU / Month</td>
+            <td class="red">₹1,100</td>
+            <td class="green">₹5,000</td>
+            <td style="color: var(--muted)">Product / CSM</td>
+          </tr>
+          <tr>
+            <td>Churn Rate</td>
+            <td class="red">30%</td>
+            <td class="green">15%</td>
+            <td style="color: var(--muted)">CSM Lead</td>
+          </tr>
+          <tr>
+            <td>Sales Conversion</td>
+            <td class="amber">8.15%</td>
+            <td class="green">15–20%</td>
+            <td style="color: var(--muted)">Sales VP</td>
+          </tr>
+          <tr>
+            <td>Upsell Rate</td>
+            <td class="red">~0%</td>
+            <td class="green">20%+</td>
+            <td style="color: var(--muted)">CSM + Product</td>
+          </tr>
+          <tr>
+            <td>Commission Revenue</td>
+            <td class="red">Underutilised</td>
+            <td class="green">30–40% of ARR</td>
+            <td style="color: var(--muted)">Sales / BE Team</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SLIDE 12: Risks -->
+    <div class="slide">
+      <span class="slide-num">12 / 13</span>
+      <p class="subtitle">RISK REGISTER</p>
+      <h1>Risks & <span class="amber">Mitigation</span></h1>
+      <div class="risk-grid">
+        <div class="risk-card">
+          <div class="risk-label">Risk</div>
+          <div class="risk-title">High Churn Continues</div>
+          <div class="risk-sol">
+            → AI health scoring + CSM system + renewal playbook
+          </div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-label">Risk</div>
+          <div class="risk-title">Low Sales Conversion</div>
+          <div class="risk-sol">
+            → Funnel optimization + AI lead scoring + scripting
+          </div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-label">Risk</div>
+          <div class="risk-title">Pricing Resistance</div>
+          <div class="risk-sol">
+            → Clear value communication + ROI calculators + trials
+          </div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-label">Risk</div>
+          <div class="risk-title">Team Bandwidth</div>
+          <div class="risk-sol">
+            → AI automation to 2–3x output without new hires
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 13: Closing -->
+    <div class="slide closing">
+      <span class="slide-num">13 / 13</span>
+      <div class="big-quote">
+        We are not limited by<br /><em>product or market.</em><br />
+        We are limited by <em>monetization,</em><br /><em>retention,</em> and
+        <em>execution.</em>
+      </div>
+      <p
+        style="
+          font-size: 18px;
+          color: var(--muted);
+          max-width: 600px;
+          line-height: 1.7;
+        "
+      >
+        Growth will come from extracting more value from existing 1,800
+        customers — not just acquiring new ones. The infrastructure exists. The
+        opportunity is clear.
+      </p>
+      <div class="metrics-strip">
+        <div class="metric-chip">Churn: 30% → 15%</div>
+        <div class="metric-chip">ARPU: ₹1K → ₹5K/mo</div>
+        <div class="metric-chip">Conversion: 8% → 20%</div>
+        <div class="metric-chip">Target: ₹15–20 Cr</div>
+        <div class="metric-chip">Timeline: FY 2026–27</div>
+      </div>
+    </div>
+    <!-- Progress bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation -->
+    <div class="ppt-nav">
+      <button id="prevBtn" onclick="navigate(-1)">
+        <span>←</span> Previous
+      </button>
+      <div class="nav-center">
+        <div class="nav-dots" id="navDots"></div>
+        <div class="nav-counter" id="navCounter">1 / 13</div>
+      </div>
+      <button id="nextBtn" onclick="navigate(1)">Next <span>→</span></button>
+    </div>
+
+    <script>
+      const slides = document.querySelectorAll(".slide");
+      const totalSlides = slides.length;
+      let current = 0;
+
+      function showSlide(index) {
+        slides.forEach((s) => {
+          s.classList.remove("active");
+          s.style.animation = "none";
+        });
+        current = Math.max(0, Math.min(index, totalSlides - 1));
+        const slide = slides[current];
+        slide.style.animation = "none";
+        slide.offsetHeight; // trigger reflow
+        slide.style.animation = "";
+        slide.classList.add("active");
+
+        document.getElementById("navCounter").textContent =
+          current + 1 + " / " + totalSlides;
+        document.getElementById("prevBtn").disabled = current === 0;
+        document.getElementById("nextBtn").disabled =
+          current === totalSlides - 1;
+        document.getElementById("progressBar").style.width =
+          ((current + 1) / totalSlides) * 100 + "%";
+
+        document.querySelectorAll(".nav-dot").forEach((dot, i) => {
+          dot.classList.toggle("active", i === current);
+        });
+      }
+
+      function navigate(dir) {
+        showSlide(current + dir);
+      }
+
+      // Build dots
+      const dotsContainer = document.getElementById("navDots");
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("div");
+        dot.className = "nav-dot";
+        dot.onclick = () => showSlide(i);
+        dotsContainer.appendChild(dot);
+      }
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
+          e.preventDefault();
+          navigate(1);
+        }
+        if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          e.preventDefault();
+          navigate(-1);
+        }
+        if (e.key === "Home") {
+          e.preventDefault();
+          showSlide(0);
+        }
+        if (e.key === "End") {
+          e.preventDefault();
+          showSlide(totalSlides - 1);
+        }
+      });
+
+      // Init
+      showSlide(0);
+    </script>
+  </body>
+</html>
