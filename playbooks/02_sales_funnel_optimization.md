@@ -1,152 +1,404 @@
 # PLAYBOOK 02 — Sales Funnel Optimization & Missed Lead Recovery
 
 > Owner: Sales VP + Marketing
-> Target: Conversion 8.15% → 15–20% · Timeline: Q1–Q2
+> Target: Conversion 3.46% → 15–20% · Timeline: Q1–Q2
 
 ---
 
-## THE GOLDMINE WE'RE IGNORING
+## THE DATA: TWO VIEWS
 
-Last year we had 4,513 leads. Only 368 converted. That means 4,145 leads are sitting in our CRM right now — hotels that showed interest but didn't buy. Before we spend a single rupee on new lead generation, we work this list.
+### Full Funnel (Jan 2022 – Apr 2026, 4+ years cumulative)
 
-Similarly, 535 churned hotels already know our product. They're warm leads, not cold ones.
+| Stage               | Count  | % of Total Leads | Stage-to-Stage Conversion     |
+| ------------------- | ------ | ---------------- | ----------------------------- |
+| Total Leads         | 50,440 | 100%             | —                             |
+| Assigned Leads      | 13,884 | 27.53%           | 27.53% of leads get assigned  |
+| Demo Given          | 6,397  | 12.68%           | 46.08% of assigned get demo   |
+| Quotation Created   | 2,414  | 4.79%            | 37.74% of demos get quote     |
+| Sales Order Created | 1,798  | 3.56%            | 74.48% of quotes become sales |
+| Invoice Created     | 1,745  | 3.46%            | 97.05% of sales get invoiced  |
 
-**The math:**
+### Last Year Only (FY 2025–26)
 
-- If we convert just 5% of the 4,145 missed leads = 207 new customers = ~₹3.7 Cr/year at ₹1.5K avg ARPU
-- If we win back 15% of 535 churned hotels = 80 customers = ~₹1.4 Cr/year
-- Total: ~₹5 Cr from leads and customers we ALREADY HAVE
-
----
-
-## PHASE 1: MISSED LEAD RECOVERY (Weeks 1–8)
-
-### Step 1: Segment the 4,145 Missed Leads by Drop-off Stage
-
-| Stage Where They Dropped                      | Count (est.) | Temperature | Priority     |
-| --------------------------------------------- | ------------ | ----------- | ------------ |
-| Lead → Demo (never saw a demo)                | ~3,544 (79%) | Cold-Warm   | 🟡 Phase 2   |
-| Demo → Quotation (saw demo, didn't get quote) | ~512 (12%)   | Warm        | 🟢 Phase 1   |
-| Quotation → Sale (got quote, didn't buy)      | ~89 (2%)     | Hot         | 🟢 Immediate |
-| Invoice not completed                         | ~6           | Hot         | 🟢 Immediate |
-
-**Action:** Sales ops pulls this segmentation from CRM in Week 1. Every lead gets tagged with: drop-off stage, date of last interaction, lead source, hotel size, location.
+| Stage     | Count | % of Total Leads | Stage-to-Stage Conversion |
+| --------- | ----- | ---------------- | ------------------------- |
+| Leads     | 4,513 | 100%             | —                         |
+| Demo      | 969   | 21.47%           | 21.47%                    |
+| Quotation | 457   | 10.13%           | 47.16% of demos           |
+| Sales     | 368   | 8.15%            | 80.53% of quotes          |
+| Invoice   | 362   | 8.02%            | 98.37% of sales           |
 
 ---
 
-### Step 2: Nudge Strategy by Lead Stage
+## YEAR-OVER-YEAR COMPARISON: WHAT IMPROVED, WHAT DIDN'T
 
-#### TIER 1: Quotation Stage Drops (89 leads) — WORK THESE FIRST
+| Metric             | 4-Year Average | Last Year                | Trend          | Verdict                                             |
+| ------------------ | -------------- | ------------------------ | -------------- | --------------------------------------------------- |
+| Lead → Assigned    | 27.53%         | ~100% (4,513 all worked) | ✅ Improved    | Last year we stopped wasting unassigned leads       |
+| Lead → Demo        | 12.68%         | 21.47%                   | ✅ Improved    | Demo rate nearly doubled — but still losing 79%     |
+| Demo → Quotation   | 37.74%         | 47.16%                   | ✅ Improved    | Better demo quality or better qualification         |
+| Quotation → Sale   | 74.48%         | 80.53%                   | ✅ Improved    | Closing improved                                    |
+| Overall Conversion | 3.46%          | 8.15%                    | ✅ 2.4x better | Real progress, but still half of industry benchmark |
 
-These hotels saw the product, liked it enough to request a quote, but didn't close. They're the closest to money.
-
-**Why they didn't buy (likely reasons):**
-
-- Price seemed too high at the time
-- Got distracted / internal decision delayed
-- Competitor offered a better deal
-- Didn't see enough ROI justification
-- Decision maker wasn't involved in the demo
-
-**Nudge sequence:**
-
-| Day    | Channel        | Content                                                                                                                                                                                                                                                               |
-| ------ | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Day 0  | CSM/Sales Call | "Hi [name], we spoke [X months ago] and you were interested in [product]. A lot has changed since then — we've simplified pricing to 3 tiers starting at ₹1K/mo, and our Booking Engine now helps hotels save 18–25% in OTA commissions. Worth a 10-minute catch-up?" |
-| Day 1  | Email          | Subject: "Your quote from [month] — here's what's changed" Body: New pricing comparison (old quote vs new tier), ROI calculator link, 1 case study                                                                                                                    |
-| Day 3  | WhatsApp       | "Hi [name], just sent you an email about our new pricing. Hotels like yours are saving ₹[X]/month on OTA commissions. Happy to walk you through the numbers — 10 min?"                                                                                                |
-| Day 7  | Email          | Subject: "How [similar hotel] saves ₹[X]/month with direct bookings" Body: Case study specific to their hotel type/location                                                                                                                                           |
-| Day 10 | Sales Call     | Follow-up call. If interested: schedule demo refresh. If objection: handle with script (see objection handling below).                                                                                                                                                |
-| Day 14 | WhatsApp       | Limited offer: "Sign up this month → 1 month free + dedicated onboarding"                                                                                                                                                                                             |
-| Day 21 | Final email    | "We'd love to work with you. Here's a direct link to get started, or reply and I'll set up a call."                                                                                                                                                                   |
-
-**Conversion target:** 25% of 89 = 22 new customers
+**Key insight:** Last year was genuinely better than the 4-year average across every stage. The improvements are real. But the historical data reveals a much bigger problem — and a much bigger opportunity.
 
 ---
 
-#### TIER 2: Demo Stage Drops (512 leads) — HIGH VALUE
+## THE REAL GOLDMINE: 48,695 MISSED LEADS
 
-These hotels saw the demo but didn't move to quotation. The product impressed them enough to attend, but something stalled.
+Over 4 years, we generated 50,440 leads and converted only 1,745. That means **48,695 leads are sitting in our CRM** — hotels that showed interest but didn't buy.
+
+This is not a "missed lead" problem. This is a **48,695-hotel database** that we've already paid to acquire.
+
+### Breakdown of Where They Dropped
+
+| Drop-off Point                                     | Count  | % of All Missed | Temperature | Priority                 |
+| -------------------------------------------------- | ------ | --------------- | ----------- | ------------------------ |
+| Never assigned (lead died in queue)                | 36,556 | 75.1%           | Cold        | 🟡 Phase 3 — volume play |
+| Assigned but no demo (contacted, never demoed)     | 7,487  | 15.4%           | Cold-Warm   | 🟡 Phase 2               |
+| Demo given but no quotation (saw product, stalled) | 3,983  | 8.2%            | Warm        | 🟢 Phase 1               |
+| Quotation but no sale (got price, didn't buy)      | 616    | 1.3%            | Hot         | 🟢 Immediate             |
+| Sale but no invoice (almost done, fell off)        | 53     | 0.1%            | 🔥 Burning  | 🟢 Immediate             |
+
+---
+
+## PHASE 0: INSTANT WINS — WORK THIS WEEK (Week 1)
+
+### 53 Sales Without Invoice — Close These TODAY
+
+These hotels said yes, created a sales order, but never got invoiced. This is money left on the table.
+
+**Likely reasons:**
+
+- Payment link not sent or broken
+- Hotel asked to "start next month" and nobody followed up
+- Internal process gap between sales and billing
+- Hotel changed their mind at the last second
+
+**Action:**
+| Day | Action |
+|-----|--------|
+| Day 0 | Pull the list of 53. Assign to senior sales reps (not juniors). |
+| Day 0 | Call every single one: "Hi [name], we have your account ready to go. Looks like the invoice wasn't completed — can I help you finish the setup today?" |
+| Day 1 | For non-responders: WhatsApp + email with direct payment link |
+| Day 3 | Second call attempt |
+| Day 5 | Final attempt with offer: "Complete your setup this week → 1 month free" |
+
+**Target:** 60% conversion = 32 new invoiced customers. Revenue: ~₹5.7L/year
+
+---
+
+### 616 Quotation-Stage Drops — Hottest Missed Leads
+
+These hotels went through the entire process — lead, assignment, demo, quotation — and stopped. They were one step from buying.
+
+**Time-based segmentation:**
+
+| When They Dropped | Count (est.) | Temperature | Approach                          |
+| ----------------- | ------------ | ----------- | --------------------------------- |
+| Last 6 months     | ~120         | 🔥 Hot      | Personal call + new pricing pitch |
+| 6–12 months ago   | ~150         | 🟡 Warm     | Email + call sequence             |
+| 1–2 years ago     | ~200         | 🟢 Cool     | Email campaign + offer            |
+| 2+ years ago      | ~146         | ⚪ Cold     | Light email nurture only          |
+
+**Nudge sequence for Hot (last 6 months, ~120 leads):**
+
+| Day    | Channel     | Content                                                                                                                                                                                                                                                           |
+| ------ | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Day 0  | Sales Call  | "Hi [name], you were looking at our [product] about [X months ago] and we sent you a quote. A lot has changed — we've simplified to 3 plans starting at ₹1K/mo, and our Booking Engine now saves hotels 18–25% in OTA commissions. Worth 10 minutes to catch up?" |
+| Day 1  | Email       | Subject: "Your quote from [month] — here's what's changed" Body: Old quote vs new tier pricing side-by-side, ROI calculator link, 1 case study                                                                                                                    |
+| Day 3  | WhatsApp    | "Hi [name], sent you an updated pricing comparison. Hotels your size are saving ₹[X]/month on OTA commissions. Quick call?"                                                                                                                                       |
+| Day 7  | Email       | Case study specific to their hotel type/location/size                                                                                                                                                                                                             |
+| Day 10 | Sales Call  | Follow-up. Handle objections (scripts below).                                                                                                                                                                                                                     |
+| Day 14 | WhatsApp    | Limited offer: "Sign up this month → 1 month free + dedicated onboarding"                                                                                                                                                                                         |
+| Day 21 | Final email | "We'd love to work with you. Here's a direct link to get started."                                                                                                                                                                                                |
+
+**Nudge for Warm (6–12 months, ~150 leads):**
+
+| Day    | Channel    | Content                                                                                       |
+| ------ | ---------- | --------------------------------------------------------------------------------------------- |
+| Day 0  | Email      | Subject: "Since we last spoke — 3 big changes" Body: New pricing, Booking Engine, AI features |
+| Day 4  | WhatsApp   | Short personalized message referencing their quote                                            |
+| Day 8  | Email      | ROI calculator + case study                                                                   |
+| Day 12 | Sales Call | "Following up on the email — did you get a chance to look at the new pricing?"                |
+| Day 18 | Email      | Offer: "Book a 15-min call this week → 1 month free"                                          |
+
+**Nudge for Cool (1–2 years, ~200 leads):**
+
+| Day    | Channel | Content                                                                                            |
+| ------ | ------- | -------------------------------------------------------------------------------------------------- |
+| Day 0  | Email   | Subject: "A lot has changed at [Company Name]" Body: What's new, new pricing, direct booking value |
+| Day 7  | Email   | Case study + ROI calculator                                                                        |
+| Day 14 | Email   | "Interested? Reply and we'll set up a quick call."                                                 |
+
+**Conversion targets:**
+
+| Segment            | Pool    | Target Rate | Expected Conversions |
+| ------------------ | ------- | ----------- | -------------------- |
+| Hot (< 6 months)   | 120     | 25%         | 30                   |
+| Warm (6–12 months) | 150     | 12%         | 18                   |
+| Cool (1–2 years)   | 200     | 5%          | 10                   |
+| Cold (2+ years)    | 146     | 2%          | 3                    |
+| **Total**          | **616** |             | **61 customers**     |
+
+---
+
+## PHASE 1: DEMO-STAGE DROPS — 3,983 WARM LEADS (Weeks 2–6)
+
+These hotels saw a demo but never got a quotation. The product was shown to them — something stalled after.
 
 **Why they didn't proceed (likely reasons):**
 
 - Demo didn't address their specific pain point
-- No follow-up after demo
+- No follow-up after demo (biggest reason historically — 4-year data shows this was systemic)
 - Timing wasn't right
 - Needed approval from owner/partner
 - Didn't understand the direct booking value proposition
+- Price wasn't discussed during demo (left hanging)
 
-**Nudge sequence:**
+**Time-based segmentation:**
 
-| Day    | Channel    | Content                                                                                                                                                                                                          |
-| ------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Day 0  | Email      | Subject: "Since your demo — 3 things that changed" Body: (1) New simplified pricing, (2) Booking Engine direct booking savings, (3) AI-powered features. "Want a quick 15-min refresh?"                          |
-| Day 3  | WhatsApp   | Personalized message referencing their demo: "Hi [name], you checked out our [Channel Manager/PMS] demo in [month]. We've added direct booking features that save hotels 18–25% in OTA commissions. Quick call?" |
-| Day 7  | Email      | ROI calculator: "Enter your hotel details and see how much you'd save" (interactive link)                                                                                                                        |
-| Day 10 | Sales Call | "I'm following up on your demo from [month]. I know timing might not have been right then. We've made some big changes — would love to show you in 15 minutes."                                                  |
-| Day 14 | Email      | Social proof: "X hotels signed up this month. Here's why." + testimonial                                                                                                                                         |
-| Day 21 | WhatsApp   | Offer: "Book a 15-min refresh demo this week → get 1 month free if you sign up"                                                                                                                                  |
+| When They Demoed | Count (est.) | Approach                                          |
+| ---------------- | ------------ | ------------------------------------------------- |
+| Last 6 months    | ~500         | Aggressive re-engagement: call + email + WhatsApp |
+| 6–12 months ago  | ~600         | Email + WhatsApp + call for responders            |
+| 1–2 years ago    | ~1,200       | Email campaign only                               |
+| 2+ years ago     | ~1,683       | Light nurture email (1 email, no follow-up)       |
 
-**Conversion target:** 10% of 512 = 51 new customers
+**For last 6 months (~500 leads):**
 
----
+| Day    | Channel    | Content                                                                                                                                                                                                  |
+| ------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Day 0  | Email      | Subject: "Since your demo — 3 things that changed" Body: (1) New simplified pricing ₹1K/₹2K/₹3K, (2) Booking Engine saves 18–25% OTA commissions, (3) AI-powered features. CTA: "Want a 15-min refresh?" |
+| Day 3  | WhatsApp   | "Hi [name], you checked out our demo in [month]. We've added a direct booking engine that saves hotels 18–25% in OTA commissions. Quick 10-min call?"                                                    |
+| Day 7  | Email      | ROI calculator: "Enter your hotel details and see how much you'd save"                                                                                                                                   |
+| Day 10 | Sales Call | "Following up on your demo from [month]. We've made big changes — 15 minutes to show you?"                                                                                                               |
+| Day 14 | Email      | Social proof: "X hotels signed up this month. Here's why." + testimonial                                                                                                                                 |
+| Day 21 | WhatsApp   | Offer: "Book a refresh demo this week → 1 month free if you sign up"                                                                                                                                     |
 
-#### TIER 3: Pre-Demo Drops (3,544 leads) — VOLUME PLAY
+**For 6–12 months (~600 leads):**
 
-These leads never saw a demo. Many are low quality, but there's gold buried in here.
+| Day    | Channel                          | Content                                                  |
+| ------ | -------------------------------- | -------------------------------------------------------- |
+| Day 0  | Email                            | Subject: "Remember your demo with us? Here's what's new" |
+| Day 5  | WhatsApp                         | Short message with ROI angle                             |
+| Day 10 | Email                            | Case study + offer                                       |
+| Day 15 | Sales Call (only for responders) | Follow up with those who opened/clicked                  |
 
-**Sub-segmentation needed first:**
+**Conversion targets:**
 
-| Sub-segment                    | Action                                            |
-| ------------------------------ | ------------------------------------------------- |
-| Leads from last 6 months       | Warm enough to re-engage. Nudge sequence below.   |
-| Leads from 6–12 months ago     | Lukewarm. Lighter touch — email only.             |
-| Leads older than 12 months     | Cold. Add to nurture list, don't actively pursue. |
-| Leads with valid phone + email | Prioritize for outreach                           |
-| Leads with only email          | Email nurture only                                |
-
-**For leads from last 6 months (~1,500 estimated):**
-
-| Day    | Channel                       | Content                                                                                                                                                                           |
-| ------ | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Day 0  | Email                         | Subject: "Still looking for a hotel management solution?" Body: Brief value prop, new pricing, direct booking angle. CTA: "Book a free 15-min demo"                               |
-| Day 4  | WhatsApp (if phone available) | "Hi [name], you showed interest in [product] a while back. We've launched new features that help hotels get more direct bookings and save on OTA commissions. Want a quick demo?" |
-| Day 8  | Email                         | Subject: "Hotels like yours save ₹[X]/month" Body: ROI calculator + case study                                                                                                    |
-| Day 14 | Email                         | Subject: "Last chance: Free demo + 1 month free this week"                                                                                                                        |
-
-**For leads 6–12 months old (~1,200 estimated):**
-
-| Day    | Channel    | Content                                                                                                                                               |
-| ------ | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Day 0  | Email only | Subject: "A lot has changed at [Company Name]" Body: What's new, new pricing, direct booking value. CTA: "Interested? Reply and we'll set up a call." |
-| Day 10 | Email      | Follow-up with case study                                                                                                                             |
-
-**Conversion target:** 3% of 1,500 recent leads = 45 new customers
+| Segment       | Pool      | Target Rate | Expected Conversions |
+| ------------- | --------- | ----------- | -------------------- |
+| Last 6 months | 500       | 10%         | 50                   |
+| 6–12 months   | 600       | 5%          | 30                   |
+| 1–2 years     | 1,200     | 2%          | 24                   |
+| 2+ years      | 1,683     | 0.5%        | 8                    |
+| **Total**     | **3,983** |             | **112 customers**    |
 
 ---
 
-### Step 3: Objection Handling Scripts
+## PHASE 2: ASSIGNED BUT NO DEMO — 7,487 LEADS (Weeks 3–8)
 
-Every sales rep and CSM doing winback/recovery calls needs these ready:
+These leads were assigned to a sales rep but never got a demo. This is the biggest systemic failure in the 4-year data — we contacted them but couldn't get them to a demo.
 
-| Objection                               | Response                                                                                                                                                                                                                                                           |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| "It's too expensive"                    | "We've completely restructured pricing. Our Basic plan is ₹1K/month — that's ₹33/day. And our Booking Engine helps you save 18–25% on OTA commissions, so the platform often pays for itself. Let me show you the ROI calculator."                                 |
-| "We already use [competitor]"           | "That's great — competition keeps everyone sharp. What I'd love to show you is our direct booking engine. Most competitors don't offer this, and it saves hotels ₹[X]/month in OTA commissions. Worth a 10-minute look?"                                           |
-| "We tried it before and it didn't work" | "I completely understand, and I'm sorry about that experience. We've rebuilt our onboarding — you get a dedicated specialist for your first 30 days, and we don't consider you 'live' until you're actually processing bookings. Can I show you what's different?" |
-| "Not the right time"                    | "Totally fair. Can I send you a quick 2-minute video showing what's new? No pressure — and when the timing is right, you'll have all the info."                                                                                                                    |
-| "I need to talk to my partner/owner"    | "Of course. Can I send you a one-page summary with the pricing and ROI numbers? That way you have everything you need for the conversation. And I'm happy to join a call with both of you if that helps."                                                          |
-| "What's different from before?"         | "Three big things: (1) Simplified pricing — 3 plans, no confusion. (2) Booking Engine that drives direct bookings and saves you OTA commissions. (3) AI-powered health monitoring so we catch issues before they become problems."                                 |
+**Why (likely reasons):**
+
+- Rep called once, no answer, never followed up
+- Lead wasn't qualified — wrong contact, not a hotel, not decision maker
+- Lead was interested but scheduling a demo never happened
+- Rep was overloaded and deprioritized these leads
+- No automated follow-up system — manual process failed
+
+**Time-based segmentation:**
+
+| When They Were Assigned | Count (est.) | Approach                                     |
+| ----------------------- | ------------ | -------------------------------------------- |
+| Last 6 months           | ~800         | Re-assign to top reps + automated sequence   |
+| 6–12 months ago         | ~1,000       | Email + WhatsApp campaign                    |
+| 1–2 years ago           | ~2,500       | Email campaign only                          |
+| 2+ years ago            | ~3,187       | Single "what's new" email, then nurture list |
+
+**For last 6 months (~800 leads):**
+
+| Day    | Channel    | Content                                                                                                                                                                                 |
+| ------ | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Day 0  | Email      | Subject: "We tried to reach you — here's what you missed" Body: Brief value prop, new pricing (₹1K/mo entry), direct booking savings, 60-sec video link. CTA: "Book a free 15-min demo" |
+| Day 2  | WhatsApp   | "Hi [name], you showed interest in [product] recently. We help hotels save 18–25% on OTA commissions through direct bookings. Want a quick 15-min demo?"                                |
+| Day 5  | Email      | Subject: "Hotels like yours save ₹[X]/month" Body: ROI calculator + case study                                                                                                          |
+| Day 8  | Sales Call | For leads who opened email or clicked: personal call                                                                                                                                    |
+| Day 12 | Email      | "Last chance: Free demo + 1 month free this week"                                                                                                                                       |
+
+**For 6–12 months (~1,000 leads):**
+
+| Day    | Channel  | Content                                                                                                   |
+| ------ | -------- | --------------------------------------------------------------------------------------------------------- |
+| Day 0  | Email    | Subject: "Still looking for a hotel management solution?" Body: What's new, pricing, direct booking angle |
+| Day 5  | WhatsApp | Short message with demo booking link                                                                      |
+| Day 10 | Email    | Case study + offer                                                                                        |
+
+**Conversion targets:**
+
+| Segment       | Pool      | Target Rate | Expected Conversions |
+| ------------- | --------- | ----------- | -------------------- |
+| Last 6 months | 800       | 5%          | 40                   |
+| 6–12 months   | 1,000     | 3%          | 30                   |
+| 1–2 years     | 2,500     | 1%          | 25                   |
+| 2+ years      | 3,187     | 0.3%        | 10                   |
+| **Total**     | **7,487** |             | **105 customers**    |
 
 ---
 
-## PHASE 2: FIX THE FUNNEL FOR NEW LEADS (Q2 onwards)
+## PHASE 3: NEVER-ASSIGNED LEADS — 36,556 LEADS (Weeks 4–12)
+
+This is the biggest bucket and the most damning number in the entire dataset. **72.5% of all leads generated over 4 years were never even assigned to a sales rep.** They came in and died in the queue.
+
+This is not a conversion problem — this is a lead management catastrophe.
+
+**Before we touch these leads, we need to understand:**
+
+- Why weren't they assigned? (No capacity? No process? System gap?)
+- Are they valid leads? (Real hotels with real contact info?)
+- How many have valid email + phone?
+
+**Step 1: Data cleanup (Week 4)**
+
+| Action                | Detail                                                           |
+| --------------------- | ---------------------------------------------------------------- |
+| Deduplicate           | Remove duplicate entries (same hotel, multiple form submissions) |
+| Validate contact info | Flag leads with valid email + phone vs email only vs invalid     |
+| Remove junk           | Remove test entries, spam, non-hotel leads                       |
+| Segment by date       | Bucket into: last 12 months, 1–2 years, 2–3 years, 3+ years      |
+| Segment by source     | Where did they come from? (organic, paid, referral, partner)     |
+
+**Estimated cleanup result:**
+
+| Category                    | Est. Count | Action                             |
+| --------------------------- | ---------- | ---------------------------------- |
+| Valid leads, last 12 months | ~5,000     | Active outreach (email + WhatsApp) |
+| Valid leads, 1–2 years      | ~6,000     | Email campaign                     |
+| Valid leads, 2–3 years      | ~7,000     | Single email, then nurture         |
+| Valid leads, 3+ years       | ~8,000     | Nurture list only                  |
+| Invalid/junk/duplicate      | ~10,556    | Delete or archive                  |
+
+**For valid leads from last 12 months (~5,000):**
+
+| Day    | Channel                       | Content                                                                                                                                                   |
+| ------ | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Day 0  | Email                         | Subject: "You showed interest in [product] — here's what's new" Body: New pricing (₹1K/mo), direct booking savings, 60-sec video. CTA: "Book a free demo" |
+| Day 4  | WhatsApp (if phone available) | "Hi [name], you checked out [product] a while back. Hotels are now saving 18–25% on OTA commissions with our Booking Engine. Want a quick demo?"          |
+| Day 8  | Email                         | ROI calculator + case study                                                                                                                               |
+| Day 14 | Email                         | "Last chance: Free demo + 1 month free"                                                                                                                   |
+
+**For valid leads 1–2 years (~6,000):**
+
+| Day    | Channel    | Content                                                                       |
+| ------ | ---------- | ----------------------------------------------------------------------------- |
+| Day 0  | Email only | Subject: "A lot has changed at [Company Name]" Body: What's new, pricing, CTA |
+| Day 10 | Email      | Follow-up with case study                                                     |
+
+**Conversion targets:**
+
+| Segment        | Pool       | Target Rate | Expected Conversions |
+| -------------- | ---------- | ----------- | -------------------- |
+| Last 12 months | 5,000      | 2%          | 100                  |
+| 1–2 years      | 6,000      | 0.8%        | 48                   |
+| 2–3 years      | 7,000      | 0.3%        | 21                   |
+| 3+ years       | 8,000      | 0.1%        | 8                    |
+| **Total**      | **26,000** |             | **177 customers**    |
+
+---
+
+## TOTAL RECOVERY OPPORTUNITY — ALL PHASES
+
+| Phase                      | Pool           | Expected Conversions | Revenue (₹/year at ₹1.5K avg ARPU) |
+| -------------------------- | -------------- | -------------------- | ---------------------------------- |
+| Phase 0: Invoice gaps      | 53             | 32                   | ₹5.7L                              |
+| Phase 0: Quotation drops   | 616            | 61                   | ₹11L                               |
+| Phase 1: Demo drops        | 3,983          | 112                  | ₹20.2L                             |
+| Phase 2: Assigned, no demo | 7,487          | 105                  | ₹18.9L                             |
+| Phase 3: Never assigned    | 26,000 (valid) | 177                  | ₹31.9L                             |
+| **TOTAL**                  | **38,139**     | **487 customers**    | **₹87.7L (~₹88L/year)**            |
+
+**That's ₹88L/year in revenue from leads we've already paid to acquire.** Zero new lead generation cost.
+
+---
+
+## THE SYSTEMIC PROBLEM: WHY THE 4-YEAR FUNNEL IS SO BAD
+
+### Diagnosis
+
+| Problem                               | Evidence         | Root Cause                                                    |
+| ------------------------------------- | ---------------- | ------------------------------------------------------------- |
+| 72.5% of leads never assigned         | 36,556 of 50,440 | No lead routing system. Manual assignment. Capacity overflow. |
+| Only 46% of assigned leads get a demo | 6,397 of 13,884  | Reps call once, no answer, move on. No automated follow-up.   |
+| Only 38% of demos get a quotation     | 2,414 of 6,397   | Demo quality inconsistent. No post-demo follow-up process.    |
+| Quote → Sale is actually good (74%)   | 1,798 of 2,414   | Once we get to pricing, the product sells.                    |
+| Sale → Invoice is excellent (97%)     | 1,745 of 1,798   | Billing process works.                                        |
+
+**The funnel is a top-heavy disaster.** The bottom half works. The top half is broken.
+
+### Last Year vs 4-Year: What Fixed and What Didn't
+
+| Stage           | 4-Year Rate | Last Year Rate    | What Changed                                        |
+| --------------- | ----------- | ----------------- | --------------------------------------------------- |
+| Lead → Assigned | 27.53%      | ~100%             | ✅ Fixed — all leads now get assigned               |
+| Assigned → Demo | 46.08%      | 21.47% (of total) | ⚠️ Hard to compare directly, but demo rate improved |
+| Demo → Quote    | 37.74%      | 47.16%            | ✅ Improved — better demo quality                   |
+| Quote → Sale    | 74.48%      | 80.53%            | ✅ Improved — better closing                        |
+| Overall         | 3.46%       | 8.15%             | ✅ 2.4x improvement — but still half of benchmark   |
+
+**Last year's improvements are real.** The team is getting better. But the 4-year data shows how much was lost before these improvements kicked in — and that's the recovery opportunity.
+
+---
+
+## FIX THE FUNNEL FOR NEW LEADS (Q2 onwards)
+
+### Problem 1: Lead Assignment (SOLVED last year — maintain it)
+
+Last year all leads were assigned. Keep this. Never go back to the old model.
+
+**Safeguard:** Automated lead routing. Every lead gets assigned within 1 hour based on: geography, hotel size, rep capacity. No manual assignment.
+
+### Problem 2: Assigned → Demo (Current: ~46% historically, ~21% of total last year)
+
+**Target: 50% of assigned leads get a demo**
+
+| Fix                           | Detail                                                                                                                  |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Automated follow-up sequences | Every assigned lead enters a 21-day automated sequence (email + WhatsApp + call). See sequence below.                   |
+| Lead scoring                  | Score leads on entry. Hot leads get called within 2 hours. Warm within 24 hours. Cool get automated nurture.            |
+| Speed to contact              | First contact within 2 hours for Hot leads. Data shows: leads contacted within 5 minutes are 9x more likely to convert. |
+| Multi-channel                 | Don't just call. Email + WhatsApp + call. Some leads prefer text over phone.                                            |
+| Rep accountability            | Track: calls made, demos scheduled, demo show rate per rep. Weekly review.                                              |
+
+### Problem 3: Demo → Quotation (Current: 38–47%)
+
+**Target: 55%+**
+
+| Fix                        | Detail                                                                                                                 |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Standardized demo script   | Every demo follows the same 25-min flow (see demo optimization below)                                                  |
+| ROI-first approach         | Lead with money saved, not features. "You're paying ₹[X] to OTAs. We save you ₹[Y]."                                   |
+| Post-demo follow-up        | Within 2 hours: email summary + ROI calculation + pricing. Within 24 hours: WhatsApp check-in.                         |
+| Decision-maker involvement | Ask during scheduling: "Will the owner/decision-maker be on the call?" If not, offer a separate 10-min owner briefing. |
+| Demo recording             | Record demos (with permission). Send recording to the hotel so they can share with partners/owners.                    |
+
+### Problem 4: Quotation → Sale (Current: 74–80%)
+
+**Target: 85%+**
+
+This is already strong. Small improvements:
+
+| Fix                    | Detail                                                                                                            |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Quote expiry           | Quotes valid for 7 days (creates urgency)                                                                         |
+| Follow-up cadence      | Day 1: WhatsApp "Any questions on the quote?" Day 3: Call. Day 5: Email with offer. Day 7: "Quote expires today." |
+| Objection handling     | Standardized scripts for top 6 objections (see below)                                                             |
+| Limited-time incentive | "Sign within 7 days → 1 month free"                                                                               |
+
+---
 
 ### Lead Scoring Model
-
-**Purpose:** Not all leads are equal. Score every lead so sales focuses on the highest-intent ones first.
-
-**Scoring criteria:**
 
 | Signal                                      | Points | Rationale                          |
 | ------------------------------------------- | ------ | ---------------------------------- |
@@ -162,8 +414,6 @@ Every sales rep and CSM doing winback/recovery calls needs these ready:
 | Has existing tech stack (uses a competitor) | +15    | Knows the category, easier to sell |
 | Hotel has no tech currently                 | +5     | Needs education, longer cycle      |
 
-**Score thresholds:**
-
 | Score | Classification | Action                                                                 |
 | ----- | -------------- | ---------------------------------------------------------------------- |
 | 70+   | 🔥 Hot         | Sales calls within 2 hours. Priority demo scheduling.                  |
@@ -171,114 +421,103 @@ Every sales rep and CSM doing winback/recovery calls needs these ready:
 | 20–39 | 🟢 Cool        | Automated nurture sequence. Sales follows up after engagement signals. |
 | 0–19  | ⚪ Cold        | Automated nurture only. No sales time spent.                           |
 
-**Discussion Points:**
+---
 
-- Do we have historical data to validate these scoring weights?
-- Can we implement this in our current CRM?
-- Who maintains and tunes the scoring model?
+### Automated Follow-up Sequence (New Leads)
+
+| Trigger           | Action                                                                  |
+| ----------------- | ----------------------------------------------------------------------- |
+| Lead submits form | Instant: Thank you email + "Book a demo" CTA                            |
+| +1 hour           | If Hot lead: Sales rep gets Slack/CRM alert to call                     |
+| +1 day            | Email: Value prop + 60-sec product video                                |
+| +3 days           | Email: Case study relevant to their hotel type                          |
+| +5 days           | WhatsApp: "Hi [name], did you get a chance to check out the demo link?" |
+| +7 days           | Email: ROI calculator + "Book a demo" CTA                               |
+| +10 days          | Sales call (for Warm+ leads)                                            |
+| +14 days          | Email: Limited-time offer (1 month free with demo this week)            |
+| +21 days          | Final email: "We're here when you're ready" + resource links            |
 
 ---
 
-### Automated Follow-up Sequences (New Leads)
+### Standardized Demo Flow (25 minutes)
 
-**Every new lead enters an automated sequence immediately:**
-
-| Trigger           | Sequence                                                                                     |
-| ----------------- | -------------------------------------------------------------------------------------------- |
-| Lead submits form | Instant: Thank you email + "Book a demo" CTA                                                 |
-| +1 hour           | If Hot lead: Sales rep gets Slack/CRM alert to call                                          |
-| +1 day            | Email: Value prop + 60-sec product video                                                     |
-| +3 days           | Email: Case study relevant to their hotel type                                               |
-| +5 days           | WhatsApp (if phone available): "Hi [name], did you get a chance to check out the demo link?" |
-| +7 days           | Email: ROI calculator + "Book a demo" CTA                                                    |
-| +10 days          | Sales call (for Warm+ leads)                                                                 |
-| +14 days          | Email: Limited-time offer (1 month free with demo this week)                                 |
-| +21 days          | Final email: "We're here when you're ready" + resource links                                 |
-
-**Key rule:** No lead should go more than 24 hours without a touchpoint in the first week.
+| Minute | Section             | Content                                                                                                                                        |
+| ------ | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0–3    | Discovery           | "Tell me about your hotel. How many rooms? What OTAs are you on? What % of bookings are direct?"                                               |
+| 3–8    | Pain identification | "So you're paying [X]% to OTAs on [Y] bookings/month. That's ₹[Z] in commissions. What if you could get even 20% of those as direct bookings?" |
+| 8–15   | Product demo        | Show Channel Manager → Booking Engine → direct booking flow. Focus on money saved, not features.                                               |
+| 15–20  | Pricing & ROI       | Show 3 tiers. Use ROI calculator live: "At your hotel size, Growth at ₹2K/mo saves you ₹[X]/mo in OTA commissions."                            |
+| 20–23  | Social proof        | "Hotels like [name] in [city] are seeing [X] direct bookings/month since switching."                                                           |
+| 23–25  | Close               | "Based on what we discussed, Growth makes the most sense. I can get you set up today with a free first month."                                 |
 
 ---
 
-### Demo Optimization
+### Objection Handling Scripts
 
-**Current problem:** Demo→Sale is 38%, which is decent. But demo quality is inconsistent across reps.
-
-**Standardized demo flow (25 minutes):**
-
-| Minute | Section             | Content                                                                                                                                                                    |
-| ------ | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0–3    | Discovery           | "Tell me about your hotel. How many rooms? What OTAs are you on? What % of bookings are direct?"                                                                           |
-| 3–8    | Pain identification | "So you're paying [X]% to OTAs on [Y] bookings/month. That's ₹[Z] in commissions. What if you could get even 20% of those as direct bookings?"                             |
-| 8–15   | Product demo        | Show Channel Manager → Booking Engine → direct booking flow. Focus on the money saved, not the features.                                                                   |
-| 15–20  | Pricing & ROI       | Show the 3 tiers. Use ROI calculator live: "At your hotel size, the Growth plan at ₹2K/mo saves you ₹[X]/mo in OTA commissions. Net cost: ₹[Y]/mo — or even net positive." |
-| 20–23  | Social proof        | "Hotels like [name] in [city] are seeing [X] direct bookings/month since switching."                                                                                       |
-| 23–25  | Close               | "Based on what we discussed, Growth plan makes the most sense. I can get you set up today with a free first month. Want to go ahead?"                                      |
-
-**Post-demo follow-up (within 2 hours):**
-
-- Email: Summary of what was discussed, personalized ROI calculation, pricing link, "next steps" CTA
-- WhatsApp: "Great chatting with you! Sent you the summary. Any questions?"
-
----
-
-## PHASE 3: CHURNED HOTEL WINBACK VIA SALES (Parallel with Playbook 01)
-
-The CSM team handles the relationship-based winback (Playbook 01). Sales team handles churned hotels that need a fresh sales approach — especially those who switched to competitors.
-
-**Sales team targets:**
-
-- Competitor-switch hotels (80): Sales-led outreach with competitive comparison
-- Large hotels that churned (top 50 by room count): CEO/Sales VP personal outreach
-
-**Competitive comparison one-pager:**
-
-| Feature                | Us                    | Competitor A     | Competitor B  |
-| ---------------------- | --------------------- | ---------------- | ------------- |
-| Direct Booking Engine  | ✅ Included in Growth | ❌ Not available | ⚠️ Extra cost |
-| OTA Commission Savings | ✅ 18–25% saved       | ❌ No BE         | ⚠️ Limited    |
-| AI Health Scoring      | ✅ Built-in           | ❌               | ❌            |
-| Pricing (entry)        | ₹1K/mo                | ₹[X]/mo          | ₹[X]/mo       |
-| Onboarding             | 30-day dedicated      | Self-serve       | [varies]      |
-
-**Discussion Point:** Do we have accurate competitor pricing and feature data? If not, assign someone to do competitive intelligence this week.
+| Objection                               | Response                                                                                                                                                                                           |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| "It's too expensive"                    | "Our Basic plan is ₹1K/month — ₹33/day. And our Booking Engine saves you 18–25% on OTA commissions, so the platform often pays for itself. Let me show you the ROI calculator."                    |
+| "We already use [competitor]"           | "That's great. What I'd love to show you is our direct booking engine — most competitors don't offer this, and it saves hotels ₹[X]/month in OTA commissions. Worth a 10-minute look?"             |
+| "We tried it before and it didn't work" | "I'm sorry about that. We've rebuilt onboarding — you get a dedicated specialist for 30 days, and we don't consider you 'live' until you're processing bookings. Can I show you what's different?" |
+| "Not the right time"                    | "Totally fair. Can I send you a 2-minute video showing what's new? No pressure — when the timing is right, you'll have everything."                                                                |
+| "I need to talk to my partner/owner"    | "Of course. Can I send a one-page summary with pricing and ROI? And I'm happy to join a call with both of you."                                                                                    |
+| "What's different from before?"         | "Three big things: (1) 3 simple plans, no confusion. (2) Booking Engine for direct bookings — saves OTA commissions. (3) AI health monitoring to catch issues early."                              |
 
 ---
 
 ## TRACKING & METRICS
 
-### Missed Lead Recovery Dashboard
+### Recovery Dashboard
 
-| Metric                            | Target             | Track Weekly |
-| --------------------------------- | ------------------ | ------------ |
-| Quotation-stage leads contacted   | 100% (89)          | Week 1–2     |
-| Quotation-stage conversion        | 25% (22 customers) | Week 2–6     |
-| Demo-stage leads contacted        | 100% (512)         | Week 2–4     |
-| Demo-stage conversion             | 10% (51 customers) | Week 4–8     |
-| Pre-demo leads contacted (recent) | 80% (~1,200)       | Week 3–8     |
-| Pre-demo conversion               | 3% (45 customers)  | Week 6–12    |
-| Total new customers from recovery | 118+               | End of Q2    |
-| Revenue from recovery             | ~₹2.1 Cr/year      | End of Q2    |
+| Metric                              | Target            | Track         |
+| ----------------------------------- | ----------------- | ------------- |
+| Phase 0: Invoice gaps closed        | 32 of 53          | Week 1        |
+| Phase 0: Quotation drops converted  | 61 of 616         | Weeks 1–6     |
+| Phase 1: Demo drops converted       | 112 of 3,983      | Weeks 2–8     |
+| Phase 2: Assigned-no-demo converted | 105 of 7,487      | Weeks 3–10    |
+| Phase 3: Never-assigned converted   | 177 of 26,000     | Weeks 4–12    |
+| **Total recovery**                  | **487 customers** | **End of Q2** |
+| **Revenue from recovery**           | **~₹88L/year**    | **End of Q2** |
 
 ### New Lead Funnel Dashboard
 
-| Metric                     | Current            | Target                  |
-| -------------------------- | ------------------ | ----------------------- |
-| Lead→Demo rate             | 21%                | 35%                     |
-| Demo→Quotation rate        | 47%                | 55%                     |
-| Quotation→Sale rate        | 80%                | 85%                     |
-| Overall conversion         | 8.15%              | 15–20%                  |
-| Average time: lead to sale | Unknown (measure!) | < 21 days               |
-| Lead response time         | Unknown            | < 2 hours for Hot leads |
+| Metric             | 4-Year Avg | Last Year       | Target          |
+| ------------------ | ---------- | --------------- | --------------- |
+| Lead → Assigned    | 27.53%     | ~100%           | 100% (maintain) |
+| Assigned → Demo    | 46.08%     | ~21% (of total) | 50% of assigned |
+| Demo → Quotation   | 37.74%     | 47.16%          | 55%             |
+| Quotation → Sale   | 74.48%     | 80.53%          | 85%             |
+| Overall Conversion | 3.46%      | 8.15%           | 15–20%          |
+| Lead response time | Unknown    | Unknown         | < 2 hours (Hot) |
+| Average deal cycle | Unknown    | Unknown         | < 21 days       |
+
+---
+
+## CRITICAL PROCESS FIX: NEVER LOSE A LEAD AGAIN
+
+The single most important takeaway from the 4-year data: **36,556 leads were never assigned.** This must never happen again.
+
+**Safeguards to implement immediately:**
+
+| Safeguard             | Detail                                                                                                       |
+| --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Auto-assignment       | Every lead auto-assigned within 1 hour based on rules (geography, size, rep capacity)                        |
+| Overflow handling     | If all reps are at capacity, lead goes to a queue with a 24-hour SLA. Manager alerted if SLA breached.       |
+| Weekly lead audit     | Every Friday: how many leads came in, how many assigned, how many unassigned? Zero tolerance for unassigned. |
+| CRM alert             | If any lead sits unassigned for > 4 hours, automatic Slack alert to Sales VP                                 |
+| Monthly funnel review | Full funnel analysis monthly. Compare to targets. Identify where drops are happening.                        |
 
 ---
 
 ## OPEN QUESTIONS FOR DISCUSSION
 
-1. Can we pull the full 4,145 missed lead list with drop-off stage, date, and contact info this week?
-2. Do we have WhatsApp Business API set up for automated messaging?
-3. What's the current CRM — can it handle lead scoring and automated sequences?
-4. Do we have case studies ready? If not, who creates them and by when?
-5. ROI calculator — does it exist or do we need to build it?
-6. Sales team capacity: can they handle recovery outreach + new leads simultaneously?
-7. What's the budget for winback offers (free months)?
-8. Do we have competitive intelligence on pricing and features?
+1. Can we pull the full 48,695 missed lead list segmented by drop-off stage and date this week?
+2. The 36,556 never-assigned leads — do we know why? Was it a system issue, capacity issue, or process gap?
+3. How many of the 36,556 have valid contact info (email + phone)?
+4. Do we have WhatsApp Business API set up for automated messaging at this scale?
+5. CRM capacity: can it handle lead scoring and automated sequences for 50K+ records?
+6. Sales team size: how many reps do we have? What's their current capacity?
+7. Budget for recovery campaign (free months, offers)?
+8. Do we have case studies and ROI calculator ready?
+9. Data cleanup: who owns deduplication and validation of the 36,556?
+10. Should we hire a dedicated "lead recovery" team (2–3 people) for 3 months to work the backlog?
