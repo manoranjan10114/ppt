@@ -257,13 +257,13 @@ A white-label booking website for your hotel. Guests book directly on your domai
 
 ---
 
-## PRODUCT 3: PMS (Property Management System — Mobile App)
+## PRODUCT 3: PMS (Property Management System — Web + Mobile)
 
-_Run your entire hotel from your phone. Front desk, housekeeping, F&B, finance — all in one app._
+_Run your entire hotel from one system. Desktop for the front desk, mobile for on-the-go. Full operations coverage._
 
 ### What It Does (Elevator Pitch)
 
-A complete hotel operations app for your phone. Manage check-ins, housekeeping, room service, restaurant orders, billing, and reports — all from your pocket. Your staff doesn't need a computer.
+A complete hotel operations platform — web dashboard for the front desk and back office, mobile app for managers and staff on the floor. Covers the entire guest lifecycle: reservations, check-in, stay management, F&B, housekeeping, billing, checkout, finance, and reporting. Plus guest-facing modules for self check-in, digital room service ordering, and reviews.
 
 ### Feature Categories
 
@@ -361,6 +361,31 @@ A complete hotel operations app for your phone. Manage check-ins, housekeeping, 
 | Tax setup                                    | Configure GST/VAT for your locale             |
 | Kitchen, restaurant, and room service setup  | Full F&B configuration                        |
 | Self check-in QR setup                       | Enable contactless check-in                   |
+
+#### 3.8 PMS Web — Additional Capabilities (Desktop)
+
+| Feature                                                  | Business Value                                                                             |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Interactive booking calendar (drag-to-book, 15-day grid) | Visual room allocation — see every room, every date, drag to create bookings               |
+| Rooms view with color-coded status board                 | Instant visual: green=vacant, blue=occupied, orange=booked, gray=out-of-order              |
+| Hotel position view (2-month occupancy + rate calendar)  | See occupancy and pricing at a glance — spot gaps before they become problems              |
+| Quick reservation (single-page fast booking)             | Create a booking in 30 seconds — no multi-step wizard needed                               |
+| Group walk-in (bulk room selection + group billing)      | Check in a tour group or wedding party in one action                                       |
+| Split billing at checkout                                | Divide charges across multiple invoices — corporate + personal, or room-by-room            |
+| Credit collections & company settlement tracking         | Track outstanding corporate payments — who owes what, how much is collected                |
+| Income tracking (alongside expenses)                     | Full P&L visibility — not just expenses, but income too                                    |
+| Kitchen Display System (KDS) — TV-optimized              | Kitchen staff see orders on a big screen — no paper tickets, no missed orders              |
+| Rate analyzer tool                                       | Compare your rates against market — make informed pricing decisions                        |
+| Guest-facing self check-in (mobile web)                  | Guests scan QR, verify OTP, check in from their phone — zero front desk wait               |
+| Guest-facing room service ordering (mobile web)          | Guests browse menu, order from their phone, track status in real-time                      |
+| Guest-facing restaurant menu + ordering                  | Dine-in guests scan QR, browse menu, order — reduces waiter dependency                     |
+| DigiLocker integration (Aadhaar/PAN verification)        | Digital ID verification — no physical document scanning needed                             |
+| Guest review & feedback collection page                  | Branded review page with links to Google, TripAdvisor, social media                        |
+| Itinerary planner (guest-facing)                         | Help guests plan their stay — local attractions, activities, directions                    |
+| Thermal printer setup for KOT/bills                      | Print kitchen tickets and bills directly — no manual writing                               |
+| Night audit with 4-section reconciliation                | End-of-day verification: check-ins, check-outs, bills, room status — books always accurate |
+| Master PIN security for sensitive operations             | Delete bookings, modify rates — protected by PIN, not just login                           |
+| AI-powered menu item image generation                    | Generate food images for your digital menu using AI                                        |
 
 ---
 
