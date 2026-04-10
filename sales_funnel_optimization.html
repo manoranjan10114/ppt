@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales Funnel Optimization — Strategy Deck</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0e1a;
+        --surface: #111827;
+        --border: rgba(255, 255, 255, 0.08);
+        --blue: #06b6d4;
+        --green: #10b981;
+        --red: #f87171;
+        --amber: #fbbf24;
+        --purple: #c084fc;
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        background-image: radial-gradient(
+          ellipse at 50% 0%,
+          rgba(6, 182, 212, 0.04) 0%,
+          transparent 60%
+        );
+        color: var(--text);
+        overflow: hidden;
+        height: 100vh;
+      }
+      .slide {
+        min-height: 100vh;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px 80px 100px;
+        position: relative;
+        overflow: hidden;
+        animation: fadeIn 0.45s ease both;
+      }
+      .slide.active {
+        display: flex;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .slide::before {
+        content: "";
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(6, 182, 212, 0.07) 0%,
+          rgba(192, 132, 252, 0.03) 40%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .slide-num {
+        position: absolute;
+        top: 32px;
+        right: 48px;
+        font-family: "Syne", sans-serif;
+        font-size: 11px;
+        letter-spacing: 3px;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+      h1 {
+        font-family: "Syne", sans-serif;
+        font-size: 50px;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.1;
+        margin-bottom: 8px;
+      }
+      .subtitle {
+        font-size: 18px;
+        color: var(--muted);
+        margin-bottom: 36px;
+        font-weight: 300;
+        letter-spacing: 0.5px;
+      }
+      .accent {
+        color: var(--blue);
+      }
+      .green {
+        color: var(--green);
+      }
+      .red {
+        color: var(--red);
+      }
+      .amber {
+        color: var(--amber);
+      }
+      .purple {
+        color: var(--purple);
+      }
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-top: 16px;
+      }
+      .kpi {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 26px 22px;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .kpi:hover {
+        border-color: rgba(6, 182, 212, 0.25);
+        box-shadow: 0 4px 24px rgba(6, 182, 212, 0.06);
+      }
+      .kpi .val {
+        font-family: "Syne", sans-serif;
+        font-size: 34px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      .kpi .lbl {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .kpi .note {
+        font-size: 12px;
+        margin-top: 6px;
+        color: var(--muted);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 18px;
+      }
+      th {
+        font-family: "Syne", sans-serif;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 10px 14px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+      td {
+        padding: 12px 14px;
+        font-size: 15px;
+        border-bottom: 1px solid var(--border);
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+      tr:hover td {
+        background: rgba(6, 182, 212, 0.03);
+      }
+      .insight-box {
+        background: rgba(248, 113, 113, 0.07);
+        border: 1px solid rgba(248, 113, 113, 0.2);
+        border-radius: 12px;
+        padding: 18px 22px;
+        margin-top: 18px;
+        backdrop-filter: blur(6px);
+      }
+      .insight-box.green-box {
+        background: rgba(16, 185, 129, 0.07);
+        border-color: rgba(16, 185, 129, 0.2);
+      }
+      .insight-box.blue-box {
+        background: rgba(6, 182, 212, 0.07);
+        border-color: rgba(6, 182, 212, 0.2);
+      }
+      .insight-box.amber-box {
+        background: rgba(251, 191, 36, 0.06);
+        border-color: rgba(251, 191, 36, 0.2);
+      }
+      .insight-box p {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      .pillars {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        margin-top: 18px;
+      }
+      .pillar {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 26px;
+        position: relative;
+        overflow: hidden;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .pillar:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+      .pillar::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+      }
+      .pillar.p1::before {
+        background: linear-gradient(
+          90deg,
+          var(--red),
+          rgba(248, 113, 113, 0.4)
+        );
+      }
+      .pillar.p2::before {
+        background: linear-gradient(
+          90deg,
+          var(--amber),
+          rgba(251, 191, 36, 0.4)
+        );
+      }
+      .pillar.p3::before {
+        background: linear-gradient(
+          90deg,
+          var(--green),
+          rgba(16, 185, 129, 0.4)
+        );
+      }
+      .pillar.p4::before {
+        background: linear-gradient(90deg, var(--blue), rgba(6, 182, 212, 0.4));
+      }
+      .pillar-num {
+        font-family: "Syne", sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+        opacity: 0.08;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+      }
+      .pillar h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 17px;
+        margin-bottom: 14px;
+      }
+      .pillar ul {
+        list-style: none;
+      }
+      .pillar ul li {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 7px;
+        padding-left: 16px;
+        position: relative;
+      }
+      .pillar ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+      }
+      .pillar.p1 ul li::before {
+        color: var(--red);
+      }
+      .pillar.p2 ul li::before {
+        color: var(--amber);
+      }
+      .pillar.p3 ul li::before {
+        color: var(--green);
+      }
+      .pillar.p4 ul li::before {
+        color: var(--blue);
+      }
+      .funnel-stage {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 12px;
+      }
+      .funnel-label {
+        width: 130px;
+        font-size: 13px;
+        color: var(--muted);
+        text-align: right;
+      }
+      .funnel-bar-wrap {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+        height: 40px;
+        overflow: hidden;
+      }
+      .funnel-bar {
+        height: 100%;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        padding-left: 14px;
+        font-family: "Syne", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .funnel-pct {
+        width: 55px;
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        color: var(--blue);
+        text-align: right;
+      }
+      .cover {
+        background: linear-gradient(
+          135deg,
+          #0a0e1a 0%,
+          #0f1d35 50%,
+          #151030 100%
+        );
+      }
+      .cover h1 {
+        font-size: 60px;
+      }
+      .cover .tagline {
+        font-size: 20px;
+        color: var(--blue);
+        margin: 10px 0 36px;
+        font-weight: 300;
+      }
+      .closing {
+        background: radial-gradient(
+          ellipse at 60% 50%,
+          #0f1d35 0%,
+          #120e28 40%,
+          var(--bg) 80%
+        );
+      }
+      .big-quote {
+        font-family: "Syne", sans-serif;
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 1.25;
+        max-width: 800px;
+        margin-bottom: 28px;
+      }
+      .big-quote em {
+        font-style: normal;
+        color: var(--blue);
+      }
+      .metrics-strip {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 36px;
+      }
+      .metric-chip {
+        background: rgba(6, 182, 212, 0.06);
+        border: 1px solid rgba(6, 182, 212, 0.15);
+        border-radius: 100px;
+        padding: 8px 20px;
+        font-size: 13px;
+        color: var(--text);
+      }
+      .roadmap {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 22px;
+      }
+      .quarter {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 22px 18px;
+        transition:
+          transform 0.2s,
+          box-shadow 0.3s;
+      }
+      .quarter:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      }
+      .q-label {
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        letter-spacing: 3px;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .q-item {
+        font-size: 13px;
+        color: var(--text);
+        margin-bottom: 9px;
+        padding-left: 14px;
+        position: relative;
+        line-height: 1.5;
+      }
+      .q-item::before {
+        content: "·";
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+        font-size: 20px;
+        top: -4px;
+      }
+      .ppt-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: rgba(10, 14, 26, 0.92);
+        backdrop-filter: blur(16px);
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        z-index: 100;
+      }
+      .ppt-nav button {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border);
+        color: var(--text);
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        padding: 8px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .ppt-nav button:hover {
+        background: rgba(6, 182, 212, 0.12);
+        border-color: rgba(6, 182, 212, 0.3);
+      }
+      .ppt-nav button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      .ppt-nav button:disabled:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--border);
+      }
+      .nav-center {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .nav-counter {
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        letter-spacing: 2px;
+        color: var(--muted);
+        min-width: 80px;
+        text-align: center;
+      }
+      .nav-dots {
+        display: flex;
+        gap: 6px;
+      }
+      .nav-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .nav-dot.active {
+        background: var(--blue);
+        box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+        width: 24px;
+        border-radius: 4px;
+      }
+      .nav-dot:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--blue), var(--purple));
+        transition: width 0.4s ease;
+        z-index: 101;
+        border-radius: 0 2px 2px 0;
+      }
+      @media (max-width: 900px) {
+        .slide {
+          padding: 40px 32px 100px;
+        }
+        h1 {
+          font-size: 34px;
+        }
+        .kpi-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .pillars {
+          grid-template-columns: 1fr;
+        }
+        .roadmap {
+          grid-template-columns: 1fr;
+        }
+        .ppt-nav {
+          padding: 0 16px;
+        }
+        .nav-dots {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
+
+<!-- SLIDE 1: Cover -->
+<div class="slide cover">
+  <span class="slide-num">01 / 12</span>
+  <h1>Sales Funnel<br><span class="accent">Optimization</span></h1>
+  <p class="tagline">48,695 Missed Leads. ₹88L Recovery Opportunity. Zero New Spend.</p>
+  <div style="display:flex;gap:32px;margin-top:36px;">
+    <div class="kpi" style="text-align:center;flex:1"><div class="val" style="color:var(--blue)">50,440</div><div class="lbl">Total Leads (Jan 2022 – Apr 2026)</div></div>
+    <div class="kpi" style="text-align:center;flex:1"><div class="val" style="color:var(--red)">1,745</div><div class="lbl">Converted (3.46%)</div></div>
+    <div class="kpi" style="text-align:center;flex:1"><div class="val" style="color:var(--amber)">48,695</div><div class="lbl">Missed Leads in CRM</div></div>
+    <div class="kpi" style="text-align:center;flex:1"><div class="val" style="color:var(--green)">₹88L</div><div class="lbl">Recovery Target / Year</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 2: 4-Year Funnel -->
+<div class="slide">
+  <span class="slide-num">02 / 12</span>
+  <p class="subtitle">FULL FUNNEL · Jan 2022 – Apr 2026 (4+ years)</p>
+  <h1>The <span class="red">3.46%</span> Problem</h1>
+  <div style="margin-top:24px;">
+    <div class="funnel-stage"><div class="funnel-label">Total Leads</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:100%;background:linear-gradient(90deg,#0e3a5f,#06b6d4)">50,440</div></div><div class="funnel-pct">100%</div></div>
+    <div class="funnel-stage"><div class="funnel-label">Assigned</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:27.5%;background:linear-gradient(90deg,#134e6f,#0891b2)">13,884</div></div><div class="funnel-pct" style="color:var(--red)">27.5%</div></div>
+    <div class="funnel-stage"><div class="funnel-label">Demo Given</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:12.7%;background:linear-gradient(90deg,#0e3050,#22d3ee)">6,397</div></div><div class="funnel-pct" style="color:var(--amber)">12.7%</div></div>
+    <div class="funnel-stage"><div class="funnel-label">Quotation</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:4.8%;background:linear-gradient(90deg,#92400e,#fbbf24)">2,414</div></div><div class="funnel-pct" style="color:var(--amber)">4.8%</div></div>
+    <div class="funnel-stage"><div class="funnel-label">Sales Order</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:3.6%;background:linear-gradient(90deg,#064e3b,#10b981)">1,798</div></div><div class="funnel-pct" style="color:var(--green)">3.6%</div></div>
+    <div class="funnel-stage"><div class="funnel-label">Invoice</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="width:3.5%;background:linear-gradient(90deg,#064e3b,#059669)">1,745</div></div><div class="funnel-pct" style="color:var(--green)">3.5%</div></div>
+  </div>
+  <div class="insight-box" style="margin-top:20px"><p class="red">🚨 72.5% of all leads were NEVER ASSIGNED to a sales rep. 36,556 leads died in the queue.</p></div>
+</div>
+
+<!-- SLIDE 3: YoY Improvement -->
+<div class="slide">
+  <span class="slide-num">03 / 12</span>
+  <p class="subtitle">YEAR-OVER-YEAR COMPARISON</p>
+  <h1>Last Year Was <span class="green">2.4x Better</span></h1>
+  <table style="margin-top:24px">
+    <thead><tr><th>Stage</th><th>4-Year Avg</th><th>Last Year</th><th>Trend</th></tr></thead>
+    <tbody>
+      <tr><td>Lead → Assigned</td><td class="red">27.5%</td><td class="green">~100%</td><td>✅ Fixed</td></tr>
+      <tr><td>Assigned → Demo</td><td class="amber">46.1%</td><td class="amber">~21% (of total)</td><td>⚠️ Improved but still losing 79%</td></tr>
+      <tr><td>Demo → Quotation</td><td class="amber">37.7%</td><td class="green">47.2%</td><td>✅ Better demo quality</td></tr>
+      <tr><td>Quotation → Sale</td><td class="green">74.5%</td><td class="green">80.5%</td><td>✅ Better closing</td></tr>
+      <tr><td style="font-weight:700">Overall Conversion</td><td class="red" style="font-weight:700">3.46%</td><td class="amber" style="font-weight:700">8.15%</td><td>✅ 2.4x improvement</td></tr>
+    </tbody>
+  </table>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px">
+    <div class="insight-box green-box"><p class="green">✅ The team IS getting better. Every stage improved last year.</p></div>
+    <div class="insight-box"><p class="red">❌ But 8.15% is still half the industry benchmark of 15–25%.</p></div>
+  </div>
+</div>
+
+<!-- SLIDE 4: Where 48,695 Leads Dropped -->
+<div class="slide">
+  <span class="slide-num">04 / 12</span>
+  <p class="subtitle">MISSED LEAD BREAKDOWN · 48,695 hotels in our CRM</p>
+  <h1>Where They <span class="red">Dropped</span></h1>
+  <table style="margin-top:24px">
+    <thead><tr><th>Drop-off Point</th><th>Count</th><th>% of Missed</th><th>Temperature</th><th>Priority</th></tr></thead>
+    <tbody>
+      <tr><td>Never assigned (died in queue)</td><td class="red">36,556</td><td>75.1%</td><td>Cold</td><td>Phase 3</td></tr>
+      <tr><td>Assigned but no demo</td><td class="amber">7,487</td><td>15.4%</td><td>Cold–Warm</td><td>Phase 2</td></tr>
+      <tr><td>Demo given, no quotation</td><td class="amber">3,983</td><td>8.2%</td><td>Warm</td><td style="color:var(--green)">Phase 1</td></tr>
+      <tr><td>Quotation, no sale</td><td style="color:var(--green)">616</td><td>1.3%</td><td>🔥 Hot</td><td style="color:var(--green)">Immediate</td></tr>
+      <tr><td>Sale order, no invoice</td><td style="color:var(--green)">53</td><td>0.1%</td><td>🔥 Burning</td><td style="color:var(--green)">TODAY</td></tr>
+    </tbody>
+  </table>
+  <div class="insight-box blue-box" style="margin-top:18px"><p>💡 Work bottom-up: hottest leads first (53 + 616), then warm (3,983 + 7,487), then volume (36,556).</p></div>
+</div>
+
+<!-- SLIDE 5: Phase 0 — Instant Wins -->
+<div class="slide">
+  <span class="slide-num">05 / 12</span>
+  <p class="subtitle">PHASE 0 · INSTANT WINS — Week 1</p>
+  <h1><span class="green">669</span> Hottest Leads</h1>
+  <div class="pillars">
+    <div class="pillar p1"><div class="pillar-num">53</div>
+      <h3 class="red">🔥 Invoice Gaps — Close TODAY</h3>
+      <ul>
+        <li>Sales order created, invoice never completed</li>
+        <li>They already said YES — something broke in the last mile</li>
+        <li>Assign to senior reps. Call every single one today.</li>
+        <li>Offer: "Complete setup this week → 1 month free"</li>
+        <li style="color:var(--green)">Target: 60% close = 32 customers</li>
+      </ul>
+    </div>
+    <div class="pillar p2"><div class="pillar-num">616</div>
+      <h3 class="amber">📋 Quotation Drops — Hottest Pipeline</h3>
+      <ul>
+        <li>Got a quote but didn't buy — one step from money</li>
+        <li>Segment by recency: 120 hot, 150 warm, 200 cool, 146 cold</li>
+        <li>Lead with new pricing: "Your old quote was ₹X, now it's ₹Y"</li>
+        <li>Pitch direct bookings: "Save 18–25% on OTA commissions"</li>
+        <li style="color:var(--green)">Target: 61 customers (10% overall)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="insight-box green-box" style="margin-top:16px"><p class="green">Combined Phase 0: 93 new customers · ₹16.7L/year · Zero acquisition cost · Week 1–6</p></div>
+</div>
+
+<!-- SLIDE 6: Phase 1 & 2 -->
+<div class="slide">
+  <span class="slide-num">06 / 12</span>
+  <p class="subtitle">PHASE 1 & 2 · Warm Leads — Weeks 2–10</p>
+  <h1><span class="amber">11,470</span> Warm Leads</h1>
+  <div class="pillars">
+    <div class="pillar p3"><div class="pillar-num">3,983</div>
+      <h3 class="green">🎯 Demo Drops (Phase 1)</h3>
+      <ul>
+        <li>Saw the product but didn't proceed to quotation</li>
+        <li>~500 from last 6 months (10% target), ~600 from 6–12 months (5%)</li>
+        <li>Nudge: "Since your demo — 3 things changed" + ROI calculator</li>
+        <li>Multi-channel: email → WhatsApp → call for responders</li>
+        <li style="color:var(--green)">Target: 112 customers</li>
+      </ul>
+    </div>
+    <div class="pillar p4"><div class="pillar-num">7,487</div>
+      <h3 class="accent">📞 Assigned, No Demo (Phase 2)</h3>
+      <ul>
+        <li>Contacted but never got to a demo — follow-up failed</li>
+        <li>~800 from last 6 months (5% target), ~1,000 from 6–12 months (3%)</li>
+        <li>Nudge: "We tried to reach you — here's what you missed"</li>
+        <li>Key fix: multi-channel persistence, not just one call</li>
+        <li style="color:var(--green)">Target: 105 customers</li>
+      </ul>
+    </div>
+  </div>
+  <div class="insight-box green-box" style="margin-top:16px"><p class="green">Combined Phase 1 & 2: 217 new customers · ₹39.1L/year · Weeks 2–10</p></div>
+</div>
+
+<!-- SLIDE 7: Phase 3 — Never Assigned -->
+<div class="slide">
+  <span class="slide-num">07 / 12</span>
+  <p class="subtitle">PHASE 3 · THE BIG ONE — 36,556 Never-Assigned Leads</p>
+  <h1>The <span class="red">72.5%</span> Catastrophe</h1>
+  <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);margin-top:22px">
+    <div class="kpi"><div class="val" style="color:var(--red)">36,556</div><div class="lbl">Leads Never Assigned</div><div class="note">72.5% of all leads over 4 years</div></div>
+    <div class="kpi"><div class="val" style="color:var(--amber)">~26,000</div><div class="lbl">Valid After Cleanup</div><div class="note">Remove duplicates, junk, invalid contacts</div></div>
+    <div class="kpi"><div class="val" style="color:var(--green)">177</div><div class="lbl">Expected Conversions</div><div class="note">₹31.9L/year from mass email campaigns</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px">
+    <div class="insight-box"><p class="red">Step 1: DATA CLEANUP — deduplicate, validate emails/phones, remove junk, segment by date</p></div>
+    <div class="insight-box green-box"><p class="green">Step 2: MASS EMAIL CAMPAIGNS — not 1:1 outreach. Treat as marketing, not sales. Escalate responders to sales.</p></div>
+  </div>
+  <div class="insight-box amber-box" style="margin-top:14px"><p style="color:var(--amber)">⚡ This must NEVER happen again. Auto-assignment within 1 hour. Slack alert if any lead sits unassigned for 4+ hours.</p></div>
+</div>
+
+<!-- SLIDE 8: Total Recovery Opportunity -->
+<div class="slide">
+  <span class="slide-num">08 / 12</span>
+  <p class="subtitle">TOTAL RECOVERY OPPORTUNITY</p>
+  <h1><span class="green">487</span> Customers · <span class="green">₹88L</span>/Year</h1>
+  <table style="margin-top:24px">
+    <thead><tr><th>Phase</th><th>Pool</th><th>Conversions</th><th>Revenue/Year</th><th>Timeline</th></tr></thead>
+    <tbody>
+      <tr><td>Phase 0: Invoice gaps</td><td>53</td><td class="green">32</td><td>₹5.7L</td><td>Week 1</td></tr>
+      <tr><td>Phase 0: Quotation drops</td><td>616</td><td class="green">61</td><td>₹11L</td><td>Weeks 1–6</td></tr>
+      <tr><td>Phase 1: Demo drops</td><td>3,983</td><td class="green">112</td><td>₹20.2L</td><td>Weeks 2–8</td></tr>
+      <tr><td>Phase 2: Assigned, no demo</td><td>7,487</td><td class="green">105</td><td>₹18.9L</td><td>Weeks 3–10</td></tr>
+      <tr><td>Phase 3: Never assigned</td><td>26,000</td><td class="green">177</td><td>₹31.9L</td><td>Weeks 4–12</td></tr>
+      <tr style="background:rgba(16,185,129,.06)"><td style="font-weight:700">TOTAL</td><td style="font-weight:700">38,139</td><td class="green" style="font-weight:700">487</td><td class="green" style="font-weight:700">₹87.7L</td><td style="font-weight:700">Q1–Q2</td></tr>
+    </tbody>
+  </table>
+  <div class="insight-box green-box" style="margin-top:18px"><p class="green">₹88L/year from leads we've ALREADY PAID to acquire. Zero new lead generation cost.</p></div>
+</div>
+
+<!-- SLIDE 9: Fix the Funnel -->
+<div class="slide">
+  <span class="slide-num">09 / 12</span>
+  <p class="subtitle">FIX THE FUNNEL · For New Leads Going Forward</p>
+  <h1>Target: <span class="green">15–20%</span> Conversion</h1>
+  <div class="pillars">
+    <div class="pillar p4"><div class="pillar-num">1</div>
+      <h3 class="accent">🚀 Speed to Contact</h3>
+      <ul><li>Auto-assign every lead within 1 hour</li><li>Hot leads called within 2 hours</li><li>Warm leads called within 24 hours</li><li>Zero tolerance for unassigned leads</li></ul>
+    </div>
+    <div class="pillar p2"><div class="pillar-num">2</div>
+      <h3 class="amber">🤖 AI Lead Scoring</h3>
+      <ul><li>Score every lead on entry (hotel size, source, engagement)</li><li>Hot (70+): call in 2 hours</li><li>Warm (40–69): call in 24 hours</li><li>Cool/Cold: automated nurture only</li></ul>
+    </div>
+    <div class="pillar p3"><div class="pillar-num">3</div>
+      <h3 class="green">📧 Automated Follow-up</h3>
+      <ul><li>21-day multi-channel sequence (email + WhatsApp + call)</li><li>No lead goes 24 hours without a touchpoint in week 1</li><li>Escalate email openers/clickers to phone</li><li>Offer: "1 month free with demo this week"</li></ul>
+    </div>
+    <div class="pillar p1"><div class="pillar-num">4</div>
+      <h3 class="red">🎯 Demo Optimization</h3>
+      <ul><li>Standardized 25-min demo script (ROI-first, not feature-first)</li><li>Post-demo follow-up within 2 hours</li><li>Quote valid 7 days (creates urgency)</li><li>Decision-maker involvement check at scheduling</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 10: Nudge Strategy -->
+<div class="slide">
+  <span class="slide-num">10 / 12</span>
+  <p class="subtitle">NUDGE STRATEGY · Segment-specific messaging</p>
+  <h1>Right Message, <span class="accent">Right Stage</span></h1>
+  <table style="margin-top:22px">
+    <thead><tr><th>Segment</th><th>Core Message</th><th>Offer</th><th>Channels</th></tr></thead>
+    <tbody>
+      <tr><td>Invoice gaps (53)</td><td>"Your account is ready — just one step left"</td><td>1 month free</td><td>Call → WhatsApp → Email</td></tr>
+      <tr><td>Quotation drops (616)</td><td>"Your old quote was ₹X, now it's ₹Y with more features"</td><td>1 month free + onboarding</td><td>Call → Email → WhatsApp</td></tr>
+      <tr><td>Demo drops (3,983)</td><td>"Since your demo — 3 things changed"</td><td>1 month free with signup</td><td>Email → WhatsApp → Call</td></tr>
+      <tr><td>Assigned no demo (7,487)</td><td>"We tried to reach you — here's what you missed"</td><td>Free demo + 1 month free</td><td>Email → WhatsApp → Call</td></tr>
+      <tr><td>Never assigned (26,000)</td><td>"Your hotel is losing money to OTAs — here's how to stop"</td><td>Free demo</td><td>Email only → escalate responders</td></tr>
+    </tbody>
+  </table>
+  <div class="insight-box blue-box" style="margin-top:16px"><p>📋 Full nudge templates (day-by-day scripts for email, WhatsApp, and phone) are ready in <code>playbooks/nudge_templates/</code></p></div>
+</div>
+
+<!-- SLIDE 11: Metrics & Safeguards -->
+<div class="slide">
+  <span class="slide-num">11 / 12</span>
+  <p class="subtitle">METRICS & SAFEGUARDS</p>
+  <h1>What Gets <span class="accent">Tracked</span></h1>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px">
+    <div>
+      <p style="font-family:'Syne',sans-serif;font-size:14px;letter-spacing:1px;color:var(--muted);margin-bottom:14px">FUNNEL TARGETS</p>
+      <table>
+        <thead><tr><th>Metric</th><th>Current</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Lead → Assigned</td><td class="green">~100%</td><td class="green">100% (maintain)</td></tr>
+          <tr><td>Assigned → Demo</td><td class="amber">46%</td><td class="green">50%+</td></tr>
+          <tr><td>Demo → Quotation</td><td class="amber">47%</td><td class="green">55%</td></tr>
+          <tr><td>Quotation → Sale</td><td class="green">80%</td><td class="green">85%</td></tr>
+          <tr><td>Overall Conversion</td><td class="red">8.15%</td><td class="green">15–20%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <p style="font-family:'Syne',sans-serif;font-size:14px;letter-spacing:1px;color:var(--muted);margin-bottom:14px">NEVER-AGAIN SAFEGUARDS</p>
+      <table>
+        <thead><tr><th>Safeguard</th><th>Rule</th></tr></thead>
+        <tbody>
+          <tr><td>Auto-assignment</td><td>Every lead assigned within 1 hour</td></tr>
+          <tr><td>Overflow alert</td><td>Slack alert if unassigned > 4 hours</td></tr>
+          <tr><td>Weekly audit</td><td>Friday: how many unassigned? Zero tolerance.</td></tr>
+          <tr><td>Lead response time</td><td>< 2 hours for Hot leads</td></tr>
+          <tr><td>Monthly funnel review</td><td>Full funnel analysis vs targets</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 12: Closing -->
+<div class="slide closing">
+  <span class="slide-num">12 / 12</span>
+  <div class="big-quote">We don't need <em>more leads.</em><br>We need to <em>work the leads</em><br>we already have.</div>
+  <p style="font-size:17px;color:var(--muted);max-width:600px;line-height:1.7">48,695 hotels showed interest and we let them slip. That changes now. Bottom-up recovery, automated follow-up, and a funnel that never leaks again.</p>
+  <div class="metrics-strip">
+    <div class="metric-chip">48,695 missed leads</div>
+    <div class="metric-chip">487 recovery target</div>
+    <div class="metric-chip">₹88L/year revenue</div>
+    <div class="metric-chip">Conversion: 8% → 15–20%</div>
+    <div class="metric-chip">Timeline: Q1–Q2</div>
+  </div>
+</div>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="progressBar"></div>
+<div class="ppt-nav">
+  <button id="prevBtn" onclick="navigate(-1)"><span>←</span> Previous</button>
+  <div class="nav-center"><div class="nav-dots" id="navDots"></div><div class="nav-counter" id="navCounter">1 / 12</div></div>
+  <button id="nextBtn" onclick="navigate(1)">Next <span>→</span></button>
+</div>
+<script>
+const slides=document.querySelectorAll('.slide'),totalSlides=slides.length;let current=0;
+function showSlide(i){slides.forEach(s=>{s.classList.remove('active');s.style.animation='none'});current=Math.max(0,Math.min(i,totalSlides-1));const sl=slides[current];sl.style.animation='none';sl.offsetHeight;sl.style.animation='';sl.classList.add('active');document.getElementById('navCounter').textContent=(current+1)+' / '+totalSlides;document.getElementById('prevBtn').disabled=current===0;document.getElementById('nextBtn').disabled=current===totalSlides-1;document.getElementById('progressBar').style.width=((current+1)/totalSlides*100)+'%';document.querySelectorAll('.nav-dot').forEach((d,j)=>d.classList.toggle('active',j===current))}
+function navigate(d){showSlide(current+d)}
+const dc=document.getElementById('navDots');for(let i=0;i<totalSlides;i++){const d=document.createElement('div');d.className='nav-dot';d.onclick=()=>showSlide(i);dc.appendChild(d)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();navigate(1)}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();navigate(-1)}if(e.key==='Home'){e.preventDefault();showSlide(0)}if(e.key==='End'){e.preventDefault();showSlide(totalSlides-1)}});
+showSlide(0);
+</script>
+</body>
+</html>

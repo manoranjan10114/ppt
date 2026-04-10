@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing & ARPU Strategy — Strategy Deck</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0e1a;
+        --surface: #111827;
+        --border: rgba(255, 255, 255, 0.08);
+        --blue: #06b6d4;
+        --green: #10b981;
+        --red: #f87171;
+        --amber: #fbbf24;
+        --purple: #c084fc;
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        background-image: radial-gradient(
+          ellipse at 50% 0%,
+          rgba(6, 182, 212, 0.04) 0%,
+          transparent 60%
+        );
+        color: var(--text);
+        overflow: hidden;
+        height: 100vh;
+      }
+      .slide {
+        min-height: 100vh;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px 80px 100px;
+        position: relative;
+        overflow: hidden;
+        animation: fadeIn 0.45s ease both;
+      }
+      .slide.active {
+        display: flex;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .slide::before {
+        content: "";
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(6, 182, 212, 0.07) 0%,
+          rgba(192, 132, 252, 0.03) 40%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .slide-num {
+        position: absolute;
+        top: 32px;
+        right: 48px;
+        font-family: "Syne", sans-serif;
+        font-size: 11px;
+        letter-spacing: 3px;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+      h1 {
+        font-family: "Syne", sans-serif;
+        font-size: 50px;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.1;
+        margin-bottom: 8px;
+      }
+      .subtitle {
+        font-size: 18px;
+        color: var(--muted);
+        margin-bottom: 36px;
+        font-weight: 300;
+        letter-spacing: 0.5px;
+      }
+      .accent {
+        color: var(--blue);
+      }
+      .green {
+        color: var(--green);
+      }
+      .red {
+        color: var(--red);
+      }
+      .amber {
+        color: var(--amber);
+      }
+      .purple {
+        color: var(--purple);
+      }
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-top: 16px;
+      }
+      .kpi {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 26px 22px;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .kpi:hover {
+        border-color: rgba(6, 182, 212, 0.25);
+        box-shadow: 0 4px 24px rgba(6, 182, 212, 0.06);
+      }
+      .kpi .val {
+        font-family: "Syne", sans-serif;
+        font-size: 34px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      .kpi .lbl {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .kpi .note {
+        font-size: 12px;
+        margin-top: 6px;
+        color: var(--muted);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 18px;
+      }
+      th {
+        font-family: "Syne", sans-serif;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 10px 14px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+      td {
+        padding: 12px 14px;
+        font-size: 15px;
+        border-bottom: 1px solid var(--border);
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+      tr:hover td {
+        background: rgba(6, 182, 212, 0.03);
+      }
+      .insight-box {
+        background: rgba(248, 113, 113, 0.07);
+        border: 1px solid rgba(248, 113, 113, 0.2);
+        border-radius: 12px;
+        padding: 18px 22px;
+        margin-top: 18px;
+        backdrop-filter: blur(6px);
+      }
+      .insight-box.green-box {
+        background: rgba(16, 185, 129, 0.07);
+        border-color: rgba(16, 185, 129, 0.2);
+      }
+      .insight-box.blue-box {
+        background: rgba(6, 182, 212, 0.07);
+        border-color: rgba(6, 182, 212, 0.2);
+      }
+      .insight-box.amber-box {
+        background: rgba(251, 191, 36, 0.06);
+        border-color: rgba(251, 191, 36, 0.2);
+      }
+      .insight-box.purple-box {
+        background: rgba(192, 132, 252, 0.06);
+        border-color: rgba(192, 132, 252, 0.2);
+      }
+      .insight-box p {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      .plan-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 22px;
+      }
+      .plan {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 26px 22px;
+        text-align: center;
+        transition:
+          transform 0.2s,
+          box-shadow 0.3s;
+      }
+      .plan:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      }
+      .plan.featured {
+        border-color: var(--blue);
+        background: rgba(6, 182, 212, 0.06);
+        box-shadow: 0 0 30px rgba(6, 182, 212, 0.08);
+      }
+      .plan h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+      .plan .price {
+        font-family: "Syne", sans-serif;
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--blue);
+        margin: 10px 0;
+      }
+      .plan ul {
+        list-style: none;
+        text-align: left;
+        margin-top: 14px;
+      }
+      .plan ul li {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 7px;
+        padding-left: 18px;
+        position: relative;
+      }
+      .plan ul li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--green);
+        font-size: 11px;
+        top: 1px;
+      }
+      .pillars {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        margin-top: 18px;
+      }
+      .pillar {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 26px;
+        position: relative;
+        overflow: hidden;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .pillar:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+      .pillar::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+      }
+      .pillar.p1::before {
+        background: linear-gradient(90deg, var(--blue), rgba(6, 182, 212, 0.4));
+      }
+      .pillar.p2::before {
+        background: linear-gradient(
+          90deg,
+          var(--green),
+          rgba(16, 185, 129, 0.4)
+        );
+      }
+      .pillar.p3::before {
+        background: linear-gradient(
+          90deg,
+          var(--amber),
+          rgba(251, 191, 36, 0.4)
+        );
+      }
+      .pillar.p4::before {
+        background: linear-gradient(
+          90deg,
+          var(--purple),
+          rgba(192, 132, 252, 0.4)
+        );
+      }
+      .pillar h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 17px;
+        margin-bottom: 14px;
+      }
+      .pillar ul {
+        list-style: none;
+      }
+      .pillar ul li {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 7px;
+        padding-left: 16px;
+        position: relative;
+      }
+      .pillar ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+      }
+      .pillar.p2 ul li::before {
+        color: var(--green);
+      }
+      .pillar.p3 ul li::before {
+        color: var(--amber);
+      }
+      .pillar.p4 ul li::before {
+        color: var(--purple);
+      }
+      .cover {
+        background: linear-gradient(
+          135deg,
+          #0a0e1a 0%,
+          #0f1d35 50%,
+          #151030 100%
+        );
+      }
+      .cover h1 {
+        font-size: 60px;
+      }
+      .cover .tagline {
+        font-size: 20px;
+        color: var(--blue);
+        margin: 10px 0 36px;
+        font-weight: 300;
+      }
+      .closing {
+        background: radial-gradient(
+          ellipse at 60% 50%,
+          #0f1d35 0%,
+          #120e28 40%,
+          var(--bg) 80%
+        );
+      }
+      .big-quote {
+        font-family: "Syne", sans-serif;
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 1.25;
+        max-width: 800px;
+        margin-bottom: 28px;
+      }
+      .big-quote em {
+        font-style: normal;
+        color: var(--blue);
+      }
+      .metrics-strip {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 36px;
+      }
+      .metric-chip {
+        background: rgba(6, 182, 212, 0.06);
+        border: 1px solid rgba(6, 182, 212, 0.15);
+        border-radius: 100px;
+        padding: 8px 20px;
+        font-size: 13px;
+        color: var(--text);
+      }
+      .rev-bars {
+        margin-top: 24px;
+      }
+      .rev-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .rev-label {
+        width: 200px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .rev-bar-wrap {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+        height: 34px;
+        overflow: hidden;
+      }
+      .rev-bar {
+        height: 100%;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        padding-left: 14px;
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .ppt-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: rgba(10, 14, 26, 0.92);
+        backdrop-filter: blur(16px);
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        z-index: 100;
+      }
+      .ppt-nav button {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border);
+        color: var(--text);
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        padding: 8px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .ppt-nav button:hover {
+        background: rgba(6, 182, 212, 0.12);
+        border-color: rgba(6, 182, 212, 0.3);
+      }
+      .ppt-nav button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      .ppt-nav button:disabled:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--border);
+      }
+      .nav-center {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .nav-counter {
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        letter-spacing: 2px;
+        color: var(--muted);
+        min-width: 80px;
+        text-align: center;
+      }
+      .nav-dots {
+        display: flex;
+        gap: 6px;
+      }
+      .nav-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .nav-dot.active {
+        background: var(--blue);
+        box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+        width: 24px;
+        border-radius: 4px;
+      }
+      .nav-dot:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--blue), var(--purple));
+        transition: width 0.4s ease;
+        z-index: 101;
+        border-radius: 0 2px 2px 0;
+      }
+      @media (max-width: 900px) {
+        .slide {
+          padding: 40px 32px 100px;
+        }
+        h1 {
+          font-size: 34px;
+        }
+        .kpi-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .pillars {
+          grid-template-columns: 1fr;
+        }
+        .plan-grid {
+          grid-template-columns: 1fr;
+        }
+        .ppt-nav {
+          padding: 0 16px;
+        }
+        .nav-dots {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
+
+<!-- SLIDE 1: Cover -->
+<div class="slide cover">
+  <span class="slide-num">01 / 12</span>
+  <h1>Pricing & ARPU<br><span class="accent">Strategy</span></h1>
+  <p class="tagline">From ₹1,100/month to ₹2,500–₹3,000/month — without losing a single customer.</p>
+  <div style="display:flex;gap:32px;margin-top:36px;">
+    <div class="kpi" style="text-align:center;flex:1"><div class="val" style="color:var(--red)">₹1,100</div><div class="lbl">Current ARPU / Month</div></div>
+    <div class="kpi" style="text-align:center;flex:1"><div class="val" style="color:var(--green)">₹2,500–₹3K</div><div class="lbl">Target ARPU / Month</div></div>
+    <div class="kpi" style="text-align:center;flex:1"><div class="val" style="color:var(--amber)">30+</div><div class="lbl">Current Pricing Plans</div></div>
+    <div class="kpi" style="text-align:center;flex:1"><div class="val" style="color:var(--blue)">3</div><div class="lbl">New Tiers</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 2: The Problem -->
+<div class="slide">
+  <span class="slide-num">02 / 12</span>
+  <p class="subtitle">THE PRICING PROBLEM</p>
+  <h1>30+ Plans Is Not a <span class="red">Strategy</span></h1>
+  <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);margin-top:22px">
+    <div class="kpi"><div class="val" style="color:var(--red)">₹1,100</div><div class="lbl">ARPU / Month</div><div class="note">₹13K/year — extremely low for a multi-product platform</div></div>
+    <div class="kpi"><div class="val" style="color:var(--red)">30+</div><div class="lbl">Pricing Variations</div><div class="note">Confusing for sales, support, and customers</div></div>
+    <div class="kpi"><div class="val" style="color:var(--red)">~0%</div><div class="lbl">Upsell Rate</div><div class="note">No clear upgrade path = no upsell</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:18px">
+    <div class="insight-box"><p class="red">❌ No clear tiering — customers don't know what they're paying for</p></div>
+    <div class="insight-box"><p class="red">❌ No upgrade path — no reason to pay more</p></div>
+    <div class="insight-box"><p class="red">❌ Features not monetized — giving away value for free</p></div>
+  </div>
+</div>
+
+<!-- SLIDE 3: The Math -->
+<div class="slide">
+  <span class="slide-num">03 / 12</span>
+  <p class="subtitle">THE ARPU MATH · Same 1,800 customers, different revenue</p>
+  <h1>ARPU Is the <span class="green">#1 Lever</span></h1>
+  <div class="rev-bars">
+    <div class="rev-row"><div class="rev-label">Current (₹1,100/mo)</div><div class="rev-bar-wrap"><div class="rev-bar" style="width:18%;background:linear-gradient(90deg,#7f1d1d,#f87171)">₹2.4 Cr/year</div></div></div>
+    <div class="rev-row"><div class="rev-label">Conservative (₹1,800/mo)</div><div class="rev-bar-wrap"><div class="rev-bar" style="width:30%;background:linear-gradient(90deg,#92400e,#fbbf24)">₹3.9 Cr/year</div></div></div>
+    <div class="rev-row"><div class="rev-label">Target (₹2,500/mo)</div><div class="rev-bar-wrap"><div class="rev-bar" style="width:42%;background:linear-gradient(90deg,#065f46,#10b981)">₹5.4 Cr/year</div></div></div>
+    <div class="rev-row"><div class="rev-label">Optimistic (₹3,000/mo)</div><div class="rev-bar-wrap"><div class="rev-bar" style="width:50%;background:linear-gradient(90deg,#0e7490,#06b6d4)">₹6.5 Cr/year</div></div></div>
+  </div>
+  <div class="insight-box green-box" style="margin-top:18px"><p class="green">Moving ARPU from ₹1,100 to ₹2,500 = revenue more than DOUBLES (₹2.4 Cr → ₹5.4 Cr) with zero new customers.</p></div>
+</div>
+
+<!-- SLIDE 4: The 3 Tiers -->
+<div class="slide">
+  <span class="slide-num">04 / 12</span>
+  <p class="subtitle">NEW PRICING · 3 clear tiers, one upgrade path</p>
+  <h1>Simplify to <span class="accent">Scale</span></h1>
+  <div class="plan-grid">
+    <div class="plan">
+      <h3>Basic</h3>
+      <div class="price">₹1K<span style="font-size:14px;color:var(--muted)">/mo</span></div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px">"Get Online"</p>
+      <ul>
+        <li>Channel Manager (core OTAs)</li>
+        <li>Basic PMS (reservations, calendar)</li>
+        <li>Booking management</li>
+        <li>PMS Mobile — Front Office basics</li>
+        <li>Email support</li>
+        <li>Standard reports</li>
+      </ul>
+    </div>
+    <div class="plan featured">
+      <h3>Growth <span style="font-size:12px;background:var(--blue);color:#000;border-radius:4px;padding:2px 8px;margin-left:6px">POPULAR</span></h3>
+      <div class="price">₹2K<span style="font-size:14px;color:var(--muted)">/mo</span></div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px">"Get Direct Bookings"</p>
+      <ul>
+        <li>Everything in Basic</li>
+        <li>Booking Engine (direct bookings!)</li>
+        <li>CRM — contacts, enquiries, tickets</li>
+        <li>Promotions & coupons</li>
+        <li>Review management</li>
+        <li>PMS Mobile — Full suite</li>
+        <li>WhatsApp + live chat</li>
+        <li>Priority support</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <h3>Premium</h3>
+      <div class="price">₹3K<span style="font-size:14px;color:var(--muted)">/mo</span></div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:12px">"Run Your Chain"</p>
+      <ul>
+        <li>Everything in Growth</li>
+        <li>Hotel Chain dashboard</li>
+        <li>CRM — loyalty, campaigns, analytics</li>
+        <li>Dynamic pricing</li>
+        <li>Rate audit log</li>
+        <li>Dedicated CSM</li>
+        <li>Direct booking analytics</li>
+        <li>AI assistant + content generation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: Feature Gating Logic -->
+<div class="slide">
+  <span class="slide-num">05 / 12</span>
+  <p class="subtitle">FEATURE GATING · The upgrade driver</p>
+  <h1>Booking Engine Is the <span class="green">Gate</span></h1>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px">
+    <div>
+      <table>
+        <thead><tr><th>Feature</th><th>Basic</th><th>Growth</th><th>Premium</th></tr></thead>
+        <tbody>
+          <tr><td>Channel Manager</td><td class="green">✅</td><td class="green">✅</td><td class="green">✅</td></tr>
+          <tr><td>Basic PMS</td><td class="green">✅</td><td class="green">✅</td><td class="green">✅</td></tr>
+          <tr><td>Booking Engine</td><td class="red">❌</td><td class="green">✅</td><td class="green">✅</td></tr>
+          <tr><td>CRM (core)</td><td class="red">❌</td><td class="green">✅</td><td class="green">✅</td></tr>
+          <tr><td>CRM (loyalty + campaigns)</td><td class="red">❌</td><td class="red">❌</td><td class="green">✅</td></tr>
+          <tr><td>Hotel Chain dashboard</td><td class="red">❌</td><td class="red">❌</td><td class="green">✅</td></tr>
+          <tr><td>Dynamic pricing</td><td class="red">❌</td><td class="red">❌</td><td class="green">✅</td></tr>
+          <tr><td>Dedicated CSM</td><td class="red">❌</td><td class="red">❌</td><td class="green">✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="insight-box green-box" style="margin-top:0"><p class="green">🎯 The #1 upgrade driver: Booking Engine is ONLY in Growth+. Hotels paying 18–25% to OTAs will upgrade to save money.</p></div>
+      <div class="insight-box blue-box" style="margin-top:14px"><p>💡 The pitch: "Upgrade to Growth for ₹1K more/month. Save ₹10K–₹50K/month in OTA commissions. Net cost: negative."</p></div>
+      <div class="insight-box purple-box" style="margin-top:14px"><p style="color:var(--purple)">🏨 Premium driver: Hotel Chain dashboard + loyalty program + dedicated CSM for multi-property hotels.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: Product Suite -->
+<div class="slide">
+  <span class="slide-num">06 / 12</span>
+  <p class="subtitle">PRODUCT SUITE · 8 products, 3 tiers</p>
+  <h1>What We <span class="accent">Sell</span></h1>
+  <table style="margin-top:22px">
+    <thead><tr><th>Product</th><th>What It Does</th><th>Tier</th><th>ARPU Role</th></tr></thead>
+    <tbody>
+      <tr><td>Channel Manager</td><td>Connect to all OTAs from one dashboard</td><td>All tiers</td><td>Table stakes</td></tr>
+      <tr><td>PMS</td><td>Run hotel operations (desktop + mobile)</td><td>Basic (limited) / Growth+ (full)</td><td>Operations foundation</td></tr>
+      <tr><td style="color:var(--green)">Booking Engine</td><td style="color:var(--green)">Direct bookings — save OTA commissions</td><td style="color:var(--green)">Growth+</td><td style="color:var(--green)">#1 upgrade driver</td></tr>
+      <tr><td>CRM</td><td>Guest database, enquiries, tickets</td><td>Growth (core) / Premium (full)</td><td>Retention + upsell</td></tr>
+      <tr><td>Hotel Chain</td><td>Multi-property dashboard & analytics</td><td>Premium</td><td>Premium driver</td></tr>
+      <tr><td>CRS</td><td>Central reservation system</td><td>TBD</td><td>Operations</td></tr>
+      <tr><td>Chatbot</td><td>AI guest communication</td><td>TBD</td><td>Support automation</td></tr>
+      <tr><td>Reports</td><td>Analytics & business intelligence</td><td>Basic (standard) / Premium (advanced)</td><td>Data visibility</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SLIDE 7: Migration Strategy -->
+<div class="slide">
+  <span class="slide-num">07 / 12</span>
+  <p class="subtitle">MIGRATION · Moving 1,800 customers to new tiers</p>
+  <h1>Migrate Without <span class="amber">Churn</span></h1>
+  <div class="pillars">
+    <div class="pillar p1"><h3 class="accent">Phase 1: New Customers (Month 1)</h3>
+      <ul><li>All NEW signups go on new 3-tier pricing immediately</li><li>Old plans no longer available for new customers</li><li>Sales team trained on new pricing and pitch</li><li>ROI calculator ready for every conversation</li></ul>
+    </div>
+    <div class="pillar p2"><h3 class="green">Phase 2: Preview (Month 2–3)</h3>
+      <ul><li>Email to all existing customers: "Here's your new tier"</li><li>Show what they GET (not what changes)</li><li>CSMs have 1:1 conversations with every customer</li><li>Handle objections before migration happens</li></ul>
+    </div>
+    <div class="pillar p3"><h3 class="amber">Phase 3: Migrate at Renewal (Month 4–6)</h3>
+      <ul><li>Migration happens at each customer's renewal date</li><li>No mid-contract changes — respect existing agreements</li><li>Customers paying LESS: 1 month free as transition incentive</li><li>Customers paying MORE: immediate migration (price drop = goodwill)</li></ul>
+    </div>
+    <div class="pillar p4"><h3 class="purple">Phase 4: Sunset Old Plans (Month 6+)</h3>
+      <ul><li>All customers on new tiers</li><li>Old plans fully retired</li><li>Custom/enterprise deals reviewed individually</li><li>Annual pricing pushed aggressively (2 months free)</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: Revenue Impact Model -->
+<div class="slide">
+  <span class="slide-num">08 / 12</span>
+  <p class="subtitle">REVENUE IMPACT · Tier distribution scenarios</p>
+  <h1>The <span class="green">Revenue Math</span></h1>
+  <table style="margin-top:22px">
+    <thead><tr><th>Scenario</th><th>Basic (₹1K)</th><th>Growth (₹2K)</th><th>Premium (₹3K)</th><th>Revenue/Year</th><th>vs Current</th></tr></thead>
+    <tbody>
+      <tr><td>Current</td><td colspan="3" style="color:var(--muted)">30+ plans averaging ₹1,100/mo</td><td class="red">₹2.4 Cr</td><td>—</td></tr>
+      <tr><td>Worst case (all Basic)</td><td>100%</td><td>0%</td><td>0%</td><td class="amber">₹2.16 Cr</td><td class="red">-10%</td></tr>
+      <tr><td>Conservative (60/30/10)</td><td>60%</td><td>30%</td><td>10%</td><td class="green">₹3.24 Cr</td><td class="green">+35%</td></tr>
+      <tr style="background:rgba(16,185,129,.06)"><td style="font-weight:700">Target (40/40/20)</td><td style="font-weight:700">40%</td><td style="font-weight:700">40%</td><td style="font-weight:700">20%</td><td class="green" style="font-weight:700">₹4.32 Cr</td><td class="green" style="font-weight:700">+80%</td></tr>
+      <tr><td>Optimistic (30/40/30)</td><td>30%</td><td>40%</td><td>30%</td><td class="green">₹4.97 Cr</td><td class="green">+107%</td></tr>
+    </tbody>
+  </table>
+  <div class="insight-box green-box" style="margin-top:18px"><p class="green">Even the conservative scenario (60/30/10) gives us a 35% revenue increase from pricing alone. Target (40/40/20) doubles revenue.</p></div>
+</div>
+
+<!-- SLIDE 9: Direct Booking as ARPU Lever -->
+<div class="slide">
+  <span class="slide-num">09 / 12</span>
+  <p class="subtitle">DIRECT BOOKING · The value proposition that sells itself</p>
+  <h1>OTA Commissions: The <span class="red">Hidden Tax</span></h1>
+  <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);margin-top:22px">
+    <div class="kpi"><div class="val" style="color:var(--red)">18–25%</div><div class="lbl">OTA Commission per Booking</div><div class="note">Booking.com, MakeMyTrip, Goibibo</div></div>
+    <div class="kpi"><div class="val" style="color:var(--green)">0%</div><div class="lbl">Direct Booking Commission</div><div class="note">Through our Booking Engine</div></div>
+    <div class="kpi"><div class="val" style="color:var(--blue)">₹2K/mo</div><div class="lbl">Growth Plan Cost</div><div class="note">Includes Booking Engine</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px">
+    <div class="insight-box blue-box" style="margin-top:0"><p>💰 A hotel with 100 bookings/month at ₹2,500 ADR pays OTAs ₹45,000–₹62,500/month. Even shifting 20% to direct saves ₹9,000–₹12,500/month.</p></div>
+    <div class="insight-box green-box" style="margin-top:0"><p class="green">🎯 The upgrade pitch: "Growth plan costs ₹2K/mo. Direct bookings save you ₹10K+/mo. You're making money by upgrading."</p></div>
+  </div>
+</div>
+
+<!-- SLIDE 10: Upsell Engine -->
+<div class="slide">
+  <span class="slide-num">10 / 12</span>
+  <p class="subtitle">UPSELL ENGINE · From 0% to 20%+ upsell rate</p>
+  <h1>Upsell <span class="purple">Triggers</span></h1>
+  <table style="margin-top:22px">
+    <thead><tr><th>Trigger Signal</th><th>Current Tier</th><th>Upsell To</th><th>Pitch</th></tr></thead>
+    <tbody>
+      <tr><td>Hotel paying > ₹10K/mo to OTAs</td><td>Basic</td><td class="green">Growth</td><td>"BE saves you more than the upgrade costs"</td></tr>
+      <tr><td>Hotel has > 30 rooms</td><td>Basic</td><td class="green">Growth</td><td>"Hotels your size get the most from direct bookings"</td></tr>
+      <tr><td>Hotel searches for promotions/coupons</td><td>Basic</td><td class="green">Growth</td><td>"Promotions are available on Growth"</td></tr>
+      <tr><td>Hotel asks about guest database</td><td>Basic</td><td class="green">Growth</td><td>"CRM on Growth tracks every guest and their history"</td></tr>
+      <tr><td>Hotel manages 2+ properties</td><td>Growth</td><td class="purple">Premium</td><td>"Hotel Chain dashboard — see everything in one place"</td></tr>
+      <tr><td>Hotel asks about dynamic pricing</td><td>Growth</td><td class="purple">Premium</td><td>"Auto-adjust rates based on occupancy"</td></tr>
+      <tr><td>Hotel wants loyalty program</td><td>Growth</td><td class="purple">Premium</td><td>"Full membership management with online signup"</td></tr>
+      <tr><td>Hotel has 500+ CRM contacts, no campaigns</td><td>Growth</td><td class="purple">Premium</td><td>"One WhatsApp campaign could fill your next weekend"</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SLIDE 11: Add-on Marketplace -->
+<div class="slide">
+  <span class="slide-num">11 / 12</span>
+  <p class="subtitle">ADD-ON MARKETPLACE · Incremental ARPU beyond tiers</p>
+  <h1>Pay for What You <span class="accent">Need</span></h1>
+  <table style="margin-top:22px">
+    <thead><tr><th>Add-on</th><th>Price (est.)</th><th>Available To</th><th>Value Proposition</th></tr></thead>
+    <tbody>
+      <tr><td>Extra OTA connections (beyond core)</td><td>₹200–500/mo</td><td>All tiers</td><td>Connect to niche or regional OTAs</td></tr>
+      <tr><td>Booking.com Market Insight</td><td>₹300/mo</td><td>Growth+</td><td>Competitive intelligence from Booking.com data</td></tr>
+      <tr><td>Advanced F&B module</td><td>₹500/mo</td><td>Growth+</td><td>Restaurant + kitchen + QR menu management</td></tr>
+      <tr><td>Night audit module</td><td>₹200/mo</td><td>All tiers</td><td>Daily reconciliation for compliance</td></tr>
+      <tr><td>Guest communication pack</td><td>₹300/mo</td><td>Growth+</td><td>WhatsApp business + automated SMS</td></tr>
+      <tr><td>Multi-property (2–5 hotels)</td><td>₹500/mo</td><td>Growth</td><td>For small chains not on Premium</td></tr>
+      <tr><td>Multi-property (6+ hotels)</td><td>₹1K/mo</td><td>Growth</td><td>For larger chains not on Premium</td></tr>
+    </tbody>
+  </table>
+  <div class="insight-box blue-box" style="margin-top:18px"><p>💡 Add-ons increase ARPU by ₹200–₹1K/month per customer without requiring a tier upgrade. At 20% adoption, that's ₹43–₹216L additional ARR.</p></div>
+</div>
+
+<!-- SLIDE 12: Closing -->
+<div class="slide closing">
+  <span class="slide-num">12 / 12</span>
+  <div class="big-quote">The product is <em>already built.</em><br>The customers are <em>already here.</em><br>We just need to <em>price it right.</em></div>
+  <p style="font-size:17px;color:var(--muted);max-width:600px;line-height:1.7">30+ confusing plans become 3 clear tiers. Booking Engine becomes the upgrade driver. Direct bookings become the value proposition. ARPU doubles.</p>
+  <div class="metrics-strip">
+    <div class="metric-chip">ARPU: ₹1.1K → ₹2.5–3K/mo</div>
+    <div class="metric-chip">Plans: 30+ → 3 tiers</div>
+    <div class="metric-chip">Upsell: 0% → 20%+</div>
+    <div class="metric-chip">Revenue: ₹2.4 Cr → ₹4.3–5 Cr</div>
+    <div class="metric-chip">Timeline: Q1–Q2</div>
+  </div>
+</div>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="progressBar"></div>
+<div class="ppt-nav">
+  <button id="prevBtn" onclick="navigate(-1)"><span>←</span> Previous</button>
+  <div class="nav-center"><div class="nav-dots" id="navDots"></div><div class="nav-counter" id="navCounter">1 / 12</div></div>
+  <button id="nextBtn" onclick="navigate(1)">Next <span>→</span></button>
+</div>
+<script>
+const slides=document.querySelectorAll('.slide'),totalSlides=slides.length;let current=0;
+function showSlide(i){slides.forEach(s=>{s.classList.remove('active');s.style.animation='none'});current=Math.max(0,Math.min(i,totalSlides-1));const sl=slides[current];sl.style.animation='none';sl.offsetHeight;sl.style.animation='';sl.classList.add('active');document.getElementById('navCounter').textContent=(current+1)+' / '+totalSlides;document.getElementById('prevBtn').disabled=current===0;document.getElementById('nextBtn').disabled=current===totalSlides-1;document.getElementById('progressBar').style.width=((current+1)/totalSlides*100)+'%';document.querySelectorAll('.nav-dot').forEach((d,j)=>d.classList.toggle('active',j===current))}
+function navigate(d){showSlide(current+d)}
+const dc=document.getElementById('navDots');for(let i=0;i<totalSlides;i++){const d=document.createElement('div');d.className='nav-dot';d.onclick=()=>showSlide(i);dc.appendChild(d)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();navigate(1)}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();navigate(-1)}if(e.key==='Home'){e.preventDefault();showSlide(0)}if(e.key==='End'){e.preventDefault();showSlide(totalSlides-1)}});
+showSlide(0);
+</script>
+</body>
+</html>
