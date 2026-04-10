@@ -7,18 +7,16 @@
 
 ## Product Folders
 
-| #   | Product                          | Folder                   | Tier                                 | ARPU Role                                              |
-| --- | -------------------------------- | ------------------------ | ------------------------------------ | ------------------------------------------------------ |
-| 1   | Channel Manager                  | `01_channel_manager/`    | Basic, Growth, Premium               | Table stakes — gets hotels on OTAs                     |
-| 2   | PMS (Property Management System) | `02_pms/`                | Basic (limited), Premium (full)      | Core ops — upgrade driver to Premium                   |
-| 3   | Booking Engine                   | `03_booking_engine/`     | Growth, Premium                      | #1 ARPU lever — direct bookings, saves OTA commissions |
-| 4   | CRM (Guest Relationship Mgmt)    | `04_crm/`                | Growth, Premium                      | Guest data, repeat bookings, upsell driver             |
-| 5   | Revenue Management               | `05_revenue_management/` | Premium                              | Dynamic pricing — advanced hotels                      |
-| 6   | Booking Desk / Call Center       | `06_booking_desk/`       | TBD                                  | Phone/walk-in booking management                       |
-| 7   | Review Management                | `07_review_management/`  | TBD                                  | OTA review aggregation and response                    |
-| 8   | Payment Gateway                  | `08_payment_gateway/`    | TBD                                  | Direct payment collection                              |
-| 9   | Reports & Analytics              | `09_reports_analytics/`  | Basic (standard), Premium (advanced) | Data visibility — upgrade driver                       |
-| 10  | Mobile App                       | `10_mobile_app/`         | TBD                                  | On-the-go management                                   |
+| #   | Product                          | Folder                |
+| --- | -------------------------------- | --------------------- |
+| 1   | Channel Manager                  | `01_channel_manager/` |
+| 2   | PMS (Property Management System) | `02_pms/`             |
+| 3   | Booking Engine                   | `03_booking_engine/`  |
+| 4   | CRM (Guest Relationship Mgmt)    | `04_crm/`             |
+| 5   | CRS (Central Reservation System) | `05_crs/`             |
+| 6   | Chatbot                          | `06_chatbot/`         |
+| 7   | Reports & Analytics              | `07_reports/`         |
+| 8   | Hotel Chain (Multi-Property)     | `08_hotel_chain/`     |
 
 ---
 

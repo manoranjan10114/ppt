@@ -1,6 +1,6 @@
-# Mobile App
+# Chatbot
 
 > Tier: TBD
-> Role: On-the-go hotel management for owners and staff.
+> Role: AI-powered guest communication, support automation, booking assistance.
 
 Add feature documentation, screenshots, specs, or any related docs to this folder.

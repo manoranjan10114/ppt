@@ -1,6 +1,6 @@
-# Payment Gateway Integration
+# CRS (Central Reservation System)
 
 > Tier: TBD
-> Role: Direct payment collection from guests.
+> Role: Centralized reservation management across channels.
 
 Add feature documentation, screenshots, specs, or any related docs to this folder.

@@ -1,6 +1,6 @@
-# Booking Desk / Call Center Module
+# Reports & Analytics
 
 > Tier: TBD
-> Role: Phone/walk-in booking management.
+> Role: Data visibility, performance tracking, business insights.
 
 Add feature documentation, screenshots, specs, or any related docs to this folder.
