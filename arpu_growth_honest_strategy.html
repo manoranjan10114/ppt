@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARPU Growth — Honest Strategy</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0e1a;
+        --surface: #111827;
+        --border: rgba(255, 255, 255, 0.08);
+        --blue: #06b6d4;
+        --green: #10b981;
+        --red: #f87171;
+        --amber: #fbbf24;
+        --purple: #c084fc;
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        background-image: radial-gradient(
+          ellipse at 50% 0%,
+          rgba(6, 182, 212, 0.04) 0%,
+          transparent 60%
+        );
+        color: var(--text);
+        overflow: hidden;
+        height: 100vh;
+      }
+      .slide {
+        min-height: 100vh;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px 80px 100px;
+        position: relative;
+        overflow: hidden;
+        animation: fadeIn 0.45s ease both;
+      }
+      .slide.active {
+        display: flex;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .slide::before {
+        content: "";
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(6, 182, 212, 0.07) 0%,
+          rgba(192, 132, 252, 0.03) 40%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .slide-num {
+        position: absolute;
+        top: 32px;
+        right: 48px;
+        font-family: "Syne", sans-serif;
+        font-size: 11px;
+        letter-spacing: 3px;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+      h1 {
+        font-family: "Syne", sans-serif;
+        font-size: 50px;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.1;
+        margin-bottom: 8px;
+      }
+      .subtitle {
+        font-size: 18px;
+        color: var(--muted);
+        margin-bottom: 36px;
+        font-weight: 300;
+        letter-spacing: 0.5px;
+      }
+      .accent {
+        color: var(--blue);
+      }
+      .green {
+        color: var(--green);
+      }
+      .red {
+        color: var(--red);
+      }
+      .amber {
+        color: var(--amber);
+      }
+      .purple {
+        color: var(--purple);
+      }
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-top: 16px;
+      }
+      .kpi {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 26px 22px;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .kpi:hover {
+        border-color: rgba(6, 182, 212, 0.25);
+        box-shadow: 0 4px 24px rgba(6, 182, 212, 0.06);
+      }
+      .kpi .val {
+        font-family: "Syne", sans-serif;
+        font-size: 34px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      .kpi .lbl {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .kpi .note {
+        font-size: 12px;
+        margin-top: 6px;
+        color: var(--muted);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 18px;
+      }
+      th {
+        font-family: "Syne", sans-serif;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 10px 14px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+      td {
+        padding: 12px 14px;
+        font-size: 14px;
+        border-bottom: 1px solid var(--border);
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+      tr:hover td {
+        background: rgba(6, 182, 212, 0.03);
+      }
+      .insight-box {
+        background: rgba(248, 113, 113, 0.07);
+        border: 1px solid rgba(248, 113, 113, 0.2);
+        border-radius: 12px;
+        padding: 18px 22px;
+        margin-top: 18px;
+        backdrop-filter: blur(6px);
+      }
+      .insight-box.green-box {
+        background: rgba(16, 185, 129, 0.07);
+        border-color: rgba(16, 185, 129, 0.2);
+      }
+      .insight-box.blue-box {
+        background: rgba(6, 182, 212, 0.07);
+        border-color: rgba(6, 182, 212, 0.2);
+      }
+      .insight-box.amber-box {
+        background: rgba(251, 191, 36, 0.06);
+        border-color: rgba(251, 191, 36, 0.2);
+      }
+      .insight-box.purple-box {
+        background: rgba(192, 132, 252, 0.06);
+        border-color: rgba(192, 132, 252, 0.2);
+      }
+      .insight-box p {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      .pillars {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        margin-top: 18px;
+      }
+      .pillar {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 26px;
+        position: relative;
+        overflow: hidden;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .pillar:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+      .pillar::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+      }
+      .pillar.p1::before {
+        background: linear-gradient(
+          90deg,
+          var(--red),
+          rgba(248, 113, 113, 0.4)
+        );
+      }
+      .pillar.p2::before {
+        background: linear-gradient(
+          90deg,
+          var(--amber),
+          rgba(251, 191, 36, 0.4)
+        );
+      }
+      .pillar.p3::before {
+        background: linear-gradient(
+          90deg,
+          var(--green),
+          rgba(16, 185, 129, 0.4)
+        );
+      }
+      .pillar.p4::before {
+        background: linear-gradient(90deg, var(--blue), rgba(6, 182, 212, 0.4));
+      }
+      .pillar.p5::before {
+        background: linear-gradient(
+          90deg,
+          var(--purple),
+          rgba(192, 132, 252, 0.4)
+        );
+      }
+      .pillar h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 17px;
+        margin-bottom: 14px;
+      }
+      .pillar ul {
+        list-style: none;
+      }
+      .pillar ul li {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 7px;
+        padding-left: 16px;
+        position: relative;
+      }
+      .pillar ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+      }
+      .pillar.p1 ul li::before {
+        color: var(--red);
+      }
+      .pillar.p2 ul li::before {
+        color: var(--amber);
+      }
+      .pillar.p3 ul li::before {
+        color: var(--green);
+      }
+      .pillar.p4 ul li::before {
+        color: var(--blue);
+      }
+      .pillar.p5 ul li::before {
+        color: var(--purple);
+      }
+      .cover {
+        background: linear-gradient(
+          135deg,
+          #0a0e1a 0%,
+          #0f1d35 50%,
+          #151030 100%
+        );
+      }
+      .cover h1 {
+        font-size: 58px;
+      }
+      .cover .tagline {
+        font-size: 20px;
+        color: var(--blue);
+        margin: 10px 0 36px;
+        font-weight: 300;
+      }
+      .closing {
+        background: radial-gradient(
+          ellipse at 60% 50%,
+          #0f1d35 0%,
+          #120e28 40%,
+          var(--bg) 80%
+        );
+      }
+      .big-quote {
+        font-family: "Syne", sans-serif;
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 1.25;
+        max-width: 800px;
+        margin-bottom: 28px;
+      }
+      .big-quote em {
+        font-style: normal;
+        color: var(--blue);
+      }
+      .metrics-strip {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 36px;
+      }
+      .metric-chip {
+        background: rgba(6, 182, 212, 0.06);
+        border: 1px solid rgba(6, 182, 212, 0.15);
+        border-radius: 100px;
+        padding: 8px 20px;
+        font-size: 13px;
+        color: var(--text);
+      }
+      .do-dont {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-top: 22px;
+      }
+      .do-box {
+        background: rgba(16, 185, 129, 0.07);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        border-radius: 14px;
+        padding: 24px;
+      }
+      .dont-box {
+        background: rgba(248, 113, 113, 0.07);
+        border: 1px solid rgba(248, 113, 113, 0.2);
+        border-radius: 14px;
+        padding: 24px;
+      }
+      .do-box h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 16px;
+        color: var(--green);
+        margin-bottom: 14px;
+      }
+      .dont-box h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 16px;
+        color: var(--red);
+        margin-bottom: 14px;
+      }
+      .do-box ul,
+      .dont-box ul {
+        list-style: none;
+      }
+      .do-box ul li {
+        font-size: 13px;
+        color: var(--text);
+        margin-bottom: 8px;
+        padding-left: 18px;
+        position: relative;
+      }
+      .do-box ul li::before {
+        content: "✅";
+        position: absolute;
+        left: 0;
+        font-size: 11px;
+        top: 1px;
+      }
+      .dont-box ul li {
+        font-size: 13px;
+        color: var(--text);
+        margin-bottom: 8px;
+        padding-left: 18px;
+        position: relative;
+      }
+      .dont-box ul li::before {
+        content: "❌";
+        position: absolute;
+        left: 0;
+        font-size: 11px;
+        top: 1px;
+      }
+      .ppt-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: rgba(10, 14, 26, 0.92);
+        backdrop-filter: blur(16px);
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        z-index: 100;
+      }
+      .ppt-nav button {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border);
+        color: var(--text);
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        padding: 8px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .ppt-nav button:hover {
+        background: rgba(6, 182, 212, 0.12);
+        border-color: rgba(6, 182, 212, 0.3);
+      }
+      .ppt-nav button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      .ppt-nav button:disabled:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--border);
+      }
+      .nav-center {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .nav-counter {
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        letter-spacing: 2px;
+        color: var(--muted);
+        min-width: 80px;
+        text-align: center;
+      }
+      .nav-dots {
+        display: flex;
+        gap: 6px;
+      }
+      .nav-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .nav-dot.active {
+        background: var(--blue);
+        box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+        width: 24px;
+        border-radius: 4px;
+      }
+      .nav-dot:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--blue), var(--purple));
+        transition: width 0.4s ease;
+        z-index: 101;
+        border-radius: 0 2px 2px 0;
+      }
+      @media (max-width: 900px) {
+        .slide {
+          padding: 40px 32px 100px;
+        }
+        h1 {
+          font-size: 34px;
+        }
+        .kpi-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .pillars {
+          grid-template-columns: 1fr;
+        }
+        .do-dont {
+          grid-template-columns: 1fr;
+        }
+        .ppt-nav {
+          padding: 0 16px;
+        }
+        .nav-dots {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
+
+<!-- SLIDE 1: Cover -->
+<div class="slide cover">
+  <span class="slide-num">01 / 12</span>
+  <h1>ARPU Growth —<br><span class="accent">The Honest Strategy</span></h1>
+  <p class="tagline">You can't charge more for the same thing. Here's what you actually can do.</p>
+  <div style="display:flex;gap:32px;margin-top:36px">
+    <div class="kpi" style="flex:1;text-align:center"><div class="val" style="color:var(--green)">1,430</div><div class="lbl">Active Paying Customers</div></div>
+    <div class="kpi" style="flex:1;text-align:center"><div class="val" style="color:var(--red)">₹1,100</div><div class="lbl">Average ARPU / Month</div></div>
+    <div class="kpi" style="flex:1;text-align:center"><div class="val" style="color:var(--amber)">₹2,500</div><div class="lbl">Target ARPU / Month</div></div>
+    <div class="kpi" style="flex:1;text-align:center"><div class="val" style="color:var(--blue)">₹1,400</div><div class="lbl">Gap to Close / Customer</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 2: The Hard Truth -->
+<div class="slide">
+  <span class="slide-num">02 / 12</span>
+  <p class="subtitle">THE HARD TRUTH</p>
+  <h1>You <span class="red">Cannot</span> Just Raise Prices</h1>
+  <div class="do-dont">
+    <div class="dont-box">
+      <h3>❌ What Will Cause Churn</h3>
+      <ul>
+        <li>Telling existing customers "same product, new price"</li>
+        <li>Migrating customers to higher tiers for features they already have</li>
+        <li>Breaking grandfathered pricing mid-contract</li>
+        <li>Using "new pricing" as a cover for a price hike on unchanged value</li>
+        <li>Forcing tier migration without showing new value</li>
+      </ul>
+    </div>
+    <div class="do-box">
+      <h3>✅ What Will Actually Work</h3>
+      <ul>
+        <li>Correcting underpaying customers (getting more value than they pay for)</li>
+        <li>Activating unused features they're already paying for</li>
+        <li>Upselling with ROI proof — "upgrade pays for itself"</li>
+        <li>Winning back 6,846 churned accounts (new revenue, not repricing)</li>
+        <li>Converting 48,695 missed leads (new revenue, not repricing)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="insight-box amber-box" style="margin-top:18px">
+    <p style="color:var(--amber)">⚡ The ₹2,500 ARPU target must come from <strong>mix shift</strong> — more customers on Growth/Premium — not from charging existing customers more for the same thing.</p>
+  </div>
+</div>
+
+<!-- SLIDE 3: Where Does ₹1,100 Come From? -->
+<div class="slide">
+  <span class="slide-num">03 / 12</span>
+  <p class="subtitle">UNDERSTANDING THE AVERAGE</p>
+  <h1>₹1,100 Is an <span class="amber">Average</span>, Not a Price</h1>
+  <p style="color:var(--muted);margin-bottom:20px;font-size:16px">The ₹1,100 average almost certainly hides a wide distribution. Before any pricing action, you need this data:</p>
+  <table>
+    <thead><tr><th>Question</th><th>Why It Matters</th><th>Action It Unlocks</th></tr></thead>
+    <tbody>
+      <tr><td>What is each customer's current plan and price?</td><td>Know who's underpaying vs fairly priced</td><td>Pricing correction (not hike)</td></tr>
+      <tr><td>What features does each customer actually use?</td><td>Identify unused value</td><td>Activation → retention → upsell</td></tr>
+      <tr><td>Who has Booking Engine enabled but 0 direct bookings?</td><td>Biggest upsell opportunity</td><td>Show them the OTA savings math</td></tr>
+      <tr><td>Who is on Basic but has 30+ rooms?</td><td>Natural Growth upgrade candidates</td><td>Upsell with ROI proof</td></tr>
+      <tr><td>Who has been on the same plan for 2+ years?</td><td>Ripe for a value conversation</td><td>Upgrade with new features pitch</td></tr>
+      <tr><td>What is the ARPU distribution across 1,430 customers?</td><td>Understand where ₹1,100 comes from</td><td>Identify the real levers</td></tr>
+    </tbody>
+  </table>
+  <div class="insight-box blue-box" style="margin-top:16px"><p>🎯 Run this analysis on your 1,430 customers this week. Everything else depends on it.</p></div>
+</div>
+
+<!-- SLIDE 4: Lever 1 — Pricing Correction -->
+<div class="slide">
+  <span class="slide-num">04 / 12</span>
+  <p class="subtitle">LEVER 1 · Pricing Correction (Not a Price Hike)</p>
+  <h1>Fix the <span class="amber">Pricing Accidents</span></h1>
+  <p style="color:var(--muted);margin-bottom:20px;font-size:16px">Some customers are on old grandfathered plans paying ₹500–₹800/month for features worth ₹2,000+. This is a correction, not a hike.</p>
+  <table>
+    <thead><tr><th>Scenario</th><th>Current Price</th><th>Features They Use</th><th>Fair Price</th><th>Approach</th></tr></thead>
+    <tbody>
+      <tr><td>Using CM + BE + CRM on old plan</td><td class="red">₹800/mo</td><td>Growth-level features</td><td class="green">₹2,000/mo</td><td>Show value received vs price paid. Migrate at renewal.</td></tr>
+      <tr><td>Using CM + PMS + BE on old plan</td><td class="red">₹600/mo</td><td>Growth-level features</td><td class="green">₹2,000/mo</td><td>Same — value conversation at renewal</td></tr>
+      <tr><td>Using only CM on old plan</td><td class="amber">₹900/mo</td><td>Basic-level features</td><td class="green">₹1,000/mo</td><td>Neutral migration — no price change</td></tr>
+      <tr><td>Paying MORE than new tier</td><td class="amber">₹3,500/mo</td><td>Growth-level features</td><td class="green">₹2,000/mo</td><td>Immediate migration — price DROP = goodwill</td></tr>
+    </tbody>
+  </table>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px">
+    <div class="insight-box green-box" style="margin-top:0"><p class="green">✅ Rule: Only migrate at renewal. Never mid-contract. Give 60 days notice. CSM handles every conversation personally.</p></div>
+    <div class="insight-box" style="margin-top:0"><p class="red">❌ Never frame it as "price increase." Frame it as "we've simplified pricing and here's what you get now."</p></div>
+  </div>
+</div>
+
+<!-- SLIDE 5: Lever 2 — Feature Activation -->
+<div class="slide">
+  <span class="slide-num">05 / 12</span>
+  <p class="subtitle">LEVER 2 · Feature Activation (They're Already Paying For It)</p>
+  <h1>They Pay For It. <span class="red">They Don't Use It.</span></h1>
+  <p style="color:var(--muted);margin-bottom:20px;font-size:16px">If a customer is on Growth but has never activated the Booking Engine — that's a CSM failure. Activation = value realization = retention + upsell trigger.</p>
+  <div class="pillars">
+    <div class="pillar p3">
+      <h3 class="green">🎯 Booking Engine Activation</h3>
+      <ul>
+        <li>Pull: how many Growth/Premium customers have BE enabled but 0 direct bookings?</li>
+        <li>CSM calls every one: "I noticed your Booking Engine isn't getting bookings yet. 30-min session and I'll set it up for you."</li>
+        <li>Once active: monthly "You saved ₹[X] in OTA commissions" email</li>
+        <li>This is the #1 retention tool — hotels that use BE never leave</li>
+        <li style="color:var(--green)">Target: 60% activation within 60 days</li>
+      </ul>
+    </div>
+    <div class="pillar p4">
+      <h3 class="accent">📊 CRM Activation</h3>
+      <ul>
+        <li>Pull: how many Growth customers have 0 contacts in CRM?</li>
+        <li>CSM session: "Let me import your guest list and show you how to run a WhatsApp campaign"</li>
+        <li>First campaign result = proof of value = stickiness</li>
+        <li>Hotels using CRM campaigns have 40%+ lower churn (industry data)</li>
+        <li style="color:var(--blue)">Target: 50% CRM activation within 90 days</li>
+      </ul>
+    </div>
+  </div>
+  <div class="insight-box blue-box" style="margin-top:16px"><p>💡 Feature activation doesn't increase ARPU directly — but it dramatically reduces churn, which is the same as increasing revenue. A customer who uses 3+ features churns at 5% vs 30% for single-feature users.</p></div>
+</div>
+
+<!-- SLIDE 6: Lever 3 — Upsell with ROI Proof -->
+<div class="slide">
+  <span class="slide-num">06 / 12</span>
+  <p class="subtitle">LEVER 3 · Upsell with ROI Proof (Not a Sales Pitch)</p>
+  <h1>The Upgrade <span class="green">Pays for Itself</span></h1>
+  <p style="color:var(--muted);margin-bottom:20px;font-size:16px">The only ethical upsell is one where the customer makes more money than they spend. Here's the math that makes it work:</p>
+  <table>
+    <thead><tr><th>Upsell</th><th>From</th><th>To</th><th>Extra Cost</th><th>Value Delivered</th><th>Net to Customer</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Basic → Growth (Booking Engine)</td>
+        <td>₹1K/mo</td>
+        <td>₹2K/mo</td>
+        <td class="red">+₹1K/mo</td>
+        <td>Save 18–25% OTA commissions. Hotel with 50 bookings/mo at ₹2,500 ADR saves ₹22,500–₹31,250/mo</td>
+        <td class="green">+₹21,500–₹30,250/mo net saving</td>
+      </tr>
+      <tr>
+        <td>Basic → Growth (CRM)</td>
+        <td>₹1K/mo</td>
+        <td>₹2K/mo</td>
+        <td class="red">+₹1K/mo</td>
+        <td>Guest database + campaigns. One WhatsApp campaign to 500 past guests = 10 bookings = ₹25,000 revenue</td>
+        <td class="green">+₹24K/mo from one campaign</td>
+      </tr>
+      <tr>
+        <td>Growth → Premium (Hotel Chain)</td>
+        <td>₹2K/mo</td>
+        <td>₹3K/mo</td>
+        <td class="red">+₹1K/mo</td>
+        <td>Multi-property dashboard + rate audit + loyalty program. Saves 2–3 hrs/day of manual reporting</td>
+        <td class="green">Time savings + loyalty revenue</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="insight-box green-box" style="margin-top:16px"><p class="green">🎯 The pitch is never "pay more." It's always "here's how much you'll save/earn — the upgrade pays for itself in the first week."</p></div>
+</div>
+
+<!-- SLIDE 7: Lever 4 — New Revenue (Not Repricing) -->
+<div class="slide">
+  <span class="slide-num">07 / 12</span>
+  <p class="subtitle">LEVER 4 · New Revenue from Existing Databases</p>
+  <h1>₹1.45 Cr from <span class="accent">Zero New Spend</span></h1>
+  <p style="color:var(--muted);margin-bottom:20px;font-size:16px">The fastest path to ARPU growth isn't repricing 1,430 customers — it's adding 800+ new customers from databases we already own.</p>
+  <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)">
+    <div class="kpi">
+      <div class="val" style="color:var(--purple)">6,846</div>
+      <div class="lbl">Churned System Accounts</div>
+      <div class="note">Data already in system. Reactivation = 2 minutes. Target: 316 hotels · ₹57L/year</div>
+    </div>
+    <div class="kpi">
+      <div class="val" style="color:var(--blue)">48,695</div>
+      <div class="lbl">Missed CRM Leads</div>
+      <div class="note">Hotels that showed interest but didn't buy. Target: 487 hotels · ₹88L/year</div>
+    </div>
+    <div class="kpi">
+      <div class="val" style="color:var(--green)">₹1.45 Cr</div>
+      <div class="lbl">Combined Recovery</div>
+      <div class="note">803 new customers · Zero acquisition cost · Q1–Q2</div>
+    </div>
+  </div>
+  <div class="insight-box green-box" style="margin-top:18px"><p class="green">Adding 803 customers at ₹1,500 avg ARPU raises total revenue by ₹1.45 Cr/year — without touching the pricing of a single existing customer.</p></div>
+</div>
+
+<!-- SLIDE 8: Lever 5 — Add-ons -->
+<div class="slide">
+  <span class="slide-num">08 / 12</span>
+  <p class="subtitle">LEVER 5 · Add-on Marketplace (Pay for What You Need)</p>
+  <h1>Incremental Revenue, <span class="green">Zero Resentment</span></h1>
+  <p style="color:var(--muted);margin-bottom:20px;font-size:16px">Add-ons let customers pay for specific features without a tier upgrade. They feel in control. You get incremental ARPU.</p>
+  <table>
+    <thead><tr><th>Add-on</th><th>Price (est.)</th><th>Who Buys It</th><th>Value Proposition</th></tr></thead>
+    <tbody>
+      <tr><td>Extra OTA connections (beyond core)</td><td class="green">₹200–500/mo</td><td>Hotels on niche OTAs (Airbnb, Expedia, regional)</td><td>Connect to more channels without upgrading tier</td></tr>
+      <tr><td>Advanced F&B module (restaurant + kitchen + QR)</td><td class="green">₹500/mo</td><td>Hotels with restaurant/room service</td><td>Full F&B management — orders, KOT, billing</td></tr>
+      <tr><td>Guest communication pack (WhatsApp + SMS)</td><td class="green">₹300/mo</td><td>Hotels wanting automated guest messaging</td><td>Pre-arrival, post-stay, review requests — automated</td></tr>
+      <tr><td>Booking.com Market Insight</td><td class="green">₹300/mo</td><td>Revenue-focused hotels</td><td>Competitor rates, demand data, booking window analysis</td></tr>
+      <tr><td>Multi-property (2–5 hotels)</td><td class="green">₹500/mo</td><td>Small chains not on Premium</td><td>Manage multiple properties without Premium price</td></tr>
+      <tr><td>Night audit module</td><td class="green">₹200/mo</td><td>Hotels needing daily reconciliation</td><td>Compliance + accurate books</td></tr>
+    </tbody>
+  </table>
+  <div class="insight-box blue-box" style="margin-top:14px"><p>💡 At 20% adoption across 1,430 customers, add-ons at avg ₹350/mo = ₹1.2 Cr additional ARR. No tier migration needed.</p></div>
+</div>
+
+<!-- SLIDE 9: The Customer Segmentation You Need -->
+<div class="slide">
+  <span class="slide-num">09 / 12</span>
+  <p class="subtitle">THE DATA YOU NEED FIRST</p>
+  <h1>Segment Your <span class="accent">1,430 Customers</span></h1>
+  <p style="color:var(--muted);margin-bottom:18px;font-size:16px">Run this analysis before any pricing or upsell action. Every lever depends on knowing which bucket each customer is in.</p>
+  <table>
+    <thead><tr><th>Segment</th><th>Criteria</th><th>Est. Size</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--red)">Underpaying for value used</td><td>Using Growth features, paying Basic price</td><td>TBD</td><td>Pricing correction at renewal. CSM conversation.</td></tr>
+      <tr><td style="color:var(--amber)">BE enabled, 0 direct bookings</td><td>Growth/Premium, BE active, 0 direct bookings</td><td>TBD</td><td>Activation campaign. 30-min CSM setup session.</td></tr>
+      <tr><td style="color:var(--amber)">Basic, 30+ rooms, high OTA dependency</td><td>Basic plan, large hotel, OTA-heavy</td><td>TBD</td><td>Upsell to Growth. Show OTA savings math.</td></tr>
+      <tr><td style="color:var(--green)">Growth, using all features, 50+ rooms</td><td>Growth plan, high usage, large hotel</td><td>TBD</td><td>Upsell to Premium. Hotel Chain + loyalty pitch.</td></tr>
+      <tr><td style="color:var(--blue)">Healthy, fairly priced, high usage</td><td>Right tier, using features, paying fair price</td><td>TBD</td><td>Protect. QBR. Add-on upsell only.</td></tr>
+      <tr><td style="color:var(--muted)">Low usage, any tier</td><td>Logged in < 5 times last month</td><td>TBD</td><td>Activation rescue. Health score alert. CSM intervention.</td></tr>
+    </tbody>
+  </table>
+  <div class="insight-box amber-box" style="margin-top:14px"><p style="color:var(--amber)">⚡ This segmentation is the foundation. Without it, you're guessing. With it, every CSM knows exactly what to do with every account.</p></div>
+</div>
+
+<!-- SLIDE 10: The ARPU Growth Roadmap -->
+<div class="slide">
+  <span class="slide-num">10 / 12</span>
+  <p class="subtitle">ARPU GROWTH ROADMAP · In the right order</p>
+  <h1>Do This in <span class="green">This Order</span></h1>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px">
+    <div class="pillar p3" style="padding:22px">
+      <h3 class="green">Q1 — Foundation</h3>
+      <ul>
+        <li>Pull customer segmentation data (plan, price, usage)</li>
+        <li>Identify underpaying customers (pricing correction list)</li>
+        <li>Identify BE-enabled but inactive customers (activation list)</li>
+        <li>Launch system winback campaign (6,846 accounts)</li>
+        <li>Launch CRM lead recovery (48,695 leads)</li>
+        <li>Build health scoring system</li>
+      </ul>
+    </div>
+    <div class="pillar p2" style="padding:22px">
+      <h3 class="amber">Q2 — Activation & Correction</h3>
+      <ul>
+        <li>CSM-led BE activation for all inactive users</li>
+        <li>CRM activation campaigns for Growth customers</li>
+        <li>Pricing correction conversations at renewals</li>
+        <li>Upsell campaigns: Basic → Growth (OTA savings pitch)</li>
+        <li>Add-on marketplace launch</li>
+        <li>Monthly "savings report" emails to BE users</li>
+      </ul>
+    </div>
+    <div class="pillar p4" style="padding:22px">
+      <h3 class="accent">Q3–Q4 — Scale</h3>
+      <ul>
+        <li>Growth → Premium upsell (Hotel Chain + loyalty)</li>
+        <li>Add-on adoption campaigns</li>
+        <li>Thailand + Tier 2/3 expansion (new customers)</li>
+        <li>Annual plan push (2 months free)</li>
+        <li>Loyalty program launch (Premium)</li>
+        <li>Review ARPU distribution quarterly</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 11: Revenue Model — Honest Version -->
+<div class="slide">
+  <span class="slide-num">11 / 12</span>
+  <p class="subtitle">REVENUE MODEL · Realistic, not aspirational</p>
+  <h1>How We Actually Get to <span class="green">₹15–20 Cr</span></h1>
+  <table style="margin-top:22px">
+    <thead><tr><th>Lever</th><th>Mechanism</th><th>Revenue Impact</th><th>Timeline</th></tr></thead>
+    <tbody>
+      <tr><td>Pricing correction (underpaying customers)</td><td>Migrate to fair tier at renewal — not a hike, a correction</td><td class="amber">₹X Cr (depends on data)</td><td>Q2–Q3</td></tr>
+      <tr><td>BE activation → reduced churn</td><td>Activate unused BE → hotels stay longer → LTV increases</td><td class="green">₹1–2 Cr (churn reduction)</td><td>Q1–Q2</td></tr>
+      <tr><td>Basic → Growth upsell (OTA savings)</td><td>Show OTA commission math. Upgrade pays for itself.</td><td class="green">₹1.6 Cr</td><td>Q2–Q3</td></tr>
+      <tr><td>Growth → Premium upsell (chain + loyalty)</td><td>Hotel Chain dashboard + loyalty program for multi-property</td><td class="green">₹X Cr</td><td>Q3–Q4</td></tr>
+      <tr><td>Add-on marketplace (20% adoption)</td><td>F&B, extra OTAs, guest comms, market insight</td><td class="green">₹1.2 Cr</td><td>Q3</td></tr>
+      <tr><td>System winback (6,846 accounts)</td><td>Reactivate churned hotels — data already exists</td><td class="green">₹57L</td><td>Q1–Q2</td></tr>
+      <tr><td>CRM lead recovery (48,695 leads)</td><td>Work the missed leads — already paid to acquire</td><td class="green">₹88L</td><td>Q1–Q2</td></tr>
+      <tr><td>New customer acquisition (Thailand + Tier 2/3)</td><td>Market expansion</td><td class="green">₹3 Cr</td><td>Q2–Q4</td></tr>
+      <tr style="background:rgba(16,185,129,.06)"><td style="font-weight:700">TOTAL</td><td></td><td class="green" style="font-weight:700">₹8–12 Cr (Year 1) → ₹15–20 Cr (Year 2)</td><td style="font-weight:700">FY 2026–27</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SLIDE 12: Closing -->
+<div class="slide closing">
+  <span class="slide-num">12 / 12</span>
+  <div class="big-quote">Don't charge more for the <em>same thing.</em><br>Deliver more value,<br>then charge for <em>the new value.</em></div>
+  <p style="font-size:17px;color:var(--muted);max-width:640px;line-height:1.7">The path to ₹2,500 ARPU is not a price hike. It's activating unused features, correcting pricing accidents, upselling with ROI proof, and adding 800+ new customers from databases we already own.</p>
+  <div class="metrics-strip">
+    <div class="metric-chip">1,430 customers — don't reprice, activate</div>
+    <div class="metric-chip">6,846 system accounts — reactivate</div>
+    <div class="metric-chip">48,695 leads — convert</div>
+    <div class="metric-chip">ARPU: ₹1.1K → ₹2.5K via mix shift</div>
+    <div class="metric-chip">Target: ₹15–20 Cr by FY 2026–27</div>
+  </div>
+</div>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="ppt-nav">
+  <button id="prevBtn" onclick="navigate(-1)"><span>←</span> Previous</button>
+  <div class="nav-center"><div class="nav-dots" id="navDots"></div><div class="nav-counter" id="navCounter">1 / 12</div></div>
+  <button id="nextBtn" onclick="navigate(1)">Next <span>→</span></button>
+</div>
+<script>
+const slides=document.querySelectorAll('.slide'),totalSlides=slides.length;let current=0;
+function showSlide(i){slides.forEach(s=>{s.classList.remove('active');s.style.animation='none'});current=Math.max(0,Math.min(i,totalSlides-1));const sl=slides[current];sl.style.animation='none';sl.offsetHeight;sl.style.animation='';sl.classList.add('active');document.getElementById('navCounter').textContent=(current+1)+' / '+totalSlides;document.getElementById('prevBtn').disabled=current===0;document.getElementById('nextBtn').disabled=current===totalSlides-1;document.getElementById('progressBar').style.width=((current+1)/totalSlides*100)+'%';document.querySelectorAll('.nav-dot').forEach((d,j)=>d.classList.toggle('active',j===current))}
+function navigate(d){showSlide(current+d)}
+const dc=document.getElementById('navDots');for(let i=0;i<totalSlides;i++){const d=document.createElement('div');d.className='nav-dot';d.onclick=()=>showSlide(i);dc.appendChild(d)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();navigate(1)}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();navigate(-1)}if(e.key==='Home'){e.preventDefault();showSlide(0)}if(e.key==='End'){e.preventDefault();showSlide(totalSlides-1)}});
+showSlide(0);
+</script>
+</body>
+</html>
