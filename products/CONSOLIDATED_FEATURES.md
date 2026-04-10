@@ -2,7 +2,7 @@
 
 > Rewritten from developer documentation into business-value language.
 > Use this for: pricing decisions, sales collateral, upsell playbooks, competitive positioning.
-> Products covered: Channel Manager (Extranet), Booking Engine, PMS (Mobile), Hotel Chain
+> Products covered: Channel Manager (Extranet), Booking Engine, PMS (Mobile), Hotel Chain, CRM
 
 ---
 
@@ -458,22 +458,181 @@ A centralized dashboard for hotel chains and management companies. Monitor all y
 
 ---
 
+---
+
+## PRODUCT 5: CRM (Customer Relationship Management)
+
+_Know every guest. Track every enquiry. Close every deal. Build loyalty that lasts._
+
+### What It Does (Elevator Pitch)
+
+A complete guest relationship platform for hotels. Manage contacts, track enquiries from first call to booking, run marketing campaigns (email, SMS, WhatsApp), handle guest tickets, and build a loyalty/membership program — all from one dashboard.
+
+### Feature Categories
+
+#### 5.1 Contact & Guest Database
+
+| Feature                                                                      | Business Value                                                                       |
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Centralized contact database with search, filter, and pagination             | Every guest, corporate contact, and travel agent in one place — never lose a lead    |
+| Contact profiles with full history (bookings, notes, documents, memberships) | Know everything about a guest before they arrive — personalize their experience      |
+| Contact groups (create, manage, add/remove members)                          | Segment your guests (VIPs, corporates, repeat guests) for targeted communication     |
+| Import contacts from Excel                                                   | Migrate your existing guest database in minutes                                      |
+| Bulk update contacts via file upload                                         | Update hundreds of contacts at once — no manual editing                              |
+| Export contacts to CSV                                                       | Download your guest data for analysis or external tools                              |
+| Email and phone verification badges                                          | Know which contact details are valid — don't waste time on bad data                  |
+| Contact type categorization (Guest, Corporate, Agent, etc.)                  | Organize contacts by relationship type for different treatment                       |
+| Source tracking (where the contact came from)                                | Know which channels bring you the best guests                                        |
+| Affiliation tracking                                                         | Track corporate affiliations for B2B sales                                           |
+| Custom fields                                                                | Add any data point specific to your hotel (preferences, allergies, room preferences) |
+| Document management per contact (upload, preview, download)                  | Store ID copies, contracts, and agreements linked to the guest                       |
+| Profile picture with crop and compression                                    | Put a face to every name                                                             |
+
+#### 5.2 Enquiry & Lead Management
+
+| Feature                                                                                  | Business Value                                                                      |
+| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Enquiry dashboard with status cards (Unattended, In Conversation, Converted, Lost, Junk) | See your sales pipeline at a glance — how many leads are active, how many are stuck |
+| Enquiry aging indicator (green < 4 days, yellow 4–7 days, red > 7 days)                  | Spot stale leads before they go cold — color-coded urgency                          |
+| Room booking enquiry details (check-in/out, nights, adults, children, rooms)             | Full context on what the guest wants — no back-and-forth                            |
+| Banquet/event enquiry details (event date, pax, occasion)                                | Handle event enquiries alongside room enquiries in one system                       |
+| Start interaction from enquiry (moves to "In Conversation")                              | One click to begin working a lead — tracks the full journey                         |
+| Quotation management (create, edit, send, PDF generation)                                | Send professional quotes directly from the CRM — no separate tools needed           |
+| Enquiry analytics (conversion by user, revenue by user, type breakdown)                  | Know which sales staff converts the most and generates the most revenue             |
+| Revenue summary table per user                                                           | Performance transparency — who's bringing in the money                              |
+| Follow-up date tracking                                                                  | Never forget to follow up — the system reminds you                                  |
+| Source and type filters                                                                  | Quickly find enquiries from specific channels or of specific types                  |
+
+#### 5.3 Interaction Tracking
+
+| Feature                                                                            | Business Value                                                                 |
+| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Interaction list with open/closed toggle                                           | Track every conversation with every guest or lead                              |
+| Category filters (Pending Today, Pending Since Few Days, Not Scheduled, Scheduled) | Prioritize your day — see what needs attention right now                       |
+| Interaction notes (view and add)                                                   | Full conversation history — any team member can pick up where another left off |
+| Close interaction with status (Converted / Not Converted)                          | Track outcomes — did the interaction lead to a booking?                        |
+| Agent filter                                                                       | See interactions by team member — manage workload                              |
+| IVR click-to-call integration                                                      | Call a guest directly from the CRM with one click                              |
+
+#### 5.4 Ticket Management (Guest Issues)
+
+| Feature                                                           | Business Value                                                            |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Ticket system with department, category, priority, and assignment | Track every guest complaint or request — nothing falls through the cracks |
+| Ticket timeline (full history of status changes)                  | See the complete story of how an issue was handled                        |
+| Real-time updates via Server-Sent Events (SSE)                    | Tickets update live — no page refresh needed                              |
+| Filter by status, department, priority, type, date range          | Find any ticket instantly                                                 |
+| Raise ticket from dynamic forms                                   | Guests can submit issues through custom forms on your website             |
+| Public ticket status check page                                   | Guests can check their ticket status without calling you                  |
+
+#### 5.5 Membership & Loyalty Program
+
+| Feature                                                        | Business Value                                                               |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Membership dashboard (active, pending requests, expiring soon) | Manage your loyalty program from one screen                                  |
+| Membership programs with tiers, fees, validity, and benefits   | Create tiered loyalty programs (Silver, Gold, Platinum) with different perks |
+| Online membership application (public form with payment)       | Guests can apply and pay for membership online — zero manual work            |
+| Approve/reject membership requests with remarks                | Control who gets in — with full audit trail                                  |
+| Auto-calculate fees (base + 18% tax) and expiry dates          | No manual math — the system handles pricing and dates                        |
+| Active and expired membership tracking                         | Know who's current and who needs renewal                                     |
+| Membership receipt printing                                    | Professional receipts for paid memberships                                   |
+| Membership analytics (by type, affiliation, age, timeline)     | Understand your loyalty program's health and growth                          |
+| Membership badge on contact profile                            | Instantly see if a guest is a member when viewing their profile              |
+| Excel export of membership data                                | Download for analysis or reporting                                           |
+| Collection reports with date range                             | Track membership revenue over time                                           |
+
+#### 5.6 Marketing Campaigns
+
+| Feature                                     | Business Value                                                      |
+| ------------------------------------------- | ------------------------------------------------------------------- |
+| Email campaigns (create, send, track)       | Send promotional emails to your guest database                      |
+| SMS campaigns                               | Reach guests via text message                                       |
+| WhatsApp campaigns with template management | Send WhatsApp messages at scale — the channel guests actually read  |
+| Campaign analytics (delivery logs)          | Track who received your messages                                    |
+| Contact/group selection for targeting       | Send campaigns to specific segments (VIPs, corporates, past guests) |
+| Template management (create, reuse)         | Build once, send many times                                         |
+
+#### 5.7 Marketing Tools
+
+| Feature                                                      | Business Value                                                   |
+| ------------------------------------------------------------ | ---------------------------------------------------------------- |
+| QR code generator (URL, WhatsApp, PDF, YouTube, Image)       | Create QR codes for menus, promotions, feedback forms — anything |
+| QR code scan analytics (time, IP, device, browser, location) | Know who scanned your QR codes, when, and where                  |
+| QR code with custom logo                                     | Branded QR codes that match your hotel's identity                |
+| Download QR as PNG                                           | Print-ready QR codes for tent cards, posters, and collateral     |
+
+#### 5.8 Guest Connect (Guest-Facing Portal)
+
+| Feature                                     | Business Value                                                                       |
+| ------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Public guest page with multiple templates   | A branded page for guests to see services, offers, and activities                    |
+| Services, offers, and activities management | Showcase what your hotel offers — drive upsell before arrival                        |
+| Welcome modal for guests                    | Greet guests digitally when they access your portal                                  |
+| Dynamic form builder (drag-and-drop)        | Create custom forms for feedback, requests, or data collection — no developer needed |
+| Form submissions tracking                   | See all responses in one place                                                       |
+
+#### 5.9 IVR (Phone System Integration)
+
+| Feature                           | Business Value                                |
+| --------------------------------- | --------------------------------------------- |
+| IVR dashboard and call management | Manage your hotel's phone system from the CRM |
+| Click-to-call from any contact    | Call a guest with one click — no dialing      |
+| IVR user management               | Control which staff can make/receive calls    |
+
+#### 5.10 Calendar & Reminders
+
+| Feature                             | Business Value                                                 |
+| ----------------------------------- | -------------------------------------------------------------- |
+| Calendar view with reminders        | See all follow-ups and tasks on a calendar — never miss a date |
+| Reminder details with customer info | Know who to call and why, at a glance                          |
+
+#### 5.11 Organisation Management
+
+| Feature                        | Business Value                                             |
+| ------------------------------ | ---------------------------------------------------------- |
+| Organisation/company database  | Track corporate accounts separately from individual guests |
+| Link contacts to organisations | See all contacts from a company in one view                |
+
+#### 5.12 User & Agent Management
+
+| Feature                                          | Business Value                                          |
+| ------------------------------------------------ | ------------------------------------------------------- |
+| Agent/user management with department assignment | Add your sales and front desk team to the CRM           |
+| Role-based access (Admin vs Agent)               | Agents see only what they need — admins see everything  |
+| Customer assignment to agents                    | Distribute leads and accounts across your team          |
+| Active/inactive user toggle                      | Deactivate staff who leave without losing their history |
+
+#### 5.13 Integrations
+
+| Feature                            | Business Value                                    |
+| ---------------------------------- | ------------------------------------------------- |
+| Email mailer setup (for campaigns) | Connect your email provider for campaign delivery |
+| TeleCMI IVR integration            | Connect your phone system for click-to-call       |
+| MSG91 / Interakt messaging setup   | Connect SMS and WhatsApp providers for campaigns  |
+| Firebase push notifications        | Send push notifications to staff devices          |
+
+---
+
 ## CROSS-PRODUCT CAPABILITIES
 
-| Capability                | Products                                                       | Business Value                                               |
-| ------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------ |
-| Multi-property management | Extranet + Hotel Chain                                         | Manage 1 or 100 hotels from one account                      |
-| OTA connectivity          | Extranet (manages) + Hotel Chain (monitors)                    | Full distribution control and visibility                     |
-| Direct booking            | Booking Engine + Extranet (manages BE)                         | Drive direct bookings, save OTA commissions                  |
-| Inventory sync            | Extranet + PMS (mobile)                                        | Update availability from desktop or phone                    |
-| Rate management           | Extranet + PMS (mobile) + Hotel Chain (audits)                 | Set rates anywhere, audit from chain level                   |
-| Booking management        | Extranet + PMS (mobile)                                        | Manage bookings from desktop or phone                        |
-| Front office operations   | Extranet + PMS (mobile)                                        | Check-in, check-out, billing from either platform            |
-| Analytics & reporting     | Extranet + Hotel Chain + PMS                                   | Performance data at property and chain level                 |
-| Payment collection        | Extranet + Booking Engine + PMS                                | Collect payments online, at front desk, or via payment links |
-| AI features               | Extranet (Aura AI, content generation) + PMS (Aura AI chatbot) | AI-powered assistance across platforms                       |
-| Promotions & coupons      | Extranet + Booking Engine                                      | Run promotions across OTAs and direct channels               |
-| Guest communication       | Booking Engine (chat, WhatsApp) + PMS (SMS, feedback)          | Engage guests before, during, and after their stay           |
+| Capability                | Products                                                                | Business Value                                               |
+| ------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------ |
+| Multi-property management | Extranet + Hotel Chain                                                  | Manage 1 or 100 hotels from one account                      |
+| OTA connectivity          | Extranet (manages) + Hotel Chain (monitors)                             | Full distribution control and visibility                     |
+| Direct booking            | Booking Engine + Extranet (manages BE)                                  | Drive direct bookings, save OTA commissions                  |
+| Inventory sync            | Extranet + PMS (mobile)                                                 | Update availability from desktop or phone                    |
+| Rate management           | Extranet + PMS (mobile) + Hotel Chain (audits)                          | Set rates anywhere, audit from chain level                   |
+| Booking management        | Extranet + PMS (mobile)                                                 | Manage bookings from desktop or phone                        |
+| Front office operations   | Extranet + PMS (mobile)                                                 | Check-in, check-out, billing from either platform            |
+| Analytics & reporting     | Extranet + Hotel Chain + PMS                                            | Performance data at property and chain level                 |
+| Payment collection        | Extranet + Booking Engine + PMS                                         | Collect payments online, at front desk, or via payment links |
+| AI features               | Extranet (Aura AI, content generation) + PMS (Aura AI chatbot)          | AI-powered assistance across platforms                       |
+| Promotions & coupons      | Extranet + Booking Engine                                               | Run promotions across OTAs and direct channels               |
+| Guest communication       | Booking Engine (chat, WhatsApp) + PMS (SMS, feedback) + CRM (campaigns) | Engage guests before, during, and after their stay           |
+| Guest database & loyalty  | CRM (contacts, memberships, groups, profiles)                           | Know every guest, build loyalty, drive repeat bookings       |
+| Lead/enquiry management   | CRM (enquiry pipeline, quotations, interactions)                        | Track every lead from first call to booking                  |
+| Marketing campaigns       | CRM (email, SMS, WhatsApp campaigns + QR codes)                         | Reach your guest database with targeted promotions           |
+| Ticket/issue management   | CRM (tickets with departments, priorities, timeline)                    | Track and resolve every guest complaint                      |
 
 ---
 
@@ -510,6 +669,12 @@ Everything in Basic + Booking Engine + CRM. The tier that saves OTA commissions.
 | Analytics plugins (GA, GTM, Facebook Pixel, Clarity)         | Booking Engine |
 | WhatsApp + live chat integration                             | Booking Engine |
 | Review management (Google, Booking.com, Airbnb)              | Extranet       |
+| CRM — Contact database + guest profiles                      | CRM            |
+| CRM — Enquiry/lead management with pipeline                  | CRM            |
+| CRM — Interaction tracking                                   | CRM            |
+| CRM — Ticket management (guest issues)                       | CRM            |
+| CRM — QR code generator + scan analytics                     | CRM            |
+| CRM — Calendar & reminders                                   | CRM            |
 | Priority support (chat + phone)                              | Extranet       |
 | PMS Mobile — Full (housekeeping, F&B, finance, all reports)  | PMS            |
 | AI health alerts                                             | Extranet       |
@@ -533,6 +698,13 @@ Everything in Growth + Hotel Chain + advanced features.
 | API access                                            | Extranet       |
 | Aura AI assistant                                     | Extranet + PMS |
 | AI content generation                                 | Extranet       |
+| CRM — Membership & loyalty program management         | CRM            |
+| CRM — Marketing campaigns (email, SMS, WhatsApp)      | CRM            |
+| CRM — Guest Connect portal (guest-facing page)        | CRM            |
+| CRM — Enquiry analytics & revenue reports             | CRM            |
+| CRM — Dynamic form builder                            | CRM            |
+| CRM — Organisation/corporate account management       | CRM            |
+| CRM — IVR phone system integration                    | CRM            |
 
 ### Potential Add-ons (Marketplace)
 
@@ -550,33 +722,42 @@ Everything in Growth + Hotel Chain + advanced features.
 
 ## UPSELL TRIGGERS (Based on Feature Analysis)
 
-| Trigger Signal                                     | Current Tier | Upsell To             | Pitch                                                                            |
-| -------------------------------------------------- | ------------ | --------------------- | -------------------------------------------------------------------------------- |
-| Hotel paying > ₹10K/mo to OTAs                     | Basic        | Growth                | "Your Booking Engine will save you more than the upgrade costs"                  |
-| Hotel searches for "coupon" or "promotion" in help | Basic        | Growth                | "Promotions are available on Growth — drive more bookings"                       |
-| Hotel has > 30 rooms                               | Basic        | Growth                | "Hotels your size get the most value from direct bookings"                       |
-| Hotel uses all Growth features + has 50+ rooms     | Growth       | Premium               | "Premium gives you chain-level analytics and a dedicated CSM"                    |
-| Hotel manages 2+ properties                        | Growth       | Premium               | "Hotel Chain dashboard lets you see everything in one place"                     |
-| Hotel asks about dynamic pricing                   | Growth       | Premium               | "Dynamic pricing is available on Premium — auto-adjust rates based on occupancy" |
-| Hotel has high F&B revenue potential               | Basic/Growth | F&B Add-on            | "Our restaurant module handles orders, kitchen tickets, and billing"             |
-| Hotel asks about competitor rates                  | Any          | Market Insight Add-on | "Booking.com Market Insight shows you competitor pricing and demand data"        |
+| Trigger Signal                                         | Current Tier | Upsell To                            | Pitch                                                                                          |
+| ------------------------------------------------------ | ------------ | ------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| Hotel paying > ₹10K/mo to OTAs                         | Basic        | Growth                               | "Your Booking Engine will save you more than the upgrade costs"                                |
+| Hotel searches for "coupon" or "promotion" in help     | Basic        | Growth                               | "Promotions are available on Growth — drive more bookings"                                     |
+| Hotel has > 30 rooms                                   | Basic        | Growth                               | "Hotels your size get the most value from direct bookings"                                     |
+| Hotel uses all Growth features + has 50+ rooms         | Growth       | Premium                              | "Premium gives you chain-level analytics and a dedicated CSM"                                  |
+| Hotel manages 2+ properties                            | Growth       | Premium                              | "Hotel Chain dashboard lets you see everything in one place"                                   |
+| Hotel asks about dynamic pricing                       | Growth       | Premium                              | "Dynamic pricing is available on Premium — auto-adjust rates based on occupancy"               |
+| Hotel has high F&B revenue potential                   | Basic/Growth | F&B Add-on                           | "Our restaurant module handles orders, kitchen tickets, and billing"                           |
+| Hotel asks about competitor rates                      | Any          | Market Insight Add-on                | "Booking.com Market Insight shows you competitor pricing and demand data"                      |
+| Hotel asks about guest database or repeat guests       | Basic        | Growth                               | "CRM on Growth lets you track every guest, their history, and send targeted campaigns"         |
+| Hotel wants to send WhatsApp/SMS to past guests        | Basic/Growth | Growth (if Basic) or Campaign Add-on | "Our CRM has built-in WhatsApp, SMS, and email campaigns — reach your guests directly"         |
+| Hotel asks about loyalty or membership program         | Growth       | Premium                              | "Premium includes full membership & loyalty management — tiers, fees, benefits, online signup" |
+| Hotel has 500+ contacts in CRM with no campaigns       | Growth       | Campaign upsell                      | "You have 500+ guests in your database — one WhatsApp campaign could fill your next weekend"   |
+| Hotel tracks enquiries manually (spreadsheet/notebook) | Basic        | Growth                               | "CRM tracks every enquiry from first call to booking — with aging alerts so no lead goes cold" |
 
 ---
 
 ## COMPETITIVE DIFFERENTIATORS (Based on Feature Analysis)
 
-| Differentiator                           | What We Have                                              | What Most Competitors Don't             |
-| ---------------------------------------- | --------------------------------------------------------- | --------------------------------------- |
-| Booking Engine with OTA price comparison | Shows guests they're getting a better deal booking direct | Most CMs don't have a BE, or it's basic |
-| Full PMS on mobile (not just a viewer)   | Check-in, housekeeping, F&B, billing — all from phone     | Most PMS apps are read-only dashboards  |
-| Hotel Chain dashboard                    | Multi-property analytics with rate audit                  | Usually a separate expensive product    |
-| One-click OTA setup                      | Auto-imports hotel details from existing OTA listing      | Most require manual setup per OTA       |
-| AI assistant (Aura)                      | Built-in AI for content generation and support            | Rare in this price segment              |
-| Day outing / package booking             | Monetize non-room revenue through the booking engine      | Most BEs only handle room bookings      |
-| QR code check-in                         | Contactless check-in from guest's phone                   | Usually requires expensive hardware     |
-| Night audit on mobile                    | Daily reconciliation from your phone                      | Typically desktop-only feature          |
+| Differentiator                           | What We Have                                                                     | What Most Competitors Don't             |
+| ---------------------------------------- | -------------------------------------------------------------------------------- | --------------------------------------- |
+| Booking Engine with OTA price comparison | Shows guests they're getting a better deal booking direct                        | Most CMs don't have a BE, or it's basic |
+| Full PMS on mobile (not just a viewer)   | Check-in, housekeeping, F&B, billing — all from phone                            | Most PMS apps are read-only dashboards  |
+| Hotel Chain dashboard                    | Multi-property analytics with rate audit                                         | Usually a separate expensive product    |
+| One-click OTA setup                      | Auto-imports hotel details from existing OTA listing                             | Most require manual setup per OTA       |
+| AI assistant (Aura)                      | Built-in AI for content generation and support                                   | Rare in this price segment              |
+| Day outing / package booking             | Monetize non-room revenue through the booking engine                             | Most BEs only handle room bookings      |
+| QR code check-in                         | Contactless check-in from guest's phone                                          | Usually requires expensive hardware     |
+| Night audit on mobile                    | Daily reconciliation from your phone                                             | Typically desktop-only feature          |
+| Built-in CRM with campaigns              | Guest database + enquiry pipeline + email/SMS/WhatsApp campaigns in one platform | Most CMs require a separate CRM tool    |
+| Membership/loyalty program built-in      | Create tiered loyalty programs with online signup and payment                    | Usually a separate expensive product    |
+| Enquiry pipeline with aging alerts       | Track leads from first call to booking with color-coded urgency                  | Most hotel CRMs are just contact lists  |
+| QR code generator with scan analytics    | Create branded QR codes and track who scans them, when, where                    | Rarely included in hotel software       |
 
 ---
 
-> **Next steps:** Add feature docs for CRM, CRS, Chatbot, and Reports to complete the picture.
+> **Next steps:** Add feature docs for CRS, Chatbot, and Reports to complete the picture.
 > Once all 8 products are documented, we'll finalize the tier mapping and build the upsell playbook with exact scripts per trigger.
