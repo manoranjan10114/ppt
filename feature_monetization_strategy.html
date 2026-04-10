@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feature Monetization Strategy</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0e1a;
+        --surface: #111827;
+        --border: rgba(255, 255, 255, 0.08);
+        --blue: #06b6d4;
+        --green: #10b981;
+        --red: #f87171;
+        --amber: #fbbf24;
+        --purple: #c084fc;
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        background-image: radial-gradient(
+          ellipse at 50% 0%,
+          rgba(6, 182, 212, 0.04) 0%,
+          transparent 60%
+        );
+        color: var(--text);
+        overflow: hidden;
+        height: 100vh;
+      }
+      .slide {
+        min-height: 100vh;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px 80px 100px;
+        position: relative;
+        overflow: hidden;
+        animation: fadeIn 0.45s ease both;
+      }
+      .slide.active {
+        display: flex;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .slide::before {
+        content: "";
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(6, 182, 212, 0.07) 0%,
+          rgba(192, 132, 252, 0.03) 40%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .slide-num {
+        position: absolute;
+        top: 32px;
+        right: 48px;
+        font-family: "Syne", sans-serif;
+        font-size: 11px;
+        letter-spacing: 3px;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+      h1 {
+        font-family: "Syne", sans-serif;
+        font-size: 48px;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.1;
+        margin-bottom: 8px;
+      }
+      .subtitle {
+        font-size: 17px;
+        color: var(--muted);
+        margin-bottom: 32px;
+        font-weight: 300;
+        letter-spacing: 0.5px;
+      }
+      .accent {
+        color: var(--blue);
+      }
+      .green {
+        color: var(--green);
+      }
+      .red {
+        color: var(--red);
+      }
+      .amber {
+        color: var(--amber);
+      }
+      .purple {
+        color: var(--purple);
+      }
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-top: 16px;
+      }
+      .kpi {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 22px 18px;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .kpi:hover {
+        border-color: rgba(6, 182, 212, 0.25);
+        box-shadow: 0 4px 24px rgba(6, 182, 212, 0.06);
+      }
+      .kpi .val {
+        font-family: "Syne", sans-serif;
+        font-size: 30px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      .kpi .lbl {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .kpi .note {
+        font-size: 11px;
+        margin-top: 5px;
+        color: var(--muted);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 16px;
+      }
+      th {
+        font-family: "Syne", sans-serif;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 9px 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+      td {
+        padding: 10px 12px;
+        font-size: 13px;
+        border-bottom: 1px solid var(--border);
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+      tr:hover td {
+        background: rgba(6, 182, 212, 0.03);
+      }
+      .insight-box {
+        background: rgba(248, 113, 113, 0.07);
+        border: 1px solid rgba(248, 113, 113, 0.2);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-top: 16px;
+        backdrop-filter: blur(6px);
+      }
+      .insight-box.green-box {
+        background: rgba(16, 185, 129, 0.07);
+        border-color: rgba(16, 185, 129, 0.2);
+      }
+      .insight-box.blue-box {
+        background: rgba(6, 182, 212, 0.07);
+        border-color: rgba(6, 182, 212, 0.2);
+      }
+      .insight-box.amber-box {
+        background: rgba(251, 191, 36, 0.06);
+        border-color: rgba(251, 191, 36, 0.2);
+      }
+      .insight-box.purple-box {
+        background: rgba(192, 132, 252, 0.06);
+        border-color: rgba(192, 132, 252, 0.2);
+      }
+      .insight-box p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+      .cover {
+        background: linear-gradient(
+          135deg,
+          #0a0e1a 0%,
+          #0f1d35 50%,
+          #151030 100%
+        );
+      }
+      .cover h1 {
+        font-size: 56px;
+      }
+      .cover .tagline {
+        font-size: 19px;
+        color: var(--blue);
+        margin: 10px 0 32px;
+        font-weight: 300;
+      }
+      .closing {
+        background: radial-gradient(
+          ellipse at 60% 50%,
+          #0f1d35 0%,
+          #120e28 40%,
+          var(--bg) 80%
+        );
+      }
+      .big-quote {
+        font-family: "Syne", sans-serif;
+        font-size: 34px;
+        font-weight: 800;
+        line-height: 1.25;
+        max-width: 800px;
+        margin-bottom: 24px;
+      }
+      .big-quote em {
+        font-style: normal;
+        color: var(--blue);
+      }
+      .metrics-strip {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 32px;
+      }
+      .metric-chip {
+        background: rgba(6, 182, 212, 0.06);
+        border: 1px solid rgba(6, 182, 212, 0.15);
+        border-radius: 100px;
+        padding: 7px 18px;
+        font-size: 12px;
+        color: var(--text);
+      }
+      .price-tag {
+        display: inline-block;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 6px;
+        padding: 2px 10px;
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--green);
+      }
+      .free-tag {
+        display: inline-block;
+        background: rgba(6, 182, 212, 0.1);
+        border: 1px solid rgba(6, 182, 212, 0.25);
+        border-radius: 6px;
+        padding: 2px 10px;
+        font-family: "Syne", sans-serif;
+        font-size: 12px;
+        color: var(--blue);
+      }
+      .frozen-tag {
+        display: inline-block;
+        background: rgba(251, 191, 36, 0.1);
+        border: 1px solid rgba(251, 191, 36, 0.25);
+        border-radius: 6px;
+        padding: 2px 10px;
+        font-family: "Syne", sans-serif;
+        font-size: 12px;
+        color: var(--amber);
+      }
+      .ppt-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: rgba(10, 14, 26, 0.92);
+        backdrop-filter: blur(16px);
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        z-index: 100;
+      }
+      .ppt-nav button {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border);
+        color: var(--text);
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        padding: 8px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .ppt-nav button:hover {
+        background: rgba(6, 182, 212, 0.12);
+        border-color: rgba(6, 182, 212, 0.3);
+      }
+      .ppt-nav button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      .ppt-nav button:disabled:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--border);
+      }
+      .nav-center {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .nav-counter {
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        letter-spacing: 2px;
+        color: var(--muted);
+        min-width: 80px;
+        text-align: center;
+      }
+      .nav-dots {
+        display: flex;
+        gap: 6px;
+      }
+      .nav-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .nav-dot.active {
+        background: var(--blue);
+        box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+        width: 24px;
+        border-radius: 4px;
+      }
+      .nav-dot:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--blue), var(--purple));
+        transition: width 0.4s ease;
+        z-index: 101;
+        border-radius: 0 2px 2px 0;
+      }
+      @media (max-width: 900px) {
+        .slide {
+          padding: 40px 32px 100px;
+        }
+        h1 {
+          font-size: 32px;
+        }
+        .kpi-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ppt-nav {
+          padding: 0 16px;
+        }
+        .nav-dots {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SLIDE 1: Cover -->
+    <div class="slide cover">
+      <span class="slide-num">01 / 10</span>
+      <h1>Feature<br /><span class="accent">Monetization</span></h1>
+      <p class="tagline">
+        Freeze what they have. Charge for what they add. Zero resentment. ₹2.5
+        Cr upside.
+      </p>
+      <div style="display: flex; gap: 28px; margin-top: 32px">
+        <div class="kpi" style="flex: 1; text-align: center">
+          <div class="val" style="color: var(--green)">1,430</div>
+          <div class="lbl">Active Customers</div>
+        </div>
+        <div class="kpi" style="flex: 1; text-align: center">
+          <div class="val" style="color: var(--amber)">₹1,100</div>
+          <div class="lbl">Current ARPU</div>
+        </div>
+        <div class="kpi" style="flex: 1; text-align: center">
+          <div class="val" style="color: var(--blue)">₹0</div>
+          <div class="lbl">Price Increase on Existing Usage</div>
+        </div>
+        <div class="kpi" style="flex: 1; text-align: center">
+          <div class="val" style="color: var(--green)">₹2.5 Cr</div>
+          <div class="lbl">Estimated Additional ARR</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: The Model -->
+    <div class="slide">
+      <span class="slide-num">02 / 10</span>
+      <p class="subtitle">THE MODEL</p>
+      <h1>Freeze. Then <span class="green">Monetize Growth.</span></h1>
+      <div
+        style="
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 16px;
+          margin-top: 24px;
+        "
+      >
+        <div class="kpi" style="border-color: rgba(251, 191, 36, 0.25)">
+          <div class="val" style="color: var(--amber); font-size: 22px">
+            Step 1
+          </div>
+          <div
+            class="lbl"
+            style="font-size: 15px; color: var(--text); margin-top: 8px"
+          >
+            SNAPSHOT
+          </div>
+          <div class="note" style="font-size: 13px; margin-top: 8px">
+            Pull every customer's current usage: OTAs, users, rooms, contacts,
+            features active. This becomes their frozen baseline.
+          </div>
+        </div>
+        <div class="kpi" style="border-color: rgba(6, 182, 212, 0.25)">
+          <div class="val" style="color: var(--blue); font-size: 22px">
+            Step 2
+          </div>
+          <div
+            class="lbl"
+            style="font-size: 15px; color: var(--text); margin-top: 8px"
+          >
+            FREEZE
+          </div>
+          <div class="note" style="font-size: 13px; margin-top: 8px">
+            Everything they use today = free forever. No price increase. No tier
+            migration. Their current state is grandfathered.
+          </div>
+        </div>
+        <div class="kpi" style="border-color: rgba(16, 185, 129, 0.25)">
+          <div class="val" style="color: var(--green); font-size: 22px">
+            Step 3
+          </div>
+          <div
+            class="lbl"
+            style="font-size: 15px; color: var(--text); margin-top: 8px"
+          >
+            CHARGE FOR GROWTH
+          </div>
+          <div class="note" style="font-size: 13px; margin-top: 8px">
+            Want more OTAs? ₹100/mo. More users? ₹50/mo. New module? Published
+            price. Self-serve from dashboard.
+          </div>
+        </div>
+      </div>
+      <div class="insight-box green-box" style="margin-top: 18px">
+        <p class="green">
+          ✅ No customer pays more for what they already have. They only pay
+          when they CHOOSE to add something new. Zero resentment.
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Channel Manager Pricing -->
+    <div class="slide">
+      <span class="slide-num">03 / 10</span>
+      <p class="subtitle">CHANNEL MANAGER · Usage-Based Pricing</p>
+      <h1>Pay Per <span class="accent">Connection</span></h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free Quota</th>
+            <th>Price for More</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>OTA connections</td>
+            <td><span class="frozen-tag">Current count frozen</span></td>
+            <td><span class="price-tag">₹100/mo per OTA</span></td>
+          </tr>
+          <tr>
+            <td>Room types</td>
+            <td><span class="frozen-tag">Current count frozen</span></td>
+            <td><span class="price-tag">₹50/mo per room type</span></td>
+          </tr>
+          <tr>
+            <td>Rate plans</td>
+            <td><span class="frozen-tag">Current count frozen</span></td>
+            <td><span class="price-tag">₹30/mo per rate plan</span></td>
+          </tr>
+          <tr>
+            <td>Derived rate plans</td>
+            <td><span class="frozen-tag">Current count frozen</span></td>
+            <td><span class="price-tag">₹30/mo per plan</span></td>
+          </tr>
+          <tr>
+            <td>Users / staff accounts</td>
+            <td><span class="frozen-tag">Current count frozen</span></td>
+            <td><span class="price-tag">₹50/mo per user</span></td>
+          </tr>
+          <tr>
+            <td>Active promotions</td>
+            <td><span class="free-tag">2 free</span></td>
+            <td><span class="price-tag">₹50/mo per promotion</span></td>
+          </tr>
+          <tr>
+            <td>Dynamic pricing module</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td><span class="price-tag">₹200/mo to activate</span></td>
+          </tr>
+          <tr>
+            <td>Seasonal pricing</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td><span class="price-tag">₹100/mo to activate</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="insight-box blue-box" style="margin-top: 14px">
+        <p>
+          Example: Hotel has 4 OTAs + 2 users today → all free. Adds Airbnb (5th
+          OTA) + new staff member → ₹150/mo additional.
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Booking Engine Pricing -->
+    <div class="slide">
+      <span class="slide-num">04 / 10</span>
+      <p class="subtitle">BOOKING ENGINE · Usage-Based Pricing</p>
+      <h1>Pay Per <span class="green">Feature</span></h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free Quota</th>
+            <th>Price for More</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Booking Engine access</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td><span class="price-tag">₹500/mo to activate</span></td>
+          </tr>
+          <tr>
+            <td>Payment gateways</td>
+            <td><span class="free-tag">1 gateway free</span></td>
+            <td><span class="price-tag">₹100/mo per gateway</span></td>
+          </tr>
+          <tr>
+            <td>Coupons / promotions</td>
+            <td><span class="free-tag">3 active free</span></td>
+            <td><span class="price-tag">₹50/mo per coupon</span></td>
+          </tr>
+          <tr>
+            <td>Paid services (add-ons for guests)</td>
+            <td><span class="free-tag">3 services free</span></td>
+            <td><span class="price-tag">₹30/mo per service</span></td>
+          </tr>
+          <tr>
+            <td>Packages</td>
+            <td><span class="free-tag">2 active free</span></td>
+            <td><span class="price-tag">₹50/mo per package</span></td>
+          </tr>
+          <tr>
+            <td>Day outing packages</td>
+            <td><span class="free-tag">1 active free</span></td>
+            <td><span class="price-tag">₹50/mo per package</span></td>
+          </tr>
+          <tr>
+            <td>Analytics plugins (GA, GTM, Pixel, Clarity)</td>
+            <td><span class="free-tag">2 plugins free</span></td>
+            <td><span class="price-tag">₹100/mo per plugin</span></td>
+          </tr>
+          <tr>
+            <td>Website / instant booking widget</td>
+            <td><span class="free-tag">1 widget free</span></td>
+            <td><span class="price-tag">₹100/mo for 2nd</span></td>
+          </tr>
+          <tr>
+            <td>Multi-property BE</td>
+            <td><span class="free-tag">1 property free</span></td>
+            <td><span class="price-tag">₹300/mo per property</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SLIDE 5: PMS Pricing -->
+    <div class="slide">
+      <span class="slide-num">05 / 10</span>
+      <p class="subtitle">PMS (WEB + MOBILE) · Usage-Based Pricing</p>
+      <h1>Pay Per <span class="amber">Room & Module</span></h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free Quota</th>
+            <th>Price for More</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PMS access (Web + Mobile)</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td><span class="price-tag">₹300/mo to activate</span></td>
+          </tr>
+          <tr>
+            <td>PMS users / staff</td>
+            <td><span class="frozen-tag">Current count frozen</span></td>
+            <td><span class="price-tag">₹50/mo per user</span></td>
+          </tr>
+          <tr>
+            <td>Physical rooms in PMS</td>
+            <td><span class="frozen-tag">Current count frozen</span></td>
+            <td>
+              <span class="price-tag">₹5/mo per room</span> (slab: ₹5→₹4→₹3→₹2)
+            </td>
+          </tr>
+          <tr>
+            <td>F&B module (restaurant + kitchen + room service)</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td><span class="price-tag">₹500/mo to activate</span></td>
+          </tr>
+          <tr>
+            <td>Additional restaurants</td>
+            <td><span class="free-tag">1 free (if active)</span></td>
+            <td><span class="price-tag">₹200/mo per restaurant</span></td>
+          </tr>
+          <tr>
+            <td>Additional kitchens</td>
+            <td><span class="free-tag">1 free (if active)</span></td>
+            <td><span class="price-tag">₹100/mo per kitchen</span></td>
+          </tr>
+          <tr>
+            <td>Menu items</td>
+            <td><span class="free-tag">50 items free</span></td>
+            <td><span class="price-tag">₹50/mo per 50 items</span></td>
+          </tr>
+          <tr>
+            <td>Housekeeping module</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td><span class="price-tag">₹200/mo to activate</span></td>
+          </tr>
+          <tr>
+            <td>Night audit</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td><span class="price-tag">₹100/mo to activate</span></td>
+          </tr>
+          <tr>
+            <td>Guest self check-in / room service QR / review page</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td>
+              <span class="price-tag">₹150/mo per module</span> or ₹350 bundle
+            </td>
+          </tr>
+          <tr>
+            <td>Advanced reports pack</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td><span class="price-tag">₹100/mo</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SLIDE 6: CRM Pricing -->
+    <div class="slide">
+      <span class="slide-num">06 / 10</span>
+      <p class="subtitle">CRM · Usage-Based Pricing</p>
+      <h1>Pay Per <span class="purple">Contact & Campaign</span></h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free Quota</th>
+            <th>Price for More</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CRM access</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td><span class="price-tag">₹400/mo to activate</span></td>
+          </tr>
+          <tr>
+            <td>Contacts</td>
+            <td><span class="frozen-tag">Current count frozen</span></td>
+            <td><span class="price-tag">₹50/mo per 500 contacts</span></td>
+          </tr>
+          <tr>
+            <td>CRM agents / users</td>
+            <td><span class="frozen-tag">Current count frozen</span></td>
+            <td><span class="price-tag">₹50/mo per agent</span></td>
+          </tr>
+          <tr>
+            <td>Campaign module (email + SMS + WhatsApp)</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td><span class="price-tag">₹300/mo to activate</span></td>
+          </tr>
+          <tr>
+            <td>Email sends</td>
+            <td><span class="free-tag">1,000/mo free</span></td>
+            <td><span class="price-tag">₹50/mo per 1,000</span></td>
+          </tr>
+          <tr>
+            <td>SMS sends</td>
+            <td><span class="free-tag">500/mo free</span></td>
+            <td><span class="price-tag">₹50/mo per 500</span></td>
+          </tr>
+          <tr>
+            <td>WhatsApp sends</td>
+            <td><span class="free-tag">500/mo free</span></td>
+            <td><span class="price-tag">₹100/mo per 500</span></td>
+          </tr>
+          <tr>
+            <td>Membership / loyalty module</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td><span class="price-tag">₹300/mo to activate</span></td>
+          </tr>
+          <tr>
+            <td>Active members</td>
+            <td><span class="free-tag">100 free</span></td>
+            <td><span class="price-tag">₹50/mo per 100</span></td>
+          </tr>
+          <tr>
+            <td>QR codes</td>
+            <td><span class="free-tag">5 free</span></td>
+            <td><span class="price-tag">₹20/mo per QR</span></td>
+          </tr>
+          <tr>
+            <td>IVR integration</td>
+            <td><span class="frozen-tag">If active: frozen</span></td>
+            <td><span class="price-tag">₹500/mo to activate</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SLIDE 7: Hotel Chain + Cross-Product -->
+    <div class="slide">
+      <span class="slide-num">07 / 10</span>
+      <p class="subtitle">HOTEL CHAIN + CROSS-PRODUCT · Usage-Based Pricing</p>
+      <h1>Pay Per <span class="accent">Property & Feature</span></h1>
+      <div
+        style="
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 18px;
+          margin-top: 20px;
+        "
+      >
+        <div>
+          <p
+            style="
+              font-family: &quot;Syne&quot;, sans-serif;
+              font-size: 13px;
+              letter-spacing: 1px;
+              color: var(--purple);
+              margin-bottom: 10px;
+            "
+          >
+            HOTEL CHAIN
+          </p>
+          <table style="margin-top: 0">
+            <tbody>
+              <tr>
+                <td>Hotel Chain dashboard</td>
+                <td><span class="frozen-tag">If active: frozen</span></td>
+                <td><span class="price-tag">₹500/mo</span></td>
+              </tr>
+              <tr>
+                <td>Properties in dashboard</td>
+                <td><span class="frozen-tag">Current frozen</span></td>
+                <td><span class="price-tag">₹200/mo per property</span></td>
+              </tr>
+              <tr>
+                <td>Advanced chain reports</td>
+                <td><span class="frozen-tag">If active: frozen</span></td>
+                <td><span class="price-tag">₹200/mo</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <p
+            style="
+              font-family: &quot;Syne&quot;, sans-serif;
+              font-size: 13px;
+              letter-spacing: 1px;
+              color: var(--blue);
+              margin-bottom: 10px;
+            "
+          >
+            CROSS-PRODUCT
+          </p>
+          <table style="margin-top: 0">
+            <tbody>
+              <tr>
+                <td>2nd property</td>
+                <td>—</td>
+                <td><span class="price-tag">₹300/mo</span></td>
+              </tr>
+              <tr>
+                <td>3rd–5th property</td>
+                <td>—</td>
+                <td><span class="price-tag">₹200/mo each</span></td>
+              </tr>
+              <tr>
+                <td>6th+ property</td>
+                <td>—</td>
+                <td><span class="price-tag">₹150/mo each</span></td>
+              </tr>
+              <tr>
+                <td>Unlimited properties</td>
+                <td>—</td>
+                <td><span class="price-tag">₹1,500/mo flat</span></td>
+              </tr>
+              <tr>
+                <td>API access</td>
+                <td><span class="frozen-tag">If active: frozen</span></td>
+                <td><span class="price-tag">₹500/mo</span></td>
+              </tr>
+              <tr>
+                <td>AI features (Aura + content gen)</td>
+                <td><span class="frozen-tag">If active: frozen</span></td>
+                <td><span class="price-tag">₹300/mo</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Revenue Impact -->
+    <div class="slide">
+      <span class="slide-num">08 / 10</span>
+      <p class="subtitle">REVENUE IMPACT · Conservative estimates</p>
+      <h1><span class="green">₹2.5 Cr</span> Additional ARR</h1>
+      <table style="margin-top: 22px">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Assumption</th>
+            <th>Additional ARR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>20% add 1 OTA</td>
+            <td>286 customers × ₹100/mo</td>
+            <td class="green">₹34.3L</td>
+          </tr>
+          <tr>
+            <td>30% add 1 user</td>
+            <td>429 customers × ₹50/mo</td>
+            <td class="green">₹25.7L</td>
+          </tr>
+          <tr>
+            <td>15% activate F&B module</td>
+            <td>215 customers × ₹500/mo</td>
+            <td class="green">₹1.29 Cr</td>
+          </tr>
+          <tr>
+            <td>10% activate CRM campaigns</td>
+            <td>143 customers × ₹300/mo</td>
+            <td class="green">₹51.5L</td>
+          </tr>
+          <tr>
+            <td>10% add 500 contacts</td>
+            <td>143 customers × ₹50/mo</td>
+            <td class="green">₹8.6L</td>
+          </tr>
+          <tr>
+            <td>5% activate Hotel Chain</td>
+            <td>72 customers × ₹500/mo</td>
+            <td class="green">₹43.2L</td>
+          </tr>
+          <tr>
+            <td>10% add 5 rooms</td>
+            <td>143 customers × ₹25/mo</td>
+            <td class="green">₹4.3L</td>
+          </tr>
+          <tr style="background: rgba(16, 185, 129, 0.06)">
+            <td style="font-weight: 700">TOTAL</td>
+            <td></td>
+            <td class="green" style="font-weight: 700">~₹2.5 Cr/year</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="insight-box green-box" style="margin-top: 14px">
+        <p class="green">
+          ₹2.5 Cr additional ARR on top of existing revenue. No customer pays
+          more for what they already use. Revenue comes from natural growth.
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: Implementation -->
+    <div class="slide">
+      <span class="slide-num">09 / 10</span>
+      <p class="subtitle">IMPLEMENTATION · 4 steps</p>
+      <h1>How We <span class="accent">Roll This Out</span></h1>
+      <div
+        class="kpi-grid"
+        style="grid-template-columns: repeat(4, 1fr); margin-top: 22px"
+      >
+        <div class="kpi" style="border-color: rgba(6, 182, 212, 0.2)">
+          <div class="val" style="color: var(--blue); font-size: 20px">
+            Week 1
+          </div>
+          <div
+            class="lbl"
+            style="font-size: 14px; color: var(--text); margin-top: 6px"
+          >
+            DATA SNAPSHOT
+          </div>
+          <div class="note" style="font-size: 12px; margin-top: 8px">
+            Pull every customer's current OTAs, users, rooms, contacts, active
+            features. This = their frozen baseline.
+          </div>
+        </div>
+        <div class="kpi" style="border-color: rgba(251, 191, 36, 0.2)">
+          <div class="val" style="color: var(--amber); font-size: 20px">
+            Week 2–3
+          </div>
+          <div
+            class="lbl"
+            style="font-size: 14px; color: var(--text); margin-top: 6px"
+          >
+            COMMUNICATE
+          </div>
+          <div class="note" style="font-size: 12px; margin-top: 8px">
+            Email all 1,430: "Everything you use today is free forever. New
+            additions have transparent pricing. Here's your snapshot."
+          </div>
+        </div>
+        <div class="kpi" style="border-color: rgba(16, 185, 129, 0.2)">
+          <div class="val" style="color: var(--green); font-size: 20px">Q1</div>
+          <div
+            class="lbl"
+            style="font-size: 14px; color: var(--text); margin-top: 6px"
+          >
+            BUILD BILLING
+          </div>
+          <div class="note" style="font-size: 12px; margin-top: 8px">
+            Usage tracking per feature. In-app "add more" button. Limit
+            notifications. Monthly usage report emails.
+          </div>
+        </div>
+        <div class="kpi" style="border-color: rgba(192, 132, 252, 0.2)">
+          <div class="val" style="color: var(--purple); font-size: 20px">
+            Q2
+          </div>
+          <div
+            class="lbl"
+            style="font-size: 14px; color: var(--text); margin-top: 6px"
+          >
+            LAUNCH
+          </div>
+          <div class="note" style="font-size: 12px; margin-top: 8px">
+            New customers: usage-based from day 1. Existing: frozen baseline +
+            pay-as-you-grow for additions.
+          </div>
+        </div>
+      </div>
+      <div class="insight-box blue-box" style="margin-top: 16px">
+        <p>
+          Key message to customers: "We're not raising prices. We're making
+          pricing transparent. What you have today is yours. Growth has a
+          published price."
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: Closing -->
+    <div class="slide closing">
+      <span class="slide-num">10 / 10</span>
+      <div class="big-quote">
+        Don't raise the <em>price.</em><br />Raise the <em>ceiling.</em
+        ><br />Let customers <em>grow into it.</em>
+      </div>
+      <p
+        style="
+          font-size: 16px;
+          color: var(--muted);
+          max-width: 620px;
+          line-height: 1.7;
+        "
+      >
+        Every customer keeps what they have — free, forever. Every new OTA,
+        user, room, module, and campaign has a clear, published price. Revenue
+        grows as customers grow. No resentment. No churn. Just transparent,
+        usage-based monetization.
+      </p>
+      <div class="metrics-strip">
+        <div class="metric-chip">1,430 customers — zero price increase</div>
+        <div class="metric-chip">Freeze current usage as free quota</div>
+        <div class="metric-chip">Charge for growth only</div>
+        <div class="metric-chip">₹2.5 Cr additional ARR</div>
+        <div class="metric-chip">Self-serve upgrades from dashboard</div>
+      </div>
+    </div>
+
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="ppt-nav">
+      <button id="prevBtn" onclick="navigate(-1)">
+        <span>←</span> Previous
+      </button>
+      <div class="nav-center">
+        <div class="nav-dots" id="navDots"></div>
+        <div class="nav-counter" id="navCounter">1 / 10</div>
+      </div>
+      <button id="nextBtn" onclick="navigate(1)">Next <span>→</span></button>
+    </div>
+    <script>
+      const slides = document.querySelectorAll(".slide"),
+        totalSlides = slides.length;
+      let current = 0;
+      function showSlide(i) {
+        slides.forEach((s) => {
+          s.classList.remove("active");
+          s.style.animation = "none";
+        });
+        current = Math.max(0, Math.min(i, totalSlides - 1));
+        const sl = slides[current];
+        sl.style.animation = "none";
+        sl.offsetHeight;
+        sl.style.animation = "";
+        sl.classList.add("active");
+        document.getElementById("navCounter").textContent =
+          current + 1 + " / " + totalSlides;
+        document.getElementById("prevBtn").disabled = current === 0;
+        document.getElementById("nextBtn").disabled =
+          current === totalSlides - 1;
+        document.getElementById("progressBar").style.width =
+          ((current + 1) / totalSlides) * 100 + "%";
+        document
+          .querySelectorAll(".nav-dot")
+          .forEach((d, j) => d.classList.toggle("active", j === current));
+      }
+      function navigate(d) {
+        showSlide(current + d);
+      }
+      const dc = document.getElementById("navDots");
+      for (let i = 0; i < totalSlides; i++) {
+        const d = document.createElement("div");
+        d.className = "nav-dot";
+        d.onclick = () => showSlide(i);
+        dc.appendChild(d);
+      }
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
+          e.preventDefault();
+          navigate(1);
+        }
+        if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          e.preventDefault();
+          navigate(-1);
+        }
+        if (e.key === "Home") {
+          e.preventDefault();
+          showSlide(0);
+        }
+        if (e.key === "End") {
+          e.preventDefault();
+          showSlide(totalSlides - 1);
+        }
+      });
+      showSlide(0);
+    </script>
+  </body>
+</html>
